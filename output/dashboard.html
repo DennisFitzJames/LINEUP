@@ -1,0 +1,1680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="refresh" content="60"> <title>LINEUP Production Control Board</title> <style> *{box-sizing:border-box}:root{--paper:#f7f3ec;--card:#fffdf8;--ink:#1c1917;--muted:#746d66;--line:#ded6ca;--fine:#e8dfd3;--accent:#b45309;--danger:#991b1b;--success:#166534;--warning:#b45309;--shadow:rgba(43,33,24,.08);--sans:Arial,Helvetica,sans-serif;--serif:Georgia,"Times New Roman",serif}body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--serif)}.page{min-height:100vh;padding:20px 26px}.topbar{display:flex;justify-content:space-between;gap:20px;align-items:flex-end;padding-bottom:15px;border-bottom:2px solid var(--ink)}.brand h1{margin:0;font-size:44px;letter-spacing:4px}.brand span{font:700 14px var(--sans);color:var(--accent);letter-spacing:2px;text-transform:uppercase}.timestamp{font:13px var(--sans);color:var(--muted);text-align:right}.kpi-row,.pool-metrics{display:flex;gap:20px;margin-top:12px;font-family:var(--sans)}.kpi span,.pool-metrics span{display:block;font-size:10px;text-transform:uppercase;color:var(--muted);letter-spacing:.8px}.kpi strong,.pool-metrics strong{display:block;font-size:21px;margin-top:2px}.system-banner,.held-panel,.split-panel{margin-top:12px;padding:12px 14px;border:1px solid var(--line);background:var(--card);box-shadow:0 8px 22px var(--shadow)}.system-banner{display:flex;justify-content:space-between;gap:15px;font:800 12px var(--sans)}.system-banner.danger{border-left:5px solid var(--danger);background:#fff5f5;color:#7f1d1d}.system-banner.warning{border-left:5px solid var(--warning);background:#fff7ed;color:#7c2d12}.hidden{display:none!important}.held-panel{border-left:5px solid var(--danger);background:#fff5f5}.held-panel-heading,.split-panel-heading,.screen-title-row,.bench-head,.current-top,.split-card-top{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}.held-panel-heading h2,.split-panel-heading h2,.screen-title-row h2{margin:0}.held-panel-heading p,.split-panel-heading p,.screen-title-row p{margin:3px 0 0;color:var(--muted);font:12px var(--sans)}.held-card-grid,.split-card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:9px;margin-top:10px}.held-order-card,.split-card{padding:10px;border:1px solid var(--fine);background:white;font-family:var(--sans)}.held-order-card strong,.split-card strong{display:block}.held-order-card span,.held-note,.split-card span{display:block;margin-top:3px;color:var(--muted);font-size:11px}.split-heading-actions{display:flex;gap:10px;align-items:center;font-family:var(--sans)}.split-heading-actions button,.split-more{border:1px solid var(--line);background:white;padding:7px 10px;border-radius:999px;font-weight:800;cursor:pointer}.split-card-grid{grid-template-columns:repeat(auto-fit,minmax(360px,1fr))}.split-status{font:900 10px var(--sans);color:var(--accent);text-transform:uppercase}.split-message{margin-top:8px;font:800 12px/1.4 var(--sans);color:#57534e}.split-detail-grid,.split-detail-panel,.remaining-panel,.live-work-panel,.utilisation-panel{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:6px;margin-top:8px;font-family:var(--sans)}.split-detail-grid div,.split-detail-panel div,.remaining-panel div,.live-work-panel div,.utilisation-panel div{padding:7px;border:1px solid var(--fine);background:#fbf7f0}.split-detail-grid span,.split-detail-panel span,.remaining-panel span,.live-work-panel span,.utilisation-panel span{display:block;font-size:9px;text-transform:uppercase;color:var(--muted);font-weight:900;letter-spacing:.5px}.split-detail-grid strong,.split-detail-panel strong,.remaining-panel strong,.live-work-panel strong,.utilisation-panel strong{display:block;margin-top:2px;font-size:12px}.split-action-form{margin-top:9px}.split-action-form button{border:0;background:var(--ink);color:white;padding:8px 12px;border-radius:999px;font-weight:900;cursor:pointer}.screens{margin-top:16px}.screen{display:none}.screen.active{display:block}.screen-title-row{align-items:flex-end;margin-bottom:12px}.bench-board{display:grid;grid-template-columns:repeat(auto-fit,minmax(430px,1fr));gap:14px}.bench-card{background:var(--card);border:1px solid var(--line);border-top:5px solid #57534e;padding:14px;box-shadow:0 8px 22px var(--shadow)}.bench-card.attention{border-top-color:var(--danger)}.bench-card.high{border-top-color:var(--success)}.bench-card.medium{border-top-color:var(--warning)}.bench-card.idle{opacity:.75;border-top-color:#a8a29e}.bench-name{font-size:22px;font-weight:700}.bench-id{font:11px var(--sans);color:var(--muted)}.confidence-pill{font:900 10px var(--sans);padding:6px 9px;border-radius:999px;border:1px solid var(--line)}.confidence-pill.high{color:var(--success);background:#ecfdf3;border-color:#bbf7d0}.confidence-pill.medium{color:#7c2d12;background:#fff7ed;border-color:#fed7aa}.confidence-pill.attention{color:var(--danger);background:#fff5f5;border-color:#fecaca}.bench-note,.order-note,.split-operator-note{margin-top:8px;padding:8px 9px;border:1px solid var(--fine);background:#fbf7f0;border-radius:8px;font:800 11px var(--sans)}.bench-note span,.order-note span{display:block;font-size:9px;text-transform:uppercase;color:var(--accent)}.current-block{border-left:4px solid var(--accent);padding:11px 0 11px 12px;margin-top:10px}.current-block.late{border-left-color:var(--danger)}.block-label,.queue-position{font:900 10px var(--sans);color:var(--accent);text-transform:uppercase;letter-spacing:.7px}.current-order-number{font:800 20px var(--sans);margin-top:5px}.current-material{font:800 26px var(--sans);margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.current-description{font:12px var(--sans);color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.current-time{font:800 15px var(--sans);margin-top:7px}.due-line{font:11px var(--sans);color:var(--muted);margin-top:6px}.tag-row{display:flex;gap:4px;flex-wrap:wrap;margin-top:4px}.mini-tag{font:800 9px var(--sans);padding:4px 7px;border-radius:999px;border:1px solid var(--line);background:var(--paper)}.source-live,.confidence-high{color:var(--success);background:#ecfdf3;border-color:#bbf7d0}.source-planner{color:#1d4ed8;background:#eff6ff;border-color:#bfdbfe}.source-split{color:#7c2d12;background:#fff7ed;border-color:#fed7aa}.source-forced{color:#7e22ce;background:#faf5ff;border-color:#e9d5ff}.source-stable,.confidence-medium{color:#7c2d12;background:#fff7ed;border-color:#fed7aa}.source-optimised{color:#57534e}.confidence-attention,.priority-tag{color:var(--danger);background:#fff5f5;border-color:#fecaca}.australia-tag{background:#ead7bd}.remaining-note{grid-column:span 1}.operational-panel div:first-child strong{font-size:18px}.calculation-note{margin-top:6px;padding:7px 9px;border:1px solid var(--fine);background:#fbf7f0;border-radius:8px;font:800 10px/1.35 var(--sans);color:#57534e}.live-calculation-note{border-color:#bbf7d0;background:#f0fdf4;color:#166534}.live-work-panel div{background:#ecfdf3;border-color:#bbf7d0}.split-detail-panel div,.split-operator-note{background:#fff7ed;border-color:#fed7aa;color:#7c2d12}.why-row{margin-top:7px}.why-button{border:1px solid var(--line);background:white;padding:6px 10px;border-radius:999px;font:900 10px var(--sans);cursor:pointer}.work-action-panel,.queue-action-panel{margin-top:9px;padding:8px;border:1px solid var(--fine);background:#fbf7f0;border-radius:9px;display:grid;grid-template-columns:auto 1fr;gap:10px}.work-action-form{margin:0}.work-button,.hold-reason-button{border:0;border-radius:999px;padding:7px 10px;font:900 10px var(--sans);cursor:pointer}.work-button.start{background:var(--success);color:white}.work-button.stop{background:var(--danger);color:white}.hold-action-label{font:900 9px var(--sans);text-transform:uppercase;color:var(--muted);margin-bottom:4px}.hold-reason-row{display:flex;gap:5px;flex-wrap:wrap}.hold-reason-button{border:1px solid #fecaca;background:#fff5f5;color:var(--danger)}.queue-list{border-top:1px solid var(--fine);margin-top:9px;padding-top:8px}.queue-row{display:grid;grid-template-columns:62px 1fr;gap:9px;padding:8px 0;border-bottom:1px solid var(--fine)}.next-row{background:#fbf2e5;margin:0 -7px;padding:9px 7px;border-radius:8px}.queue-order-number,.queue-material{font:800 13px var(--sans)}.queue-meta{display:flex;justify-content:space-between;gap:8px;margin-top:4px;font:800 10px var(--sans)}.queue-time span{display:block;color:var(--muted)}.queue-summary{display:flex;gap:9px;margin-top:5px;font:800 10px var(--sans);color:#57534e}.queue-lock-note{display:inline-block;padding:6px 9px;border-radius:999px;background:#ecfdf3;color:var(--success);font:900 9px var(--sans)}.empty-current,.empty-queue,.more-queue{font:12px var(--sans);color:var(--muted);padding:8px 0}.screen-nav{display:flex;justify-content:center;gap:7px;margin-top:14px}.screen-dot{border:1px solid var(--line);background:white;padding:7px 11px;border-radius:999px;font:800 11px var(--sans);cursor:pointer}.screen-dot.active{background:var(--ink);color:white}.why-backdrop{display:none;position:fixed;inset:0;background:rgba(28,25,23,.45);z-index:100;justify-content:flex-end}.why-backdrop.open{display:flex}.why-panel{width:min(440px,100%);height:100%;background:var(--card);padding:20px;overflow:auto;box-shadow:-12px 0 30px rgba(0,0,0,.18)}.why-panel-head{display:flex;justify-content:space-between;gap:12px}.why-panel h2{margin:0}.why-panel button{border:1px solid var(--line);background:white;border-radius:999px;padding:6px 9px;cursor:pointer}.why-section{margin-top:15px;padding-top:12px;border-top:1px solid var(--fine);font-family:var(--sans)}.why-section span{display:block;font-size:9px;text-transform:uppercase;color:var(--muted);font-weight:900}.why-section strong,.why-section p{display:block;margin:4px 0 0;font-size:13px;line-height:1.45}.split-hidden-card{display:none}.split-panel.show-all-splits .split-hidden-card{display:block}.split-panel.collapsed .split-card-grid{display:none}@media(max-width:900px){.bench-board{grid-template-columns:1fr}.topbar,.screen-title-row{display:block}.timestamp{text-align:left;margin-top:10px}.work-action-panel{grid-template-columns:1fr}}@media(max-width:600px){.page{padding:12px}.queue-row{grid-template-columns:1fr}.kpi-row,.pool-metrics{flex-wrap:wrap}}
+</style>
+</head>
+<body data-generated-at="2026-07-29T13:04:25" data-stale-warning-minutes="45">
+<div class="page">
+<header class="topbar"><div><div class="brand"><h1>LINEUP</h1><span>Production Control Board</span></div><div class="kpi-row"><div class="kpi"><span>Open Benches</span><strong>7</strong></div><div class="kpi"><span>Queued Orders</span><strong>43</strong></div><div class="kpi"><span>Live</span><strong>5</strong></div><div class="kpi"><span>Held</span><strong>0</strong></div><div class="kpi"><span>Attention</span><strong>35</strong></div><div class="kpi"><span>Late</span><strong>35</strong></div></div></div><div class="timestamp">Generated<br><strong>29/07/2026 13:04:25</strong></div></header>
+<div class="system-banner danger hidden" id="stale-warning"><strong>Dashboard may be stale</strong><span id="stale-warning-text"></span></div>
+  <main class="screens">
+        <section class="screen active" data-screen-index="0">
+            <div class="screen-title-row"><div><h2>CSKI / MVKI</h2><p>5 open benches</p></div><div class="pool-metrics"><div><span>Orders</span><strong>23</strong></div><div><span>Live</span><strong>5</strong></div><div><span>Late</span><strong>18</strong></div><div><span>Attention</span><strong>18</strong></div></div></div>
+            <div class="bench-board">
+    <article class="bench-card attention">
+        <div class="bench-head"><div><div class="bench-name">CSKI/MVKI Bench 1</div><div class="bench-id">CM01</div></div><div class="confidence-pill attention">Planner attention</div></div>
+        <div class="utilisation-panel">
+            <div><span>Today Load</span><strong>7h 55m</strong></div>
+            <div><span>Capacity</span><strong>7h 55m</strong></div>
+            <div><span>Utilisation</span><strong>100%</strong></div>
+            <div><span>Future Queue</span><strong>13h 4m</strong></div>
+        </div>
+        
+        
+    <div class="current-block late">
+        <div class="current-top"><div class="block-label">Current - Live</div><div class="tag-row"><span class="mini-tag source-live">Live WIP</span><span class="mini-tag confidence-attention">Planner attention</span><span class="mini-tag priority-tag">P5</span></div></div>
+        <div class="current-order-number">200233938906</div>
+        <div class="current-material">CH8130-000</div>
+        <div class="current-description">CSJT-36D/1XU-1XU-GB03</div>
+        <div class="current-time">13:15 to Thu 30/07 08:32</div>
+        
+    <div
+        class="live-work-panel live-dynamic-panel"
+        data-live-started-at="2026-07-29 08:13:07"
+        data-live-base-at="2026-07-29T13:04:25"
+        data-live-base-remaining="247"
+    >
+        <div>
+            <span>Started</span>
+            <strong>Wed 08:13</strong>
+        </div>
+        <div>
+            <span>Time Worked</span>
+            <strong class="live-time-worked">-</strong>
+        </div>
+        <div>
+            <span>Remaining</span>
+            <strong class="live-remaining">4h 7m</strong>
+        </div>
+        <div>
+            <span>Finish Estimate</span>
+            <strong>Thu 30/07 08:32</strong>
+        </div>
+    </div>
+    <div class="calculation-note live-calculation-note">
+        Based on the latest SAP remaining capacity (4h 7m). No staffing adjustment.
+    </div>
+    
+        
+        <div class="due-line">LATE - Late by 1 working day</div>
+        <div class="why-row"><button type="button" class="why-button" data-why="{&quot;order_number&quot;: &quot;200233938906&quot;, &quot;material&quot;: &quot;CH8130-000&quot;, &quot;bench_id&quot;: &quot;CM01&quot;, &quot;source&quot;: &quot;Live WIP&quot;, &quot;reason&quot;: &quot;This split part is actively being worked on this bench and remains locked as current.&quot;, &quot;confidence&quot;: &quot;ATTENTION&quot;, &quot;confidence_reason&quot;: &quot;The predicted finish is later than the SAP scheduled finish day. The split part is still predicted to finish late.&quot;, &quot;queue_stability&quot;: &quot;LIVE LOCK&quot;, &quot;sap_remaining&quot;: &quot;4h 7m&quot;, &quot;adjusted_remaining&quot;: &quot;4h 7m&quot;, &quot;staffing_people&quot;: &quot;2&quot;, &quot;staffing_factor&quot;: &quot;1.0000&quot;, &quot;finish&quot;: &quot;Thu 30/07 08:32&quot;, &quot;due&quot;: &quot;Late by 1 working day&quot;}" onclick="openWhyPanel(this)">Why?</button></div>
+        <div class="work-action-panel"><div class="main-work-action">
+    <form method="post" action="/work/stop" class="work-action-form">
+        <input type="hidden" name="bench_id" value="CM01">
+        <input type="hidden" name="order_number" value="200233938906">
+        <button type="submit" class="work-button stop" onclick="return confirm('Stop live tracking for order 200233938906? This does not complete the order in SAP.');">Stop Tracking</button>
+    </form>
+    </div><div class="hold-action-group"><div class="hold-action-label">Hold Reason</div><div class="hold-reason-row">
+        <form method="post" action="/hold/add" class="work-action-form">
+            <input type="hidden" name="source" value="dashboard">
+            <input type="hidden" name="bench_id" value="CM01">
+            <input type="hidden" name="order_number" value="200233938906">
+            <input type="hidden" name="hold_reason" value="Shortage">
+            <input type="hidden" name="hold_note" value="Held from dashboard: Shortage">
+            <button type="submit" class="hold-reason-button" onclick="return confirm('Put order 200233938906 on hold for Shortage?');">Shortage</button>
+        </form>
+        
+        <form method="post" action="/hold/add" class="work-action-form">
+            <input type="hidden" name="source" value="dashboard">
+            <input type="hidden" name="bench_id" value="CM01">
+            <input type="hidden" name="order_number" value="200233938906">
+            <input type="hidden" name="hold_reason" value="Quality">
+            <input type="hidden" name="hold_note" value="Held from dashboard: Quality">
+            <button type="submit" class="hold-reason-button" onclick="return confirm('Put order 200233938906 on hold for Quality?');">Quality</button>
+        </form>
+        
+        <form method="post" action="/hold/add" class="work-action-form">
+            <input type="hidden" name="source" value="dashboard">
+            <input type="hidden" name="bench_id" value="CM01">
+            <input type="hidden" name="order_number" value="200233938906">
+            <input type="hidden" name="hold_reason" value="People">
+            <input type="hidden" name="hold_note" value="Held from dashboard: People">
+            <button type="submit" class="hold-reason-button" onclick="return confirm('Put order 200233938906 on hold for People?');">People</button>
+        </form>
+        
+        <form method="post" action="/hold/add" class="work-action-form">
+            <input type="hidden" name="source" value="dashboard">
+            <input type="hidden" name="bench_id" value="CM01">
+            <input type="hidden" name="order_number" value="200233938906">
+            <input type="hidden" name="hold_reason" value="Space">
+            <input type="hidden" name="hold_note" value="Held from dashboard: Space">
+            <button type="submit" class="hold-reason-button" onclick="return confirm('Put order 200233938906 on hold for Space?');">Space</button>
+        </form>
+        </div></div></div>
+        
+    </div>
+    
+        <div class="queue-list">
+    <div class="queue-row late next-row">
+        <div class="queue-position">Next</div>
+        <div class="queue-main">
+            <div class="queue-order-number">200233812330</div>
+            <div class="queue-material">EN6842-000</div>
+            <div class="tag-row"><span class="mini-tag source-stable">Stable Queue</span><span class="mini-tag confidence-attention">Planner attention</span><span class="mini-tag priority-tag">P5</span></div>
+            <div class="queue-meta"><div class="queue-time"><div>Thu 30/07 08:32</div><span>to Mon 03/08 12:24</span></div><div class="queue-status">LATE</div></div>
+            <div class="queue-summary"><span>Remaining 16h 52m</span><span>Finish Mon 03/08 12:24</span></div>
+            <div class="why-row"><button type="button" class="why-button" data-why="{&quot;order_number&quot;: &quot;200233812330&quot;, &quot;material&quot;: &quot;EN6842-000&quot;, &quot;bench_id&quot;: &quot;CM01&quot;, &quot;source&quot;: &quot;Stable Queue&quot;, &quot;reason&quot;: &quot;LINEUP preserved this order on CM01 because it was the next automatic order in the previous plan.&quot;, &quot;confidence&quot;: &quot;ATTENTION&quot;, &quot;confidence_reason&quot;: &quot;The predicted finish is later than the SAP scheduled finish day.&quot;, &quot;queue_stability&quot;: &quot;STABLE NEXT&quot;, &quot;sap_remaining&quot;: &quot;16h 52m&quot;, &quot;adjusted_remaining&quot;: &quot;16h 52m&quot;, &quot;staffing_people&quot;: &quot;2&quot;, &quot;staffing_factor&quot;: &quot;1.0000&quot;, &quot;finish&quot;: &quot;Mon 03/08 12:24&quot;, &quot;due&quot;: &quot;Late by 1 working day&quot;}" onclick="openWhyPanel(this)">Why?</button></div>
+            
+            
+            <div class="queue-action-panel compact"><div class="main-work-action"><div class="queue-lock-note">Live WIP locked</div></div><div class="hold-action-group"><div class="hold-action-label">Hold Reason</div><div class="hold-reason-row">
+        <form method="post" action="/hold/add" class="work-action-form">
+            <input type="hidden" name="source" value="dashboard">
+            <input type="hidden" name="bench_id" value="CM01">
+            <input type="hidden" name="order_number" value="200233812330">
+            <input type="hidden" name="hold_reason" value="Shortage">
+            <input type="hidden" name="hold_note" value="Held from dashboard: Shortage">
+            <button type="submit" class="hold-reason-button" onclick="return confirm('Put order 200233812330 on hold for Shortage?');">Shortage</button>
+        </form>
+        
+        <form method="post" action="/hold/add" class="work-action-form">
+            <input type="hidden" name="source" value="dashboard">
+            <input type="hidden" name="bench_id" value="CM01">
+            <input type="hidden" name="order_number" value="200233812330">
+            <input type="hidden" name="hold_reason" value="Quality">
+            <input type="hidden" name="hold_note" value="Held from dashboard: Quality">
+            <button type="submit" class="hold-reason-button" onclick="return confirm('Put order 200233812330 on hold for Quality?');">Quality</button>
+        </form>
+        
+        <form method="post" action="/hold/add" class="work-action-form">
+            <input type="hidden" name="source" value="dashboard">
+            <input type="hidden" name="bench_id" value="CM01">
+            <input type="hidden" name="order_number" value="200233812330">
+            <input type="hidden" name="hold_reason" value="People">
+            <input type="hidden" name="hold_note" value="Held from dashboard: People">
+            <button type="submit" class="hold-reason-button" onclick="return confirm('Put order 200233812330 on hold for People?');">People</button>
+        </form>
+        
+        <form method="post" action="/hold/add" class="work-action-form">
+            <input type="hidden" name="source" value="dashboard">
+            <input type="hidden" name="bench_id" value="CM01">
+            <input type="hidden" name="order_number" value="200233812330">
+            <input type="hidden" name="hold_reason" value="Space">
+            <input type="hidden" name="hold_note" value="Held from dashboard: Space">
+            <button type="submit" class="hold-reason-button" onclick="return confirm('Put order 200233812330 on hold for Space?');">Space</button>
+        </form>
+        </div></div></div>
+        </div>
+    </div>
+    </div>
+    </article>
+    
+    <article class="bench-card attention">
+        <div class="bench-head"><div><div class="bench-name">CSKI/MVKI Bench 3</div><div class="bench-id">CM03</div></div><div class="confidence-pill attention">Planner attention</div></div>
+        <div class="utilisation-panel">
+            <div><span>Today Load</span><strong>7h 55m</strong></div>
+            <div><span>Capacity</span><strong>7h 55m</strong></div>
+            <div><span>Utilisation</span><strong>100%</strong></div>
+            <div><span>Future Queue</span><strong>10h 43m</strong></div>
+        </div>
+        
+        
+    <div class="current-block late">
+        <div class="current-top"><div class="block-label">Current - Live</div><div class="tag-row"><span class="mini-tag source-live">Live WIP</span><span class="mini-tag confidence-attention">Planner attention</span><span class="mini-tag priority-tag">P5</span></div></div>
+        <div class="current-order-number">200233938906</div>
+        <div class="current-material">CH8130-000</div>
+        <div class="current-description">CSJT-36D/1XU-1XU-GB03</div>
+        <div class="current-time">13:15 to Thu 30/07 13:28</div>
+        
+    <div
+        class="live-work-panel live-dynamic-panel"
+        data-live-started-at="2026-07-29 11:07:28"
+        data-live-base-at="2026-07-29T13:04:25"
+        data-live-base-remaining="488"
+    >
+        <div>
+            <span>Started</span>
+            <strong>Wed 11:07</strong>
+        </div>
+        <div>
+            <span>Time Worked</span>
+            <strong class="live-time-worked">-</strong>
+        </div>
+        <div>
+            <span>Remaining</span>
+            <strong class="live-remaining">8h 8m</strong>
+        </div>
+        <div>
+            <span>Finish Estimate</span>
+            <strong>Thu 30/07 13:28</strong>
+        </div>
+    </div>
+    <div class="calculation-note live-calculation-note">
+        SAP remaining: 4h 4m. Adjusted for 1 people (duration factor 2.00).
+    </div>
+    
+        
+        <div class="due-line">LATE - Late by 1 working day</div>
+        <div class="why-row"><button type="button" class="why-button" data-why="{&quot;order_number&quot;: &quot;200233938906&quot;, &quot;material&quot;: &quot;CH8130-000&quot;, &quot;bench_id&quot;: &quot;CM03&quot;, &quot;source&quot;: &quot;Live WIP&quot;, &quot;reason&quot;: &quot;This split part is actively being worked on this bench and remains locked as current.&quot;, &quot;confidence&quot;: &quot;ATTENTION&quot;, &quot;confidence_reason&quot;: &quot;The predicted finish is later than the SAP scheduled finish day. A manual staffing override materially changes the duration. The split part is still predicted to finish late.&quot;, &quot;queue_stability&quot;: &quot;LIVE LOCK&quot;, &quot;sap_remaining&quot;: &quot;4h 4m&quot;, &quot;adjusted_remaining&quot;: &quot;8h 8m&quot;, &quot;staffing_people&quot;: &quot;1&quot;, &quot;staffing_factor&quot;: &quot;2.0000&quot;, &quot;finish&quot;: &quot;Thu 30/07 13:28&quot;, &quot;due&quot;: &quot;Late by 1 working day&quot;}" onclick="openWhyPanel(this)">Why?</button></div>
+        <div class="work-action-panel"><div class="main-work-action">
+    <form method="post" action="/work/stop" class="work-action-form">
+        <input type="hidden" name="bench_id" value="CM03">
+        <input type="hidden" name="order_number" value="200233938906">
+        <button type="submit" class="work-button stop" onclick="return confirm('Stop live tracking for order 200233938906? This does not complete the order in SAP.');">Stop Tracking</button>
+    </form>
+    </div><div class="hold-action-group"><div class="hold-action-label">Hold Reason</div><div class="hold-reason-row">
+        <form method="post" action="/hold/add" class="work-action-form">
+            <input type="hidden" name="source" value="dashboard">
+            <input type="hidden" name="bench_id" value="CM03">
+            <input type="hidden" name="order_number" value="200233938906">
+            <input type="hidden" name="hold_reason" value="Shortage">
+            <input type="hidden" name="hold_note" value="Held from dashboard: Shortage">
+            <button type="submit" class="hold-reason-button" onclick="return confirm('Put order 200233938906 on hold for Shortage?');">Shortage</button>
+        </form>
+        
+        <form method="post" action="/hold/add" class="work-action-form">
+            <input type="hidden" name="source" value="dashboard">
+            <input type="hidden" name="bench_id" value="CM03">
+            <input type="hidden" name="order_number" value="200233938906">
+            <input type="hidden" name="hold_reason" value="Quality">
+            <input type="hidden" name="hold_note" value="Held from dashboard: Quality">
+            <button type="submit" class="hold-reason-button" onclick="return confirm('Put order 200233938906 on hold for Quality?');">Quality</button>
+        </form>
+        
+        <form method="post" action="/hold/add" class="work-action-form">
+            <input type="hidden" name="source" value="dashboard">
+            <input type="hidden" name="bench_id" value="CM03">
+            <input type="hidden" name="order_number" value="200233938906">
+            <input type="hidden" name="hold_reason" value="People">
+            <input type="hidden" name="hold_note" value="Held from dashboard: People">
+            <button type="submit" class="hold-reason-button" onclick="return confirm('Put order 200233938906 on hold for People?');">People</button>
+        </form>
+        
+        <form method="post" action="/hold/add" class="work-action-form">
+            <input type="hidden" name="source" value="dashboard">
+            <input type="hidden" name="bench_id" value="CM03">
+            <input type="hidden" name="order_number" value="200233938906">
+            <input type="hidden" name="hold_reason" value="Space">
+            <input type="hidden" name="hold_note" value="Held from dashboard: Space">
+            <button type="submit" class="hold-reason-button" onclick="return confirm('Put order 200233938906 on hold for Space?');">Space</button>
+        </form>
+        </div></div></div>
+        
+    </div>
+    
+        <div class="queue-list">
+    <div class="queue-row late next-row">
+        <div class="queue-position">Next</div>
+        <div class="queue-main">
+            <div class="queue-order-number">200234566929</div>
+            <div class="queue-material">EP7612-000</div>
+            <div class="tag-row"><span class="mini-tag source-stable">Stable Queue</span><span class="mini-tag confidence-attention">Planner attention</span><span class="mini-tag priority-tag">P5</span></div>
+            <div class="queue-meta"><div class="queue-time"><div>Thu 30/07 13:28</div><span>to Thu 30/07 15:44</span></div><div class="queue-status">LATE</div></div>
+            <div class="queue-summary"><span>Remaining 2h 16m</span><span>Finish Thu 30/07 15:44</span></div>
+            <div class="why-row"><button type="button" class="why-button" data-why="{&quot;order_number&quot;: &quot;200234566929&quot;, &quot;material&quot;: &quot;EP7612-000&quot;, &quot;bench_id&quot;: &quot;CM03&quot;, &quot;source&quot;: &quot;Stable Queue&quot;, &quot;reason&quot;: &quot;LINEUP preserved this order on CM03 because it was the next automatic order in the previous plan.&quot;, &quot;confidence&quot;: &quot;ATTENTION&quot;, &quot;confidence_reason&quot;: &quot;The predicted finish is later than the SAP scheduled finish day. A manual staffing override materially changes the duration.&quot;, &quot;queue_stability&quot;: &quot;STABLE NEXT&quot;, &quot;sap_remaining&quot;: &quot;1h 8m&quot;, &quot;adjusted_remaining&quot;: &quot;2h 16m&quot;, &quot;staffing_people&quot;: &quot;1&quot;, &quot;staffing_factor&quot;: &quot;2.0000&quot;, &quot;finish&quot;: &quot;Thu 30/07 15:44&quot;, &quot;due&quot;: &quot;Late by 1 working day&quot;}" onclick="openWhyPanel(this)">Why?</button></div>
+            
+            
+            <div class="queue-action-panel compact"><div class="main-work-action"><div class="queue-lock-note">Live WIP locked</div></div><div class="hold-action-group"><div class="hold-action-label">Hold Reason</div><div class="hold-reason-row">
+        <form method="post" action="/hold/add" class="work-action-form">
+            <input type="hidden" name="source" value="dashboard">
+            <input type="hidden" name="bench_id" value="CM03">
+            <input type="hidden" name="order_number" value="200234566929">
+            <input type="hidden" name="hold_reason" value="Shortage">
+            <input type="hidden" name="hold_note" value="Held from dashboard: Shortage">
+            <button type="submit" class="hold-reason-button" onclick="return confirm('Put order 200234566929 on hold for Shortage?');">Shortage</button>
+        </form>
+        
+        <form method="post" action="/hold/add" class="work-action-form">
+            <input type="hidden" name="source" value="dashboard">
+            <input type="hidden" name="bench_id" value="CM03">
+            <input type="hidden" name="order_number" value="200234566929">
+            <input type="hidden" name="hold_reason" value="Quality">
+            <input type="hidden" name="hold_note" value="Held from dashboard: Quality">
+            <button type="submit" class="hold-reason-button" onclick="return confirm('Put order 200234566929 on hold for Quality?');">Quality</button>
+        </form>
+        
+        <form method="post" action="/hold/add" class="work-action-form">
+            <input type="hidden" name="source" value="dashboard">
+            <input type="hidden" name="bench_id" value="CM03">
+            <input type="hidden" name="order_number" value="200234566929">
+            <input type="hidden" name="hold_reason" value="People">
+            <input type="hidden" name="hold_note" value="Held from dashboard: People">
+            <button type="submit" class="hold-reason-button" onclick="return confirm('Put order 200234566929 on hold for People?');">People</button>
+        </form>
+        
+        <form method="post" action="/hold/add" class="work-action-form">
+            <input type="hidden" name="source" value="dashboard">
+            <input type="hidden" name="bench_id" value="CM03">
+            <input type="hidden" name="order_number" value="200234566929">
+            <input type="hidden" name="hold_reason" value="Space">
+            <input type="hidden" name="hold_note" value="Held from dashboard: Space">
+            <button type="submit" class="hold-reason-button" onclick="return confirm('Put order 200234566929 on hold for Space?');">Space</button>
+        </form>
+        </div></div></div>
+        </div>
+    </div>
+    
+    <div class="queue-row late ">
+        <div class="queue-position">Queue 2</div>
+        <div class="queue-main">
+            <div class="queue-order-number">200234292937</div>
+            <div class="queue-material">EP6010-000</div>
+            <div class="tag-row"><span class="mini-tag source-optimised">Optimised</span><span class="mini-tag confidence-attention">Planner attention</span><span class="mini-tag priority-tag">P5</span></div>
+            <div class="queue-meta"><div class="queue-time"><div>Thu 30/07 15:44</div><span>to Fri 31/07 11:40</span></div><div class="queue-status">LATE</div></div>
+            <div class="queue-summary"><span>Remaining 4h 36m</span><span>Finish Fri 31/07 11:40</span></div>
+            <div class="why-row"><button type="button" class="why-button" data-why="{&quot;order_number&quot;: &quot;200234292937&quot;, &quot;material&quot;: &quot;EP6010-000&quot;, &quot;bench_id&quot;: &quot;CM03&quot;, &quot;source&quot;: &quot;Optimised&quot;, &quot;reason&quot;: &quot;No evaluated option fully recovered the order; this bench produced the strongest overall result. The next-best bench, CM06, would create more due-date risk.&quot;, &quot;confidence&quot;: &quot;ATTENTION&quot;, &quot;confidence_reason&quot;: &quot;The predicted finish is later than the SAP scheduled finish day. A manual staffing override materially changes the duration.&quot;, &quot;queue_stability&quot;: &quot;FLEXIBLE&quot;, &quot;sap_remaining&quot;: &quot;2h 18m&quot;, &quot;adjusted_remaining&quot;: &quot;4h 36m&quot;, &quot;staffing_people&quot;: &quot;1&quot;, &quot;staffing_factor&quot;: &quot;2.0000&quot;, &quot;finish&quot;: &quot;Fri 31/07 11:40&quot;, &quot;due&quot;: &quot;Late by 1 working day&quot;}" onclick="openWhyPanel(this)">Why?</button></div>
+            
+            
+            <div class="queue-action-panel compact"><div class="main-work-action"><div class="queue-lock-note">Live WIP locked</div></div><div class="hold-action-group"><div class="hold-action-label">Hold Reason</div><div class="hold-reason-row">
+        <form method="post" action="/hold/add" class="work-action-form">
+            <input type="hidden" name="source" value="dashboard">
+            <input type="hidden" name="bench_id" value="CM03">
+            <input type="hidden" name="order_number" value="200234292937">
+            <input type="hidden" name="hold_reason" value="Shortage">
+            <input type="hidden" name="hold_note" value="Held from dashboard: Shortage">
+            <button type="submit" class="hold-reason-button" onclick="return confirm('Put order 200234292937 on hold for Shortage?');">Shortage</button>
+        </form>
+        
+        <form method="post" action="/hold/add" class="work-action-form">
+            <input type="hidden" name="source" value="dashboard">
+            <input type="hidden" name="bench_id" value="CM03">
+            <input type="hidden" name="order_number" value="200234292937">
+            <input type="hidden" name="hold_reason" value="Quality">
+            <input type="hidden" name="hold_note" value="Held from dashboard: Quality">
+            <button type="submit" class="hold-reason-button" onclick="return confirm('Put order 200234292937 on hold for Quality?');">Quality</button>
+        </form>
+        
+        <form method="post" action="/hold/add" class="work-action-form">
+            <input type="hidden" name="source" value="dashboard">
+            <input type="hidden" name="bench_id" value="CM03">
+            <input type="hidden" name="order_number" value="200234292937">
+            <input type="hidden" name="hold_reason" value="People">
+            <input type="hidden" name="hold_note" value="Held from dashboard: People">
+            <button type="submit" class="hold-reason-button" onclick="return confirm('Put order 200234292937 on hold for People?');">People</button>
+        </form>
+        
+        <form method="post" action="/hold/add" class="work-action-form">
+            <input type="hidden" name="source" value="dashboard">
+            <input type="hidden" name="bench_id" value="CM03">
+            <input type="hidden" name="order_number" value="200234292937">
+            <input type="hidden" name="hold_reason" value="Space">
+            <input type="hidden" name="hold_note" value="Held from dashboard: Space">
+            <button type="submit" class="hold-reason-button" onclick="return confirm('Put order 200234292937 on hold for Space?');">Space</button>
+        </form>
+        </div></div></div>
+        </div>
+    </div>
+    
+    <div class="queue-row late ">
+        <div class="queue-position">Queue 3</div>
+        <div class="queue-main">
+            <div class="queue-order-number">200233600294</div>
+            <div class="queue-material">CR0678-000</div>
+            <div class="tag-row"><span class="mini-tag source-optimised">Optimised</span><span class="mini-tag confidence-attention">Planner attention</span><span class="mini-tag priority-tag">P5</span></div>
+            <div class="queue-meta"><div class="queue-time"><div>Fri 31/07 11:40</div><span>to Mon 03/08 09:53</span></div><div class="queue-status">LATE</div></div>
+            <div class="queue-summary"><span>Remaining 3h 38m</span><span>Finish Mon 03/08 09:53</span></div>
+            <div class="why-row"><button type="button" class="why-button" data-why="{&quot;order_number&quot;: &quot;200233600294&quot;, &quot;material&quot;: &quot;CR0678-000&quot;, &quot;bench_id&quot;: &quot;CM03&quot;, &quot;source&quot;: &quot;Optimised&quot;, &quot;reason&quot;: &quot;No evaluated option fully recovered the order; this bench produced the strongest overall result. The next-best bench, CM06, would finish later.&quot;, &quot;confidence&quot;: &quot;ATTENTION&quot;, &quot;confidence_reason&quot;: &quot;The predicted finish is later than the SAP scheduled finish day. A manual staffing override materially changes the duration.&quot;, &quot;queue_stability&quot;: &quot;FLEXIBLE&quot;, &quot;sap_remaining&quot;: &quot;1h 49m&quot;, &quot;adjusted_remaining&quot;: &quot;3h 38m&quot;, &quot;staffing_people&quot;: &quot;1&quot;, &quot;staffing_factor&quot;: &quot;2.0000&quot;, &quot;finish&quot;: &quot;Mon 03/08 09:53&quot;, &quot;due&quot;: &quot;Late by 1 working day&quot;}" onclick="openWhyPanel(this)">Why?</button></div>
+            
+            
+            <div class="queue-action-panel compact"><div class="main-work-action"><div class="queue-lock-note">Live WIP locked</div></div><div class="hold-action-group"><div class="hold-action-label">Hold Reason</div><div class="hold-reason-row">
+        <form method="post" action="/hold/add" class="work-action-form">
+            <input type="hidden" name="source" value="dashboard">
+            <input type="hidden" name="bench_id" value="CM03">
+            <input type="hidden" name="order_number" value="200233600294">
+            <input type="hidden" name="hold_reason" value="Shortage">
+            <input type="hidden" name="hold_note" value="Held from dashboard: Shortage">
+            <button type="submit" class="hold-reason-button" onclick="return confirm('Put order 200233600294 on hold for Shortage?');">Shortage</button>
+        </form>
+        
+        <form method="post" action="/hold/add" class="work-action-form">
+            <input type="hidden" name="source" value="dashboard">
+            <input type="hidden" name="bench_id" value="CM03">
+            <input type="hidden" name="order_number" value="200233600294">
+            <input type="hidden" name="hold_reason" value="Quality">
+            <input type="hidden" name="hold_note" value="Held from dashboard: Quality">
+            <button type="submit" class="hold-reason-button" onclick="return confirm('Put order 200233600294 on hold for Quality?');">Quality</button>
+        </form>
+        
+        <form method="post" action="/hold/add" class="work-action-form">
+            <input type="hidden" name="source" value="dashboard">
+            <input type="hidden" name="bench_id" value="CM03">
+            <input type="hidden" name="order_number" value="200233600294">
+            <input type="hidden" name="hold_reason" value="People">
+            <input type="hidden" name="hold_note" value="Held from dashboard: People">
+            <button type="submit" class="hold-reason-button" onclick="return confirm('Put order 200233600294 on hold for People?');">People</button>
+        </form>
+        
+        <form method="post" action="/hold/add" class="work-action-form">
+            <input type="hidden" name="source" value="dashboard">
+            <input type="hidden" name="bench_id" value="CM03">
+            <input type="hidden" name="order_number" value="200233600294">
+            <input type="hidden" name="hold_reason" value="Space">
+            <input type="hidden" name="hold_note" value="Held from dashboard: Space">
+            <button type="submit" class="hold-reason-button" onclick="return confirm('Put order 200233600294 on hold for Space?');">Space</button>
+        </form>
+        </div></div></div>
+        </div>
+    </div>
+    </div>
+    </article>
+    
+    <article class="bench-card attention">
+        <div class="bench-head"><div><div class="bench-name">CSKI/MVKI Bench 4</div><div class="bench-id">CM04</div></div><div class="confidence-pill attention">Planner attention</div></div>
+        <div class="utilisation-panel">
+            <div><span>Today Load</span><strong>7h 55m</strong></div>
+            <div><span>Capacity</span><strong>7h 55m</strong></div>
+            <div><span>Utilisation</span><strong>100%</strong></div>
+            <div><span>Future Queue</span><strong>17h 27m</strong></div>
+        </div>
+        
+        
+    <div class="current-block on-target">
+        <div class="current-top"><div class="block-label">Current - Live</div><div class="tag-row"><span class="mini-tag source-live">Live WIP</span><span class="mini-tag confidence-high">High confidence</span><span class="mini-tag priority-tag">P5</span></div></div>
+        <div class="current-order-number">200234266728</div>
+        <div class="current-material">172599-000</div>
+        <div class="current-description">SMOE-62546</div>
+        <div class="current-time">13:15 to 16:00</div>
+        
+    <div
+        class="live-work-panel live-dynamic-panel"
+        data-live-started-at="2026-07-29 12:35:28"
+        data-live-base-at="2026-07-29T13:04:25"
+        data-live-base-remaining="165"
+    >
+        <div>
+            <span>Started</span>
+            <strong>Wed 12:35</strong>
+        </div>
+        <div>
+            <span>Time Worked</span>
+            <strong class="live-time-worked">-</strong>
+        </div>
+        <div>
+            <span>Remaining</span>
+            <strong class="live-remaining">2h 45m</strong>
+        </div>
+        <div>
+            <span>Finish Estimate</span>
+            <strong>16:00</strong>
+        </div>
+    </div>
+    <div class="calculation-note live-calculation-note">
+        Based on the latest SAP remaining capacity (2h 45m). No staffing adjustment.
+    </div>
+    
+        
+        <div class="due-line">ON TARGET - Finishes on scheduled working day</div>
+        <div class="why-row"><button type="button" class="why-button" data-why="{&quot;order_number&quot;: &quot;200234266728&quot;, &quot;material&quot;: &quot;172599-000&quot;, &quot;bench_id&quot;: &quot;CM04&quot;, &quot;source&quot;: &quot;Live WIP&quot;, &quot;reason&quot;: &quot;The order is actively being worked on this bench, so LINEUP keeps it as the current order.&quot;, &quot;confidence&quot;: &quot;HIGH&quot;, &quot;confidence_reason&quot;: &quot;This is live tracked work and is locked to the current bench.&quot;, &quot;queue_stability&quot;: &quot;LIVE LOCK&quot;, &quot;sap_remaining&quot;: &quot;2h 45m&quot;, &quot;adjusted_remaining&quot;: &quot;2h 45m&quot;, &quot;staffing_people&quot;: &quot;2&quot;, &quot;staffing_factor&quot;: &quot;1.0000&quot;, &quot;finish&quot;: &quot;16:00&quot;, &quot;due&quot;: &quot;Finishes on scheduled working day&quot;}" onclick="openWhyPanel(this)">Why?</button></div>
+        <div class="work-action-panel"><div class="main-work-action">
+    <form method="post" action="/work/stop" class="work-action-form">
+        <input type="hidden" name="bench_id" value="CM04">
+        <input type="hidden" name="order_number" value="200234266728">
+        <button type="submit" class="work-button stop" onclick="return confirm('Stop live tracking for order 200234266728? This does not complete the order in SAP.');">Stop Tracking</button>
+    </form>
+    </div><div class="hold-action-group"><div class="hold-action-label">Hold Reason</div><div class="hold-reason-row">
+        <form method="post" action="/hold/add" class="work-action-form">
+            <input type="hidden" name="source" value="dashboard">
+            <input type="hidden" name="bench_id" value="CM04">
+            <input type="hidden" name="order_number" value="200234266728">
+            <input type="hidden" name="hold_reason" value="Shortage">
+            <input type="hidden" name="hold_note" value="Held from dashboard: Shortage">
+            <button type="submit" class="hold-reason-button" onclick="return confirm('Put order 200234266728 on hold for Shortage?');">Shortage</button>
+        </form>
+        
+        <form method="post" action="/hold/add" class="work-action-form">
+            <input type="hidden" name="source" value="dashboard">
+            <input type="hidden" name="bench_id" value="CM04">
+            <input type="hidden" name="order_number" value="200234266728">
+            <input type="hidden" name="hold_reason" value="Quality">
+            <input type="hidden" name="hold_note" value="Held from dashboard: Quality">
+            <button type="submit" class="hold-reason-button" onclick="return confirm('Put order 200234266728 on hold for Quality?');">Quality</button>
+        </form>
+        
+        <form method="post" action="/hold/add" class="work-action-form">
+            <input type="hidden" name="source" value="dashboard">
+            <input type="hidden" name="bench_id" value="CM04">
+            <input type="hidden" name="order_number" value="200234266728">
+            <input type="hidden" name="hold_reason" value="People">
+            <input type="hidden" name="hold_note" value="Held from dashboard: People">
+            <button type="submit" class="hold-reason-button" onclick="return confirm('Put order 200234266728 on hold for People?');">People</button>
+        </form>
+        
+        <form method="post" action="/hold/add" class="work-action-form">
+            <input type="hidden" name="source" value="dashboard">
+            <input type="hidden" name="bench_id" value="CM04">
+            <input type="hidden" name="order_number" value="200234266728">
+            <input type="hidden" name="hold_reason" value="Space">
+            <input type="hidden" name="hold_note" value="Held from dashboard: Space">
+            <button type="submit" class="hold-reason-button" onclick="return confirm('Put order 200234266728 on hold for Space?');">Space</button>
+        </form>
+        </div></div></div>
+        
+    </div>
+    
+        <div class="queue-list">
+    <div class="queue-row late next-row">
+        <div class="queue-position">Next</div>
+        <div class="queue-main">
+            <div class="queue-order-number">200234568168</div>
+            <div class="queue-material">172599-000</div>
+            <div class="tag-row"><span class="mini-tag source-stable">Stable Queue</span><span class="mini-tag confidence-attention">Planner attention</span><span class="mini-tag priority-tag">P5</span></div>
+            <div class="queue-meta"><div class="queue-time"><div>16:00</div><span>to Thu 30/07 09:38</span></div><div class="queue-status">LATE</div></div>
+            <div class="queue-summary"><span>Remaining 2h 28m</span><span>Finish Thu 30/07 09:38</span></div>
+            <div class="why-row"><button type="button" class="why-button" data-why="{&quot;order_number&quot;: &quot;200234568168&quot;, &quot;material&quot;: &quot;172599-000&quot;, &quot;bench_id&quot;: &quot;CM04&quot;, &quot;source&quot;: &quot;Stable Queue&quot;, &quot;reason&quot;: &quot;LINEUP preserved this order on CM04 because it was the next automatic order in the previous plan.&quot;, &quot;confidence&quot;: &quot;ATTENTION&quot;, &quot;confidence_reason&quot;: &quot;The predicted finish is later than the SAP scheduled finish day.&quot;, &quot;queue_stability&quot;: &quot;STABLE NEXT&quot;, &quot;sap_remaining&quot;: &quot;2h 28m&quot;, &quot;adjusted_remaining&quot;: &quot;2h 28m&quot;, &quot;staffing_people&quot;: &quot;2&quot;, &quot;staffing_factor&quot;: &quot;1.0000&quot;, &quot;finish&quot;: &quot;Thu 30/07 09:38&quot;, &quot;due&quot;: &quot;Late by 1 working day&quot;}" onclick="openWhyPanel(this)">Why?</button></div>
+            
+            
+            <div class="queue-action-panel compact"><div class="main-work-action"><div class="queue-lock-note">Live WIP locked</div></div><div class="hold-action-group"><div class="hold-action-label">Hold Reason</div><div class="hold-reason-row">
+        <form method="post" action="/hold/add" class="work-action-form">
+            <input type="hidden" name="source" value="dashboard">
+            <input type="hidden" name="bench_id" value="CM04">
+            <input type="hidden" name="order_number" value="200234568168">
+            <input type="hidden" name="hold_reason" value="Shortage">
+            <input type="hidden" name="hold_note" value="Held from dashboard: Shortage">
+            <button type="submit" class="hold-reason-button" onclick="return confirm('Put order 200234568168 on hold for Shortage?');">Shortage</button>
+        </form>
+        
+        <form method="post" action="/hold/add" class="work-action-form">
+            <input type="hidden" name="source" value="dashboard">
+            <input type="hidden" name="bench_id" value="CM04">
+            <input type="hidden" name="order_number" value="200234568168">
+            <input type="hidden" name="hold_reason" value="Quality">
+            <input type="hidden" name="hold_note" value="Held from dashboard: Quality">
+            <button type="submit" class="hold-reason-button" onclick="return confirm('Put order 200234568168 on hold for Quality?');">Quality</button>
+        </form>
+        
+        <form method="post" action="/hold/add" class="work-action-form">
+            <input type="hidden" name="source" value="dashboard">
+            <input type="hidden" name="bench_id" value="CM04">
+            <input type="hidden" name="order_number" value="200234568168">
+            <input type="hidden" name="hold_reason" value="People">
+            <input type="hidden" name="hold_note" value="Held from dashboard: People">
+            <button type="submit" class="hold-reason-button" onclick="return confirm('Put order 200234568168 on hold for People?');">People</button>
+        </form>
+        
+        <form method="post" action="/hold/add" class="work-action-form">
+            <input type="hidden" name="source" value="dashboard">
+            <input type="hidden" name="bench_id" value="CM04">
+            <input type="hidden" name="order_number" value="200234568168">
+            <input type="hidden" name="hold_reason" value="Space">
+            <input type="hidden" name="hold_note" value="Held from dashboard: Space">
+            <button type="submit" class="hold-reason-button" onclick="return confirm('Put order 200234568168 on hold for Space?');">Space</button>
+        </form>
+        </div></div></div>
+        </div>
+    </div>
+    
+    <div class="queue-row late ">
+        <div class="queue-position">Queue 2</div>
+        <div class="queue-main">
+            <div class="queue-order-number">200234461105</div>
+            <div class="queue-material">EP9731-000</div>
+            <div class="tag-row"><span class="mini-tag source-optimised">Optimised</span><span class="mini-tag confidence-attention">Planner attention</span><span class="mini-tag priority-tag">P5</span></div>
+            <div class="queue-meta"><div class="queue-time"><div>Thu 30/07 09:38</div><span>to Thu 30/07 11:39</span></div><div class="queue-status">LATE</div></div>
+            <div class="queue-summary"><span>Remaining 1h 51m</span><span>Finish Thu 30/07 11:39</span></div>
+            <div class="why-row"><button type="button" class="why-button" data-why="{&quot;order_number&quot;: &quot;200234461105&quot;, &quot;material&quot;: &quot;EP9731-000&quot;, &quot;bench_id&quot;: &quot;CM04&quot;, &quot;source&quot;: &quot;Optimised&quot;, &quot;reason&quot;: &quot;This bench gives an on-time predicted finish. The next-best bench, CM05, would finish later.&quot;, &quot;confidence&quot;: &quot;ATTENTION&quot;, &quot;confidence_reason&quot;: &quot;The predicted finish is later than the SAP scheduled finish day.&quot;, &quot;queue_stability&quot;: &quot;FLEXIBLE&quot;, &quot;sap_remaining&quot;: &quot;1h 51m&quot;, &quot;adjusted_remaining&quot;: &quot;1h 51m&quot;, &quot;staffing_people&quot;: &quot;2&quot;, &quot;staffing_factor&quot;: &quot;1.0000&quot;, &quot;finish&quot;: &quot;Thu 30/07 11:39&quot;, &quot;due&quot;: &quot;Late by 1 working day&quot;}" onclick="openWhyPanel(this)">Why?</button></div>
+            
+            
+            <div class="queue-action-panel compact"><div class="main-work-action"><div class="queue-lock-note">Live WIP locked</div></div><div class="hold-action-group"><div class="hold-action-label">Hold Reason</div><div class="hold-reason-row">
+        <form method="post" action="/hold/add" class="work-action-form">
+            <input type="hidden" name="source" value="dashboard">
+            <input type="hidden" name="bench_id" value="CM04">
+            <input type="hidden" name="order_number" value="200234461105">
+            <input type="hidden" name="hold_reason" value="Shortage">
+            <input type="hidden" name="hold_note" value="Held from dashboard: Shortage">
+            <button type="submit" class="hold-reason-button" onclick="return confirm('Put order 200234461105 on hold for Shortage?');">Shortage</button>
+        </form>
+        
+        <form method="post" action="/hold/add" class="work-action-form">
+            <input type="hidden" name="source" value="dashboard">
+            <input type="hidden" name="bench_id" value="CM04">
+            <input type="hidden" name="order_number" value="200234461105">
+            <input type="hidden" name="hold_reason" value="Quality">
+            <input type="hidden" name="hold_note" value="Held from dashboard: Quality">
+            <button type="submit" class="hold-reason-button" onclick="return confirm('Put order 200234461105 on hold for Quality?');">Quality</button>
+        </form>
+        
+        <form method="post" action="/hold/add" class="work-action-form">
+            <input type="hidden" name="source" value="dashboard">
+            <input type="hidden" name="bench_id" value="CM04">
+            <input type="hidden" name="order_number" value="200234461105">
+            <input type="hidden" name="hold_reason" value="People">
+            <input type="hidden" name="hold_note" value="Held from dashboard: People">
+            <button type="submit" class="hold-reason-button" onclick="return confirm('Put order 200234461105 on hold for People?');">People</button>
+        </form>
+        
+        <form method="post" action="/hold/add" class="work-action-form">
+            <input type="hidden" name="source" value="dashboard">
+            <input type="hidden" name="bench_id" value="CM04">
+            <input type="hidden" name="order_number" value="200234461105">
+            <input type="hidden" name="hold_reason" value="Space">
+            <input type="hidden" name="hold_note" value="Held from dashboard: Space">
+            <button type="submit" class="hold-reason-button" onclick="return confirm('Put order 200234461105 on hold for Space?');">Space</button>
+        </form>
+        </div></div></div>
+        </div>
+    </div>
+    
+    <div class="queue-row late ">
+        <div class="queue-position">Queue 3</div>
+        <div class="queue-main">
+            <div class="queue-order-number">200234461099</div>
+            <div class="queue-material">CR2269-000</div>
+            <div class="tag-row"><span class="mini-tag source-optimised">Optimised</span><span class="mini-tag confidence-attention">Planner attention</span><span class="mini-tag priority-tag">P5</span></div>
+            <div class="queue-meta"><div class="queue-time"><div>Thu 30/07 11:39</div><span>to Mon 03/08 08:01</span></div><div class="queue-status">LATE</div></div>
+            <div class="queue-summary"><span>Remaining 9h 42m</span><span>Finish Mon 03/08 08:01</span></div>
+            <div class="why-row"><button type="button" class="why-button" data-why="{&quot;order_number&quot;: &quot;200234461099&quot;, &quot;material&quot;: &quot;CR2269-000&quot;, &quot;bench_id&quot;: &quot;CM04&quot;, &quot;source&quot;: &quot;Optimised&quot;, &quot;reason&quot;: &quot;The order remains late, but this bench produced the strongest overall result among compatible benches. The next-best bench, CM05, would finish later.&quot;, &quot;confidence&quot;: &quot;ATTENTION&quot;, &quot;confidence_reason&quot;: &quot;The predicted finish is later than the SAP scheduled finish day.&quot;, &quot;queue_stability&quot;: &quot;FLEXIBLE&quot;, &quot;sap_remaining&quot;: &quot;9h 42m&quot;, &quot;adjusted_remaining&quot;: &quot;9h 42m&quot;, &quot;staffing_people&quot;: &quot;2&quot;, &quot;staffing_factor&quot;: &quot;1.0000&quot;, &quot;finish&quot;: &quot;Mon 03/08 08:01&quot;, &quot;due&quot;: &quot;Late by 2 working days&quot;}" onclick="openWhyPanel(this)">Why?</button></div>
+            
+            
+            <div class="queue-action-panel compact"><div class="main-work-action"><div class="queue-lock-note">Live WIP locked</div></div><div class="hold-action-group"><div class="hold-action-label">Hold Reason</div><div class="hold-reason-row">
+        <form method="post" action="/hold/add" class="work-action-form">
+            <input type="hidden" name="source" value="dashboard">
+            <input type="hidden" name="bench_id" value="CM04">
+            <input type="hidden" name="order_number" value="200234461099">
+            <input type="hidden" name="hold_reason" value="Shortage">
+            <input type="hidden" name="hold_note" value="Held from dashboard: Shortage">
+            <button type="submit" class="hold-reason-button" onclick="return confirm('Put order 200234461099 on hold for Shortage?');">Shortage</button>
+        </form>
+        
+        <form method="post" action="/hold/add" class="work-action-form">
+            <input type="hidden" name="source" value="dashboard">
+            <input type="hidden" name="bench_id" value="CM04">
+            <input type="hidden" name="order_number" value="200234461099">
+            <input type="hidden" name="hold_reason" value="Quality">
+            <input type="hidden" name="hold_note" value="Held from dashboard: Quality">
+            <button type="submit" class="hold-reason-button" onclick="return confirm('Put order 200234461099 on hold for Quality?');">Quality</button>
+        </form>
+        
+        <form method="post" action="/hold/add" class="work-action-form">
+            <input type="hidden" name="source" value="dashboard">
+            <input type="hidden" name="bench_id" value="CM04">
+            <input type="hidden" name="order_number" value="200234461099">
+            <input type="hidden" name="hold_reason" value="People">
+            <input type="hidden" name="hold_note" value="Held from dashboard: People">
+            <button type="submit" class="hold-reason-button" onclick="return confirm('Put order 200234461099 on hold for People?');">People</button>
+        </form>
+        
+        <form method="post" action="/hold/add" class="work-action-form">
+            <input type="hidden" name="source" value="dashboard">
+            <input type="hidden" name="bench_id" value="CM04">
+            <input type="hidden" name="order_number" value="200234461099">
+            <input type="hidden" name="hold_reason" value="Space">
+            <input type="hidden" name="hold_note" value="Held from dashboard: Space">
+            <button type="submit" class="hold-reason-button" onclick="return confirm('Put order 200234461099 on hold for Space?');">Space</button>
+        </form>
+        </div></div></div>
+        </div>
+    </div>
+    <div class="more-queue">+ 2 more queued</div></div>
+    </article>
+    
+    <article class="bench-card attention">
+        <div class="bench-head"><div><div class="bench-name">CSKI/MVKI Bench 5</div><div class="bench-id">CM05</div></div><div class="confidence-pill attention">Planner attention</div></div>
+        <div class="utilisation-panel">
+            <div><span>Today Load</span><strong>7h 55m</strong></div>
+            <div><span>Capacity</span><strong>7h 55m</strong></div>
+            <div><span>Utilisation</span><strong>100%</strong></div>
+            <div><span>Future Queue</span><strong>11h 41m</strong></div>
+        </div>
+        
+        
+    <div class="current-block late">
+        <div class="current-top"><div class="block-label">Current - Live</div><div class="tag-row"><span class="mini-tag source-live">Live WIP</span><span class="mini-tag confidence-attention">Planner attention</span><span class="mini-tag priority-tag">P5</span></div></div>
+        <div class="current-order-number">200234582854</div>
+        <div class="current-material">EK8957-000</div>
+        <div class="current-description">SMOE-64558</div>
+        <div class="current-time">13:15 to Thu 30/07 08:19</div>
+        
+    <div
+        class="live-work-panel live-dynamic-panel"
+        data-live-started-at="2026-07-29 12:52:26"
+        data-live-base-at="2026-07-29T13:04:25"
+        data-live-base-remaining="234"
+    >
+        <div>
+            <span>Started</span>
+            <strong>Wed 12:52</strong>
+        </div>
+        <div>
+            <span>Time Worked</span>
+            <strong class="live-time-worked">-</strong>
+        </div>
+        <div>
+            <span>Remaining</span>
+            <strong class="live-remaining">3h 54m</strong>
+        </div>
+        <div>
+            <span>Finish Estimate</span>
+            <strong>Thu 30/07 08:19</strong>
+        </div>
+    </div>
+    <div class="calculation-note live-calculation-note">
+        Based on the latest SAP remaining capacity (3h 54m). No staffing adjustment.
+    </div>
+    
+        
+        <div class="due-line">LATE - Late by 1 working day</div>
+        <div class="why-row"><button type="button" class="why-button" data-why="{&quot;order_number&quot;: &quot;200234582854&quot;, &quot;material&quot;: &quot;EK8957-000&quot;, &quot;bench_id&quot;: &quot;CM05&quot;, &quot;source&quot;: &quot;Live WIP&quot;, &quot;reason&quot;: &quot;The order is actively being worked on this bench, so LINEUP keeps it as the current order.&quot;, &quot;confidence&quot;: &quot;ATTENTION&quot;, &quot;confidence_reason&quot;: &quot;The predicted finish is later than the SAP scheduled finish day.&quot;, &quot;queue_stability&quot;: &quot;LIVE LOCK&quot;, &quot;sap_remaining&quot;: &quot;3h 54m&quot;, &quot;adjusted_remaining&quot;: &quot;3h 54m&quot;, &quot;staffing_people&quot;: &quot;SAP normal&quot;, &quot;staffing_factor&quot;: &quot;1.0000&quot;, &quot;finish&quot;: &quot;Thu 30/07 08:19&quot;, &quot;due&quot;: &quot;Late by 1 working day&quot;}" onclick="openWhyPanel(this)">Why?</button></div>
+        <div class="work-action-panel"><div class="main-work-action">
+    <form method="post" action="/work/stop" class="work-action-form">
+        <input type="hidden" name="bench_id" value="CM05">
+        <input type="hidden" name="order_number" value="200234582854">
+        <button type="submit" class="work-button stop" onclick="return confirm('Stop live tracking for order 200234582854? This does not complete the order in SAP.');">Stop Tracking</button>
+    </form>
+    </div><div class="hold-action-group"><div class="hold-action-label">Hold Reason</div><div class="hold-reason-row">
+        <form method="post" action="/hold/add" class="work-action-form">
+            <input type="hidden" name="source" value="dashboard">
+            <input type="hidden" name="bench_id" value="CM05">
+            <input type="hidden" name="order_number" value="200234582854">
+            <input type="hidden" name="hold_reason" value="Shortage">
+            <input type="hidden" name="hold_note" value="Held from dashboard: Shortage">
+            <button type="submit" class="hold-reason-button" onclick="return confirm('Put order 200234582854 on hold for Shortage?');">Shortage</button>
+        </form>
+        
+        <form method="post" action="/hold/add" class="work-action-form">
+            <input type="hidden" name="source" value="dashboard">
+            <input type="hidden" name="bench_id" value="CM05">
+            <input type="hidden" name="order_number" value="200234582854">
+            <input type="hidden" name="hold_reason" value="Quality">
+            <input type="hidden" name="hold_note" value="Held from dashboard: Quality">
+            <button type="submit" class="hold-reason-button" onclick="return confirm('Put order 200234582854 on hold for Quality?');">Quality</button>
+        </form>
+        
+        <form method="post" action="/hold/add" class="work-action-form">
+            <input type="hidden" name="source" value="dashboard">
+            <input type="hidden" name="bench_id" value="CM05">
+            <input type="hidden" name="order_number" value="200234582854">
+            <input type="hidden" name="hold_reason" value="People">
+            <input type="hidden" name="hold_note" value="Held from dashboard: People">
+            <button type="submit" class="hold-reason-button" onclick="return confirm('Put order 200234582854 on hold for People?');">People</button>
+        </form>
+        
+        <form method="post" action="/hold/add" class="work-action-form">
+            <input type="hidden" name="source" value="dashboard">
+            <input type="hidden" name="bench_id" value="CM05">
+            <input type="hidden" name="order_number" value="200234582854">
+            <input type="hidden" name="hold_reason" value="Space">
+            <input type="hidden" name="hold_note" value="Held from dashboard: Space">
+            <button type="submit" class="hold-reason-button" onclick="return confirm('Put order 200234582854 on hold for Space?');">Space</button>
+        </form>
+        </div></div></div>
+        
+    </div>
+    
+        <div class="queue-list">
+    <div class="queue-row late next-row">
+        <div class="queue-position">Next</div>
+        <div class="queue-main">
+            <div class="queue-order-number">200234036402</div>
+            <div class="queue-material">EN6738-000</div>
+            <div class="tag-row"><span class="mini-tag source-stable">Stable Queue</span><span class="mini-tag confidence-attention">Planner attention</span><span class="mini-tag priority-tag">P5</span></div>
+            <div class="queue-meta"><div class="queue-time"><div>Thu 30/07 08:19</div><span>to Thu 30/07 10:29</span></div><div class="queue-status">LATE</div></div>
+            <div class="queue-summary"><span>Remaining 2h</span><span>Finish Thu 30/07 10:29</span></div>
+            <div class="why-row"><button type="button" class="why-button" data-why="{&quot;order_number&quot;: &quot;200234036402&quot;, &quot;material&quot;: &quot;EN6738-000&quot;, &quot;bench_id&quot;: &quot;CM05&quot;, &quot;source&quot;: &quot;Stable Queue&quot;, &quot;reason&quot;: &quot;LINEUP preserved this order on CM05 because it was the next automatic order in the previous plan.&quot;, &quot;confidence&quot;: &quot;ATTENTION&quot;, &quot;confidence_reason&quot;: &quot;The predicted finish is later than the SAP scheduled finish day.&quot;, &quot;queue_stability&quot;: &quot;STABLE NEXT&quot;, &quot;sap_remaining&quot;: &quot;2h&quot;, &quot;adjusted_remaining&quot;: &quot;2h&quot;, &quot;staffing_people&quot;: &quot;SAP normal&quot;, &quot;staffing_factor&quot;: &quot;1.0000&quot;, &quot;finish&quot;: &quot;Thu 30/07 10:29&quot;, &quot;due&quot;: &quot;Late by 1 working day&quot;}" onclick="openWhyPanel(this)">Why?</button></div>
+            
+            
+            <div class="queue-action-panel compact"><div class="main-work-action"><div class="queue-lock-note">Live WIP locked</div></div><div class="hold-action-group"><div class="hold-action-label">Hold Reason</div><div class="hold-reason-row">
+        <form method="post" action="/hold/add" class="work-action-form">
+            <input type="hidden" name="source" value="dashboard">
+            <input type="hidden" name="bench_id" value="CM05">
+            <input type="hidden" name="order_number" value="200234036402">
+            <input type="hidden" name="hold_reason" value="Shortage">
+            <input type="hidden" name="hold_note" value="Held from dashboard: Shortage">
+            <button type="submit" class="hold-reason-button" onclick="return confirm('Put order 200234036402 on hold for Shortage?');">Shortage</button>
+        </form>
+        
+        <form method="post" action="/hold/add" class="work-action-form">
+            <input type="hidden" name="source" value="dashboard">
+            <input type="hidden" name="bench_id" value="CM05">
+            <input type="hidden" name="order_number" value="200234036402">
+            <input type="hidden" name="hold_reason" value="Quality">
+            <input type="hidden" name="hold_note" value="Held from dashboard: Quality">
+            <button type="submit" class="hold-reason-button" onclick="return confirm('Put order 200234036402 on hold for Quality?');">Quality</button>
+        </form>
+        
+        <form method="post" action="/hold/add" class="work-action-form">
+            <input type="hidden" name="source" value="dashboard">
+            <input type="hidden" name="bench_id" value="CM05">
+            <input type="hidden" name="order_number" value="200234036402">
+            <input type="hidden" name="hold_reason" value="People">
+            <input type="hidden" name="hold_note" value="Held from dashboard: People">
+            <button type="submit" class="hold-reason-button" onclick="return confirm('Put order 200234036402 on hold for People?');">People</button>
+        </form>
+        
+        <form method="post" action="/hold/add" class="work-action-form">
+            <input type="hidden" name="source" value="dashboard">
+            <input type="hidden" name="bench_id" value="CM05">
+            <input type="hidden" name="order_number" value="200234036402">
+            <input type="hidden" name="hold_reason" value="Space">
+            <input type="hidden" name="hold_note" value="Held from dashboard: Space">
+            <button type="submit" class="hold-reason-button" onclick="return confirm('Put order 200234036402 on hold for Space?');">Space</button>
+        </form>
+        </div></div></div>
+        </div>
+    </div>
+    
+    <div class="queue-row late ">
+        <div class="queue-position">Queue 2</div>
+        <div class="queue-main">
+            <div class="queue-order-number">200234352768</div>
+            <div class="queue-material">ER6985-000</div>
+            <div class="tag-row"><span class="mini-tag source-optimised">Optimised</span><span class="mini-tag confidence-attention">Planner attention</span><span class="mini-tag priority-tag">P5</span></div>
+            <div class="queue-meta"><div class="queue-time"><div>Thu 30/07 10:29</div><span>to Thu 30/07 12:27</span></div><div class="queue-status">LATE</div></div>
+            <div class="queue-summary"><span>Remaining 1h 58m</span><span>Finish Thu 30/07 12:27</span></div>
+            <div class="why-row"><button type="button" class="why-button" data-why="{&quot;order_number&quot;: &quot;200234352768&quot;, &quot;material&quot;: &quot;ER6985-000&quot;, &quot;bench_id&quot;: &quot;CM05&quot;, &quot;source&quot;: &quot;Optimised&quot;, &quot;reason&quot;: &quot;This bench gives an on-time predicted finish. The next-best bench, CM06, would finish later.&quot;, &quot;confidence&quot;: &quot;ATTENTION&quot;, &quot;confidence_reason&quot;: &quot;The predicted finish is later than the SAP scheduled finish day.&quot;, &quot;queue_stability&quot;: &quot;FLEXIBLE&quot;, &quot;sap_remaining&quot;: &quot;1h 58m&quot;, &quot;adjusted_remaining&quot;: &quot;1h 58m&quot;, &quot;staffing_people&quot;: &quot;SAP normal&quot;, &quot;staffing_factor&quot;: &quot;1.0000&quot;, &quot;finish&quot;: &quot;Thu 30/07 12:27&quot;, &quot;due&quot;: &quot;Late by 1 working day&quot;}" onclick="openWhyPanel(this)">Why?</button></div>
+            
+            
+            <div class="queue-action-panel compact"><div class="main-work-action"><div class="queue-lock-note">Live WIP locked</div></div><div class="hold-action-group"><div class="hold-action-label">Hold Reason</div><div class="hold-reason-row">
+        <form method="post" action="/hold/add" class="work-action-form">
+            <input type="hidden" name="source" value="dashboard">
+            <input type="hidden" name="bench_id" value="CM05">
+            <input type="hidden" name="order_number" value="200234352768">
+            <input type="hidden" name="hold_reason" value="Shortage">
+            <input type="hidden" name="hold_note" value="Held from dashboard: Shortage">
+            <button type="submit" class="hold-reason-button" onclick="return confirm('Put order 200234352768 on hold for Shortage?');">Shortage</button>
+        </form>
+        
+        <form method="post" action="/hold/add" class="work-action-form">
+            <input type="hidden" name="source" value="dashboard">
+            <input type="hidden" name="bench_id" value="CM05">
+            <input type="hidden" name="order_number" value="200234352768">
+            <input type="hidden" name="hold_reason" value="Quality">
+            <input type="hidden" name="hold_note" value="Held from dashboard: Quality">
+            <button type="submit" class="hold-reason-button" onclick="return confirm('Put order 200234352768 on hold for Quality?');">Quality</button>
+        </form>
+        
+        <form method="post" action="/hold/add" class="work-action-form">
+            <input type="hidden" name="source" value="dashboard">
+            <input type="hidden" name="bench_id" value="CM05">
+            <input type="hidden" name="order_number" value="200234352768">
+            <input type="hidden" name="hold_reason" value="People">
+            <input type="hidden" name="hold_note" value="Held from dashboard: People">
+            <button type="submit" class="hold-reason-button" onclick="return confirm('Put order 200234352768 on hold for People?');">People</button>
+        </form>
+        
+        <form method="post" action="/hold/add" class="work-action-form">
+            <input type="hidden" name="source" value="dashboard">
+            <input type="hidden" name="bench_id" value="CM05">
+            <input type="hidden" name="order_number" value="200234352768">
+            <input type="hidden" name="hold_reason" value="Space">
+            <input type="hidden" name="hold_note" value="Held from dashboard: Space">
+            <button type="submit" class="hold-reason-button" onclick="return confirm('Put order 200234352768 on hold for Space?');">Space</button>
+        </form>
+        </div></div></div>
+        </div>
+    </div>
+    
+    <div class="queue-row on-target ">
+        <div class="queue-position">Queue 3</div>
+        <div class="queue-main">
+            <div class="queue-order-number">200234680640</div>
+            <div class="queue-material">CS8298-000</div>
+            <div class="tag-row"><span class="mini-tag source-optimised">Optimised</span><span class="mini-tag confidence-medium">Medium confidence</span><span class="mini-tag priority-tag">P5</span></div>
+            <div class="queue-meta"><div class="queue-time"><div>Thu 30/07 12:27</div><span>to Thu 30/07 15:14</span></div><div class="queue-status">ON TARGET</div></div>
+            <div class="queue-summary"><span>Remaining 2h 2m</span><span>Finish Thu 30/07 15:14</span></div>
+            <div class="why-row"><button type="button" class="why-button" data-why="{&quot;order_number&quot;: &quot;200234680640&quot;, &quot;material&quot;: &quot;CS8298-000&quot;, &quot;bench_id&quot;: &quot;CM05&quot;, &quot;source&quot;: &quot;Optimised&quot;, &quot;reason&quot;: &quot;This bench gives an on-time predicted finish. The next-best bench, CM06, would create more due-date risk.&quot;, &quot;confidence&quot;: &quot;MEDIUM&quot;, &quot;confidence_reason&quot;: &quot;The current automatic plan is on target, but later automatic queue positions may still be re-optimised.&quot;, &quot;queue_stability&quot;: &quot;FLEXIBLE&quot;, &quot;sap_remaining&quot;: &quot;2h 2m&quot;, &quot;adjusted_remaining&quot;: &quot;2h 2m&quot;, &quot;staffing_people&quot;: &quot;SAP normal&quot;, &quot;staffing_factor&quot;: &quot;1.0000&quot;, &quot;finish&quot;: &quot;Thu 30/07 15:14&quot;, &quot;due&quot;: &quot;Finishes on scheduled working day&quot;}" onclick="openWhyPanel(this)">Why?</button></div>
+            
+            
+            <div class="queue-action-panel compact"><div class="main-work-action"><div class="queue-lock-note">Live WIP locked</div></div><div class="hold-action-group"><div class="hold-action-label">Hold Reason</div><div class="hold-reason-row">
+        <form method="post" action="/hold/add" class="work-action-form">
+            <input type="hidden" name="source" value="dashboard">
+            <input type="hidden" name="bench_id" value="CM05">
+            <input type="hidden" name="order_number" value="200234680640">
+            <input type="hidden" name="hold_reason" value="Shortage">
+            <input type="hidden" name="hold_note" value="Held from dashboard: Shortage">
+            <button type="submit" class="hold-reason-button" onclick="return confirm('Put order 200234680640 on hold for Shortage?');">Shortage</button>
+        </form>
+        
+        <form method="post" action="/hold/add" class="work-action-form">
+            <input type="hidden" name="source" value="dashboard">
+            <input type="hidden" name="bench_id" value="CM05">
+            <input type="hidden" name="order_number" value="200234680640">
+            <input type="hidden" name="hold_reason" value="Quality">
+            <input type="hidden" name="hold_note" value="Held from dashboard: Quality">
+            <button type="submit" class="hold-reason-button" onclick="return confirm('Put order 200234680640 on hold for Quality?');">Quality</button>
+        </form>
+        
+        <form method="post" action="/hold/add" class="work-action-form">
+            <input type="hidden" name="source" value="dashboard">
+            <input type="hidden" name="bench_id" value="CM05">
+            <input type="hidden" name="order_number" value="200234680640">
+            <input type="hidden" name="hold_reason" value="People">
+            <input type="hidden" name="hold_note" value="Held from dashboard: People">
+            <button type="submit" class="hold-reason-button" onclick="return confirm('Put order 200234680640 on hold for People?');">People</button>
+        </form>
+        
+        <form method="post" action="/hold/add" class="work-action-form">
+            <input type="hidden" name="source" value="dashboard">
+            <input type="hidden" name="bench_id" value="CM05">
+            <input type="hidden" name="order_number" value="200234680640">
+            <input type="hidden" name="hold_reason" value="Space">
+            <input type="hidden" name="hold_note" value="Held from dashboard: Space">
+            <button type="submit" class="hold-reason-button" onclick="return confirm('Put order 200234680640 on hold for Space?');">Space</button>
+        </form>
+        </div></div></div>
+        </div>
+    </div>
+    <div class="more-queue">+ 1 more queued</div></div>
+    </article>
+    
+    <article class="bench-card attention">
+        <div class="bench-head"><div><div class="bench-name">CSKI/MVKI Bench 6</div><div class="bench-id">CM06</div></div><div class="confidence-pill attention">Planner attention</div></div>
+        <div class="utilisation-panel">
+            <div><span>Today Load</span><strong>7h 55m</strong></div>
+            <div><span>Capacity</span><strong>7h 55m</strong></div>
+            <div><span>Utilisation</span><strong>100%</strong></div>
+            <div><span>Future Queue</span><strong>13h 30m</strong></div>
+        </div>
+        
+        
+    <div class="current-block on-target">
+        <div class="current-top"><div class="block-label">Current - Live</div><div class="tag-row"><span class="mini-tag source-live">Live WIP</span><span class="mini-tag confidence-high">High confidence</span><span class="mini-tag priority-tag">P5</span></div></div>
+        <div class="current-order-number">200234624696</div>
+        <div class="current-material">CS8298-000</div>
+        <div class="current-description">CSJA-24C/1XU-1XU-M1-NO01</div>
+        <div class="current-time">13:15 to 16:30</div>
+        
+    <div
+        class="live-work-panel live-dynamic-panel"
+        data-live-started-at="2026-07-29 10:33:59"
+        data-live-base-at="2026-07-29T13:04:25"
+        data-live-base-remaining="195"
+    >
+        <div>
+            <span>Started</span>
+            <strong>Wed 10:33</strong>
+        </div>
+        <div>
+            <span>Time Worked</span>
+            <strong class="live-time-worked">-</strong>
+        </div>
+        <div>
+            <span>Remaining</span>
+            <strong class="live-remaining">3h 15m</strong>
+        </div>
+        <div>
+            <span>Finish Estimate</span>
+            <strong>16:30</strong>
+        </div>
+    </div>
+    <div class="calculation-note live-calculation-note">
+        Based on the latest SAP remaining capacity (3h 15m). No staffing adjustment.
+    </div>
+    
+        
+        <div class="due-line">ON TARGET - Finishes on scheduled working day</div>
+        <div class="why-row"><button type="button" class="why-button" data-why="{&quot;order_number&quot;: &quot;200234624696&quot;, &quot;material&quot;: &quot;CS8298-000&quot;, &quot;bench_id&quot;: &quot;CM06&quot;, &quot;source&quot;: &quot;Live WIP&quot;, &quot;reason&quot;: &quot;The order is actively being worked on this bench, so LINEUP keeps it as the current order.&quot;, &quot;confidence&quot;: &quot;HIGH&quot;, &quot;confidence_reason&quot;: &quot;This is live tracked work and is locked to the current bench.&quot;, &quot;queue_stability&quot;: &quot;LIVE LOCK&quot;, &quot;sap_remaining&quot;: &quot;3h 15m&quot;, &quot;adjusted_remaining&quot;: &quot;3h 15m&quot;, &quot;staffing_people&quot;: &quot;SAP normal&quot;, &quot;staffing_factor&quot;: &quot;1.0000&quot;, &quot;finish&quot;: &quot;16:30&quot;, &quot;due&quot;: &quot;Finishes on scheduled working day&quot;}" onclick="openWhyPanel(this)">Why?</button></div>
+        <div class="work-action-panel"><div class="main-work-action">
+    <form method="post" action="/work/stop" class="work-action-form">
+        <input type="hidden" name="bench_id" value="CM06">
+        <input type="hidden" name="order_number" value="200234624696">
+        <button type="submit" class="work-button stop" onclick="return confirm('Stop live tracking for order 200234624696? This does not complete the order in SAP.');">Stop Tracking</button>
+    </form>
+    </div><div class="hold-action-group"><div class="hold-action-label">Hold Reason</div><div class="hold-reason-row">
+        <form method="post" action="/hold/add" class="work-action-form">
+            <input type="hidden" name="source" value="dashboard">
+            <input type="hidden" name="bench_id" value="CM06">
+            <input type="hidden" name="order_number" value="200234624696">
+            <input type="hidden" name="hold_reason" value="Shortage">
+            <input type="hidden" name="hold_note" value="Held from dashboard: Shortage">
+            <button type="submit" class="hold-reason-button" onclick="return confirm('Put order 200234624696 on hold for Shortage?');">Shortage</button>
+        </form>
+        
+        <form method="post" action="/hold/add" class="work-action-form">
+            <input type="hidden" name="source" value="dashboard">
+            <input type="hidden" name="bench_id" value="CM06">
+            <input type="hidden" name="order_number" value="200234624696">
+            <input type="hidden" name="hold_reason" value="Quality">
+            <input type="hidden" name="hold_note" value="Held from dashboard: Quality">
+            <button type="submit" class="hold-reason-button" onclick="return confirm('Put order 200234624696 on hold for Quality?');">Quality</button>
+        </form>
+        
+        <form method="post" action="/hold/add" class="work-action-form">
+            <input type="hidden" name="source" value="dashboard">
+            <input type="hidden" name="bench_id" value="CM06">
+            <input type="hidden" name="order_number" value="200234624696">
+            <input type="hidden" name="hold_reason" value="People">
+            <input type="hidden" name="hold_note" value="Held from dashboard: People">
+            <button type="submit" class="hold-reason-button" onclick="return confirm('Put order 200234624696 on hold for People?');">People</button>
+        </form>
+        
+        <form method="post" action="/hold/add" class="work-action-form">
+            <input type="hidden" name="source" value="dashboard">
+            <input type="hidden" name="bench_id" value="CM06">
+            <input type="hidden" name="order_number" value="200234624696">
+            <input type="hidden" name="hold_reason" value="Space">
+            <input type="hidden" name="hold_note" value="Held from dashboard: Space">
+            <button type="submit" class="hold-reason-button" onclick="return confirm('Put order 200234624696 on hold for Space?');">Space</button>
+        </form>
+        </div></div></div>
+        
+    </div>
+    
+        <div class="queue-list">
+    <div class="queue-row on-target next-row">
+        <div class="queue-position">Next</div>
+        <div class="queue-main">
+            <div class="queue-order-number">200234507193</div>
+            <div class="queue-material">204099-000</div>
+            <div class="tag-row"><span class="mini-tag source-stable">Stable Queue</span><span class="mini-tag confidence-medium">Medium confidence</span><span class="mini-tag priority-tag">P5</span></div>
+            <div class="queue-meta"><div class="queue-time"><div>16:30</div><span>to Thu 30/07 10:54</span></div><div class="queue-status">ON TARGET</div></div>
+            <div class="queue-summary"><span>Remaining 3h 4m</span><span>Finish Thu 30/07 10:54</span></div>
+            <div class="why-row"><button type="button" class="why-button" data-why="{&quot;order_number&quot;: &quot;200234507193&quot;, &quot;material&quot;: &quot;204099-000&quot;, &quot;bench_id&quot;: &quot;CM06&quot;, &quot;source&quot;: &quot;Stable Queue&quot;, &quot;reason&quot;: &quot;LINEUP preserved this order on CM06 because it was the next automatic order in the previous plan.&quot;, &quot;confidence&quot;: &quot;MEDIUM&quot;, &quot;confidence_reason&quot;: &quot;The order is stable on this bench, but its timing still depends on preceding work completing as forecast.&quot;, &quot;queue_stability&quot;: &quot;STABLE NEXT&quot;, &quot;sap_remaining&quot;: &quot;3h 4m&quot;, &quot;adjusted_remaining&quot;: &quot;3h 4m&quot;, &quot;staffing_people&quot;: &quot;SAP normal&quot;, &quot;staffing_factor&quot;: &quot;1.0000&quot;, &quot;finish&quot;: &quot;Thu 30/07 10:54&quot;, &quot;due&quot;: &quot;Finishes on scheduled working day&quot;}" onclick="openWhyPanel(this)">Why?</button></div>
+            
+            
+            <div class="queue-action-panel compact"><div class="main-work-action"><div class="queue-lock-note">Live WIP locked</div></div><div class="hold-action-group"><div class="hold-action-label">Hold Reason</div><div class="hold-reason-row">
+        <form method="post" action="/hold/add" class="work-action-form">
+            <input type="hidden" name="source" value="dashboard">
+            <input type="hidden" name="bench_id" value="CM06">
+            <input type="hidden" name="order_number" value="200234507193">
+            <input type="hidden" name="hold_reason" value="Shortage">
+            <input type="hidden" name="hold_note" value="Held from dashboard: Shortage">
+            <button type="submit" class="hold-reason-button" onclick="return confirm('Put order 200234507193 on hold for Shortage?');">Shortage</button>
+        </form>
+        
+        <form method="post" action="/hold/add" class="work-action-form">
+            <input type="hidden" name="source" value="dashboard">
+            <input type="hidden" name="bench_id" value="CM06">
+            <input type="hidden" name="order_number" value="200234507193">
+            <input type="hidden" name="hold_reason" value="Quality">
+            <input type="hidden" name="hold_note" value="Held from dashboard: Quality">
+            <button type="submit" class="hold-reason-button" onclick="return confirm('Put order 200234507193 on hold for Quality?');">Quality</button>
+        </form>
+        
+        <form method="post" action="/hold/add" class="work-action-form">
+            <input type="hidden" name="source" value="dashboard">
+            <input type="hidden" name="bench_id" value="CM06">
+            <input type="hidden" name="order_number" value="200234507193">
+            <input type="hidden" name="hold_reason" value="People">
+            <input type="hidden" name="hold_note" value="Held from dashboard: People">
+            <button type="submit" class="hold-reason-button" onclick="return confirm('Put order 200234507193 on hold for People?');">People</button>
+        </form>
+        
+        <form method="post" action="/hold/add" class="work-action-form">
+            <input type="hidden" name="source" value="dashboard">
+            <input type="hidden" name="bench_id" value="CM06">
+            <input type="hidden" name="order_number" value="200234507193">
+            <input type="hidden" name="hold_reason" value="Space">
+            <input type="hidden" name="hold_note" value="Held from dashboard: Space">
+            <button type="submit" class="hold-reason-button" onclick="return confirm('Put order 200234507193 on hold for Space?');">Space</button>
+        </form>
+        </div></div></div>
+        </div>
+    </div>
+    
+    <div class="queue-row on-target ">
+        <div class="queue-position">Queue 2</div>
+        <div class="queue-main">
+            <div class="queue-order-number">200234672208</div>
+            <div class="queue-material">BM4747-000</div>
+            <div class="tag-row"><span class="mini-tag source-optimised">Optimised</span><span class="mini-tag confidence-medium">Medium confidence</span><span class="mini-tag priority-tag">P5</span></div>
+            <div class="queue-meta"><div class="queue-time"><div>Thu 30/07 10:54</div><span>to Thu 30/07 16:05</span></div><div class="queue-status">ON TARGET</div></div>
+            <div class="queue-summary"><span>Remaining 4h 26m</span><span>Finish Thu 30/07 16:05</span></div>
+            <div class="why-row"><button type="button" class="why-button" data-why="{&quot;order_number&quot;: &quot;200234672208&quot;, &quot;material&quot;: &quot;BM4747-000&quot;, &quot;bench_id&quot;: &quot;CM06&quot;, &quot;source&quot;: &quot;Optimised&quot;, &quot;reason&quot;: &quot;This bench gives an on-time predicted finish. The next-best bench, CM04, would create more due-date risk.&quot;, &quot;confidence&quot;: &quot;MEDIUM&quot;, &quot;confidence_reason&quot;: &quot;The current automatic plan is on target, but later automatic queue positions may still be re-optimised.&quot;, &quot;queue_stability&quot;: &quot;FLEXIBLE&quot;, &quot;sap_remaining&quot;: &quot;4h 26m&quot;, &quot;adjusted_remaining&quot;: &quot;4h 26m&quot;, &quot;staffing_people&quot;: &quot;SAP normal&quot;, &quot;staffing_factor&quot;: &quot;1.0000&quot;, &quot;finish&quot;: &quot;Thu 30/07 16:05&quot;, &quot;due&quot;: &quot;Finishes on scheduled working day&quot;}" onclick="openWhyPanel(this)">Why?</button></div>
+            
+            
+            <div class="queue-action-panel compact"><div class="main-work-action"><div class="queue-lock-note">Live WIP locked</div></div><div class="hold-action-group"><div class="hold-action-label">Hold Reason</div><div class="hold-reason-row">
+        <form method="post" action="/hold/add" class="work-action-form">
+            <input type="hidden" name="source" value="dashboard">
+            <input type="hidden" name="bench_id" value="CM06">
+            <input type="hidden" name="order_number" value="200234672208">
+            <input type="hidden" name="hold_reason" value="Shortage">
+            <input type="hidden" name="hold_note" value="Held from dashboard: Shortage">
+            <button type="submit" class="hold-reason-button" onclick="return confirm('Put order 200234672208 on hold for Shortage?');">Shortage</button>
+        </form>
+        
+        <form method="post" action="/hold/add" class="work-action-form">
+            <input type="hidden" name="source" value="dashboard">
+            <input type="hidden" name="bench_id" value="CM06">
+            <input type="hidden" name="order_number" value="200234672208">
+            <input type="hidden" name="hold_reason" value="Quality">
+            <input type="hidden" name="hold_note" value="Held from dashboard: Quality">
+            <button type="submit" class="hold-reason-button" onclick="return confirm('Put order 200234672208 on hold for Quality?');">Quality</button>
+        </form>
+        
+        <form method="post" action="/hold/add" class="work-action-form">
+            <input type="hidden" name="source" value="dashboard">
+            <input type="hidden" name="bench_id" value="CM06">
+            <input type="hidden" name="order_number" value="200234672208">
+            <input type="hidden" name="hold_reason" value="People">
+            <input type="hidden" name="hold_note" value="Held from dashboard: People">
+            <button type="submit" class="hold-reason-button" onclick="return confirm('Put order 200234672208 on hold for People?');">People</button>
+        </form>
+        
+        <form method="post" action="/hold/add" class="work-action-form">
+            <input type="hidden" name="source" value="dashboard">
+            <input type="hidden" name="bench_id" value="CM06">
+            <input type="hidden" name="order_number" value="200234672208">
+            <input type="hidden" name="hold_reason" value="Space">
+            <input type="hidden" name="hold_note" value="Held from dashboard: Space">
+            <button type="submit" class="hold-reason-button" onclick="return confirm('Put order 200234672208 on hold for Space?');">Space</button>
+        </form>
+        </div></div></div>
+        </div>
+    </div>
+    
+    <div class="queue-row late ">
+        <div class="queue-position">Queue 3</div>
+        <div class="queue-main">
+            <div class="queue-order-number">200234084560</div>
+            <div class="queue-material">EN3046-000</div>
+            <div class="tag-row"><span class="mini-tag source-optimised">Optimised</span><span class="mini-tag confidence-attention">Planner attention</span><span class="mini-tag priority-tag">P5</span></div>
+            <div class="queue-meta"><div class="queue-time"><div>Thu 30/07 16:05</div><span>to Fri 31/07 12:12</span></div><div class="queue-status">LATE</div></div>
+            <div class="queue-summary"><span>Remaining 4h 47m</span><span>Finish Fri 31/07 12:12</span></div>
+            <div class="why-row"><button type="button" class="why-button" data-why="{&quot;order_number&quot;: &quot;200234084560&quot;, &quot;material&quot;: &quot;EN3046-000&quot;, &quot;bench_id&quot;: &quot;CM06&quot;, &quot;source&quot;: &quot;Optimised&quot;, &quot;reason&quot;: &quot;No evaluated option fully recovered the order; this bench produced the strongest overall result. The next-best bench, CM03, would create more due-date risk.&quot;, &quot;confidence&quot;: &quot;ATTENTION&quot;, &quot;confidence_reason&quot;: &quot;The predicted finish is later than the SAP scheduled finish day.&quot;, &quot;queue_stability&quot;: &quot;FLEXIBLE&quot;, &quot;sap_remaining&quot;: &quot;4h 47m&quot;, &quot;adjusted_remaining&quot;: &quot;4h 47m&quot;, &quot;staffing_people&quot;: &quot;SAP normal&quot;, &quot;staffing_factor&quot;: &quot;1.0000&quot;, &quot;finish&quot;: &quot;Fri 31/07 12:12&quot;, &quot;due&quot;: &quot;Late by 1 working day&quot;}" onclick="openWhyPanel(this)">Why?</button></div>
+            
+            
+            <div class="queue-action-panel compact"><div class="main-work-action"><div class="queue-lock-note">Live WIP locked</div></div><div class="hold-action-group"><div class="hold-action-label">Hold Reason</div><div class="hold-reason-row">
+        <form method="post" action="/hold/add" class="work-action-form">
+            <input type="hidden" name="source" value="dashboard">
+            <input type="hidden" name="bench_id" value="CM06">
+            <input type="hidden" name="order_number" value="200234084560">
+            <input type="hidden" name="hold_reason" value="Shortage">
+            <input type="hidden" name="hold_note" value="Held from dashboard: Shortage">
+            <button type="submit" class="hold-reason-button" onclick="return confirm('Put order 200234084560 on hold for Shortage?');">Shortage</button>
+        </form>
+        
+        <form method="post" action="/hold/add" class="work-action-form">
+            <input type="hidden" name="source" value="dashboard">
+            <input type="hidden" name="bench_id" value="CM06">
+            <input type="hidden" name="order_number" value="200234084560">
+            <input type="hidden" name="hold_reason" value="Quality">
+            <input type="hidden" name="hold_note" value="Held from dashboard: Quality">
+            <button type="submit" class="hold-reason-button" onclick="return confirm('Put order 200234084560 on hold for Quality?');">Quality</button>
+        </form>
+        
+        <form method="post" action="/hold/add" class="work-action-form">
+            <input type="hidden" name="source" value="dashboard">
+            <input type="hidden" name="bench_id" value="CM06">
+            <input type="hidden" name="order_number" value="200234084560">
+            <input type="hidden" name="hold_reason" value="People">
+            <input type="hidden" name="hold_note" value="Held from dashboard: People">
+            <button type="submit" class="hold-reason-button" onclick="return confirm('Put order 200234084560 on hold for People?');">People</button>
+        </form>
+        
+        <form method="post" action="/hold/add" class="work-action-form">
+            <input type="hidden" name="source" value="dashboard">
+            <input type="hidden" name="bench_id" value="CM06">
+            <input type="hidden" name="order_number" value="200234084560">
+            <input type="hidden" name="hold_reason" value="Space">
+            <input type="hidden" name="hold_note" value="Held from dashboard: Space">
+            <button type="submit" class="hold-reason-button" onclick="return confirm('Put order 200234084560 on hold for Space?');">Space</button>
+        </form>
+        </div></div></div>
+        </div>
+    </div>
+    <div class="more-queue">+ 2 more queued</div></div>
+    </article>
+    </div>
+        </section>
+        
+        <section class="screen " data-screen-index="1">
+            <div class="screen-title-row"><div><h2>Box / Bag</h2><p>2 open benches</p></div><div class="pool-metrics"><div><span>Orders</span><strong>20</strong></div><div><span>Live</span><strong>0</strong></div><div><span>Late</span><strong>17</strong></div><div><span>Attention</span><strong>17</strong></div></div></div>
+            <div class="bench-board">
+    <article class="bench-card attention">
+        <div class="bench-head"><div><div class="bench-name">LVPA Bench 1</div><div class="bench-id">LV01</div></div><div class="confidence-pill attention">Planner attention</div></div>
+        <div class="utilisation-panel">
+            <div><span>Today Load</span><strong>7h 55m</strong></div>
+            <div><span>Capacity</span><strong>7h 55m</strong></div>
+            <div><span>Utilisation</span><strong>100%</strong></div>
+            <div><span>Future Queue</span><strong>35h 18m</strong></div>
+        </div>
+        
+        
+    <div class="current-block late">
+        <div class="current-top"><div class="block-label">Current</div><div class="tag-row"><span class="mini-tag source-stable">Stable Queue</span><span class="mini-tag confidence-attention">Planner attention</span><span class="mini-tag priority-tag">P5</span></div></div>
+        <div class="current-order-number">200234610263</div>
+        <div class="current-material">CM0111-000</div>
+        <div class="current-description">BAH-028000535</div>
+        <div class="current-time">13:15 to 13:19</div>
+        
+    <div class="remaining-panel operational-panel">
+        <div>
+            <span>Remaining</span>
+            <strong>4 min</strong>
+        </div>
+        <div>
+            <span>Finish Estimate</span>
+            <strong>13:19</strong>
+        </div>
+    </div>
+    <div class="calculation-note">Based on the latest SAP remaining capacity (4 min). No staffing adjustment.</div>
+    
+        
+        <div class="due-line">LATE - Late by 2 working days</div>
+        <div class="why-row"><button type="button" class="why-button" data-why="{&quot;order_number&quot;: &quot;200234610263&quot;, &quot;material&quot;: &quot;CM0111-000&quot;, &quot;bench_id&quot;: &quot;LV01&quot;, &quot;source&quot;: &quot;Stable Queue&quot;, &quot;reason&quot;: &quot;LINEUP preserved this order on LV01 because it was the next automatic order in the previous plan.&quot;, &quot;confidence&quot;: &quot;ATTENTION&quot;, &quot;confidence_reason&quot;: &quot;The predicted finish is later than the SAP scheduled finish day.&quot;, &quot;queue_stability&quot;: &quot;STABLE NEXT&quot;, &quot;sap_remaining&quot;: &quot;4 min&quot;, &quot;adjusted_remaining&quot;: &quot;4 min&quot;, &quot;staffing_people&quot;: &quot;SAP normal&quot;, &quot;staffing_factor&quot;: &quot;1.0000&quot;, &quot;finish&quot;: &quot;13:19&quot;, &quot;due&quot;: &quot;Late by 2 working days&quot;}" onclick="openWhyPanel(this)">Why?</button></div>
+        <div class="work-action-panel"><div class="main-work-action">
+    <form method="post" action="/work/start" class="work-action-form">
+        <input type="hidden" name="bench_id" value="LV01">
+        <input type="hidden" name="order_number" value="200234610263">
+        <button type="submit" class="work-button start">Start Tracking</button>
+    </form>
+    </div><div class="hold-action-group"><div class="hold-action-label">Hold Reason</div><div class="hold-reason-row">
+        <form method="post" action="/hold/add" class="work-action-form">
+            <input type="hidden" name="source" value="dashboard">
+            <input type="hidden" name="bench_id" value="LV01">
+            <input type="hidden" name="order_number" value="200234610263">
+            <input type="hidden" name="hold_reason" value="Shortage">
+            <input type="hidden" name="hold_note" value="Held from dashboard: Shortage">
+            <button type="submit" class="hold-reason-button" onclick="return confirm('Put order 200234610263 on hold for Shortage?');">Shortage</button>
+        </form>
+        
+        <form method="post" action="/hold/add" class="work-action-form">
+            <input type="hidden" name="source" value="dashboard">
+            <input type="hidden" name="bench_id" value="LV01">
+            <input type="hidden" name="order_number" value="200234610263">
+            <input type="hidden" name="hold_reason" value="Quality">
+            <input type="hidden" name="hold_note" value="Held from dashboard: Quality">
+            <button type="submit" class="hold-reason-button" onclick="return confirm('Put order 200234610263 on hold for Quality?');">Quality</button>
+        </form>
+        
+        <form method="post" action="/hold/add" class="work-action-form">
+            <input type="hidden" name="source" value="dashboard">
+            <input type="hidden" name="bench_id" value="LV01">
+            <input type="hidden" name="order_number" value="200234610263">
+            <input type="hidden" name="hold_reason" value="People">
+            <input type="hidden" name="hold_note" value="Held from dashboard: People">
+            <button type="submit" class="hold-reason-button" onclick="return confirm('Put order 200234610263 on hold for People?');">People</button>
+        </form>
+        
+        <form method="post" action="/hold/add" class="work-action-form">
+            <input type="hidden" name="source" value="dashboard">
+            <input type="hidden" name="bench_id" value="LV01">
+            <input type="hidden" name="order_number" value="200234610263">
+            <input type="hidden" name="hold_reason" value="Space">
+            <input type="hidden" name="hold_note" value="Held from dashboard: Space">
+            <button type="submit" class="hold-reason-button" onclick="return confirm('Put order 200234610263 on hold for Space?');">Space</button>
+        </form>
+        </div></div></div>
+        
+    </div>
+    
+        <div class="queue-list">
+    <div class="queue-row on-target next-row">
+        <div class="queue-position">Next</div>
+        <div class="queue-main">
+            <div class="queue-order-number">200234419562</div>
+            <div class="queue-material">EN2004-000</div>
+            <div class="tag-row"><span class="mini-tag source-optimised">Optimised</span><span class="mini-tag confidence-medium">Medium confidence</span><span class="mini-tag australia-tag">AU</span><span class="mini-tag priority-tag">P5</span></div>
+            <div class="queue-meta"><div class="queue-time"><div>13:19</div><span>to Thu 30/07 14:16</span></div><div class="queue-status">ON TARGET</div></div>
+            <div class="queue-summary"><span>Remaining 8h 52m</span><span>Finish Thu 30/07 14:16</span></div>
+            <div class="why-row"><button type="button" class="why-button" data-why="{&quot;order_number&quot;: &quot;200234419562&quot;, &quot;material&quot;: &quot;EN2004-000&quot;, &quot;bench_id&quot;: &quot;LV01&quot;, &quot;source&quot;: &quot;Optimised&quot;, &quot;reason&quot;: &quot;This bench gives an on-time predicted finish. The next-best bench, LV02, would finish later.&quot;, &quot;confidence&quot;: &quot;MEDIUM&quot;, &quot;confidence_reason&quot;: &quot;The current automatic plan is on target, but later automatic queue positions may still be re-optimised.&quot;, &quot;queue_stability&quot;: &quot;FLEXIBLE&quot;, &quot;sap_remaining&quot;: &quot;8h 52m&quot;, &quot;adjusted_remaining&quot;: &quot;8h 52m&quot;, &quot;staffing_people&quot;: &quot;SAP normal&quot;, &quot;staffing_factor&quot;: &quot;1.0000&quot;, &quot;finish&quot;: &quot;Thu 30/07 14:16&quot;, &quot;due&quot;: &quot;Finishes on scheduled working day&quot;}" onclick="openWhyPanel(this)">Why?</button></div>
+            
+            
+            <div class="queue-action-panel compact"><div class="main-work-action">
+    <form method="post" action="/work/start" class="work-action-form">
+        <input type="hidden" name="bench_id" value="LV01">
+        <input type="hidden" name="order_number" value="200234419562">
+        <button type="submit" class="work-button start">Start This</button>
+    </form>
+    </div><div class="hold-action-group"><div class="hold-action-label">Hold Reason</div><div class="hold-reason-row">
+        <form method="post" action="/hold/add" class="work-action-form">
+            <input type="hidden" name="source" value="dashboard">
+            <input type="hidden" name="bench_id" value="LV01">
+            <input type="hidden" name="order_number" value="200234419562">
+            <input type="hidden" name="hold_reason" value="Shortage">
+            <input type="hidden" name="hold_note" value="Held from dashboard: Shortage">
+            <button type="submit" class="hold-reason-button" onclick="return confirm('Put order 200234419562 on hold for Shortage?');">Shortage</button>
+        </form>
+        
+        <form method="post" action="/hold/add" class="work-action-form">
+            <input type="hidden" name="source" value="dashboard">
+            <input type="hidden" name="bench_id" value="LV01">
+            <input type="hidden" name="order_number" value="200234419562">
+            <input type="hidden" name="hold_reason" value="Quality">
+            <input type="hidden" name="hold_note" value="Held from dashboard: Quality">
+            <button type="submit" class="hold-reason-button" onclick="return confirm('Put order 200234419562 on hold for Quality?');">Quality</button>
+        </form>
+        
+        <form method="post" action="/hold/add" class="work-action-form">
+            <input type="hidden" name="source" value="dashboard">
+            <input type="hidden" name="bench_id" value="LV01">
+            <input type="hidden" name="order_number" value="200234419562">
+            <input type="hidden" name="hold_reason" value="People">
+            <input type="hidden" name="hold_note" value="Held from dashboard: People">
+            <button type="submit" class="hold-reason-button" onclick="return confirm('Put order 200234419562 on hold for People?');">People</button>
+        </form>
+        
+        <form method="post" action="/hold/add" class="work-action-form">
+            <input type="hidden" name="source" value="dashboard">
+            <input type="hidden" name="bench_id" value="LV01">
+            <input type="hidden" name="order_number" value="200234419562">
+            <input type="hidden" name="hold_reason" value="Space">
+            <input type="hidden" name="hold_note" value="Held from dashboard: Space">
+            <button type="submit" class="hold-reason-button" onclick="return confirm('Put order 200234419562 on hold for Space?');">Space</button>
+        </form>
+        </div></div></div>
+        </div>
+    </div>
+    
+    <div class="queue-row late ">
+        <div class="queue-position">Queue 2</div>
+        <div class="queue-main">
+            <div class="queue-order-number">200234423009</div>
+            <div class="queue-material">EB9985-000</div>
+            <div class="tag-row"><span class="mini-tag source-optimised">Optimised</span><span class="mini-tag confidence-attention">Planner attention</span><span class="mini-tag priority-tag">P5</span></div>
+            <div class="queue-meta"><div class="queue-time"><div>Thu 30/07 14:16</div><span>to Fri 31/07 11:38</span></div><div class="queue-status">LATE</div></div>
+            <div class="queue-summary"><span>Remaining 6h 2m</span><span>Finish Fri 31/07 11:38</span></div>
+            <div class="why-row"><button type="button" class="why-button" data-why="{&quot;order_number&quot;: &quot;200234423009&quot;, &quot;material&quot;: &quot;EB9985-000&quot;, &quot;bench_id&quot;: &quot;LV01&quot;, &quot;source&quot;: &quot;Optimised&quot;, &quot;reason&quot;: &quot;No evaluated option fully recovered the order; this bench produced the strongest overall result. The next-best bench, LV02, would finish later.&quot;, &quot;confidence&quot;: &quot;ATTENTION&quot;, &quot;confidence_reason&quot;: &quot;The predicted finish is later than the SAP scheduled finish day.&quot;, &quot;queue_stability&quot;: &quot;FLEXIBLE&quot;, &quot;sap_remaining&quot;: &quot;6h 2m&quot;, &quot;adjusted_remaining&quot;: &quot;6h 2m&quot;, &quot;staffing_people&quot;: &quot;SAP normal&quot;, &quot;staffing_factor&quot;: &quot;1.0000&quot;, &quot;finish&quot;: &quot;Fri 31/07 11:38&quot;, &quot;due&quot;: &quot;Late by 1 working day&quot;}" onclick="openWhyPanel(this)">Why?</button></div>
+            
+            
+            <div class="queue-action-panel compact"><div class="main-work-action">
+    <form method="post" action="/work/start" class="work-action-form">
+        <input type="hidden" name="bench_id" value="LV01">
+        <input type="hidden" name="order_number" value="200234423009">
+        <button type="submit" class="work-button start">Start This</button>
+    </form>
+    </div><div class="hold-action-group"><div class="hold-action-label">Hold Reason</div><div class="hold-reason-row">
+        <form method="post" action="/hold/add" class="work-action-form">
+            <input type="hidden" name="source" value="dashboard">
+            <input type="hidden" name="bench_id" value="LV01">
+            <input type="hidden" name="order_number" value="200234423009">
+            <input type="hidden" name="hold_reason" value="Shortage">
+            <input type="hidden" name="hold_note" value="Held from dashboard: Shortage">
+            <button type="submit" class="hold-reason-button" onclick="return confirm('Put order 200234423009 on hold for Shortage?');">Shortage</button>
+        </form>
+        
+        <form method="post" action="/hold/add" class="work-action-form">
+            <input type="hidden" name="source" value="dashboard">
+            <input type="hidden" name="bench_id" value="LV01">
+            <input type="hidden" name="order_number" value="200234423009">
+            <input type="hidden" name="hold_reason" value="Quality">
+            <input type="hidden" name="hold_note" value="Held from dashboard: Quality">
+            <button type="submit" class="hold-reason-button" onclick="return confirm('Put order 200234423009 on hold for Quality?');">Quality</button>
+        </form>
+        
+        <form method="post" action="/hold/add" class="work-action-form">
+            <input type="hidden" name="source" value="dashboard">
+            <input type="hidden" name="bench_id" value="LV01">
+            <input type="hidden" name="order_number" value="200234423009">
+            <input type="hidden" name="hold_reason" value="People">
+            <input type="hidden" name="hold_note" value="Held from dashboard: People">
+            <button type="submit" class="hold-reason-button" onclick="return confirm('Put order 200234423009 on hold for People?');">People</button>
+        </form>
+        
+        <form method="post" action="/hold/add" class="work-action-form">
+            <input type="hidden" name="source" value="dashboard">
+            <input type="hidden" name="bench_id" value="LV01">
+            <input type="hidden" name="order_number" value="200234423009">
+            <input type="hidden" name="hold_reason" value="Space">
+            <input type="hidden" name="hold_note" value="Held from dashboard: Space">
+            <button type="submit" class="hold-reason-button" onclick="return confirm('Put order 200234423009 on hold for Space?');">Space</button>
+        </form>
+        </div></div></div>
+        </div>
+    </div>
+    
+    <div class="queue-row late ">
+        <div class="queue-position">Queue 3</div>
+        <div class="queue-main">
+            <div class="queue-order-number">200234519512</div>
+            <div class="queue-material">ED0004-000</div>
+            <div class="tag-row"><span class="mini-tag source-optimised">Optimised</span><span class="mini-tag confidence-attention">Planner attention</span><span class="mini-tag priority-tag">P5</span></div>
+            <div class="queue-meta"><div class="queue-time"><div>Fri 31/07 11:38</div><span>to Mon 03/08 08:10</span></div><div class="queue-status">LATE</div></div>
+            <div class="queue-summary"><span>Remaining 1h 57m</span><span>Finish Mon 03/08 08:10</span></div>
+            <div class="why-row"><button type="button" class="why-button" data-why="{&quot;order_number&quot;: &quot;200234519512&quot;, &quot;material&quot;: &quot;ED0004-000&quot;, &quot;bench_id&quot;: &quot;LV01&quot;, &quot;source&quot;: &quot;Optimised&quot;, &quot;reason&quot;: &quot;The order remains late, but this bench produced the strongest overall result among compatible benches. The next-best bench, LV02, would finish later.&quot;, &quot;confidence&quot;: &quot;ATTENTION&quot;, &quot;confidence_reason&quot;: &quot;The predicted finish is later than the SAP scheduled finish day.&quot;, &quot;queue_stability&quot;: &quot;FLEXIBLE&quot;, &quot;sap_remaining&quot;: &quot;1h 57m&quot;, &quot;adjusted_remaining&quot;: &quot;1h 57m&quot;, &quot;staffing_people&quot;: &quot;SAP normal&quot;, &quot;staffing_factor&quot;: &quot;1.0000&quot;, &quot;finish&quot;: &quot;Mon 03/08 08:10&quot;, &quot;due&quot;: &quot;Late by 2 working days&quot;}" onclick="openWhyPanel(this)">Why?</button></div>
+            
+            
+            <div class="queue-action-panel compact"><div class="main-work-action">
+    <form method="post" action="/work/start" class="work-action-form">
+        <input type="hidden" name="bench_id" value="LV01">
+        <input type="hidden" name="order_number" value="200234519512">
+        <button type="submit" class="work-button start">Start This</button>
+    </form>
+    </div><div class="hold-action-group"><div class="hold-action-label">Hold Reason</div><div class="hold-reason-row">
+        <form method="post" action="/hold/add" class="work-action-form">
+            <input type="hidden" name="source" value="dashboard">
+            <input type="hidden" name="bench_id" value="LV01">
+            <input type="hidden" name="order_number" value="200234519512">
+            <input type="hidden" name="hold_reason" value="Shortage">
+            <input type="hidden" name="hold_note" value="Held from dashboard: Shortage">
+            <button type="submit" class="hold-reason-button" onclick="return confirm('Put order 200234519512 on hold for Shortage?');">Shortage</button>
+        </form>
+        
+        <form method="post" action="/hold/add" class="work-action-form">
+            <input type="hidden" name="source" value="dashboard">
+            <input type="hidden" name="bench_id" value="LV01">
+            <input type="hidden" name="order_number" value="200234519512">
+            <input type="hidden" name="hold_reason" value="Quality">
+            <input type="hidden" name="hold_note" value="Held from dashboard: Quality">
+            <button type="submit" class="hold-reason-button" onclick="return confirm('Put order 200234519512 on hold for Quality?');">Quality</button>
+        </form>
+        
+        <form method="post" action="/hold/add" class="work-action-form">
+            <input type="hidden" name="source" value="dashboard">
+            <input type="hidden" name="bench_id" value="LV01">
+            <input type="hidden" name="order_number" value="200234519512">
+            <input type="hidden" name="hold_reason" value="People">
+            <input type="hidden" name="hold_note" value="Held from dashboard: People">
+            <button type="submit" class="hold-reason-button" onclick="return confirm('Put order 200234519512 on hold for People?');">People</button>
+        </form>
+        
+        <form method="post" action="/hold/add" class="work-action-form">
+            <input type="hidden" name="source" value="dashboard">
+            <input type="hidden" name="bench_id" value="LV01">
+            <input type="hidden" name="order_number" value="200234519512">
+            <input type="hidden" name="hold_reason" value="Space">
+            <input type="hidden" name="hold_note" value="Held from dashboard: Space">
+            <button type="submit" class="hold-reason-button" onclick="return confirm('Put order 200234519512 on hold for Space?');">Space</button>
+        </form>
+        </div></div></div>
+        </div>
+    </div>
+    <div class="more-queue">+ 8 more queued</div></div>
+    </article>
+    
+    <article class="bench-card attention">
+        <div class="bench-head"><div><div class="bench-name">LVPA Bench 2</div><div class="bench-id">LV02</div></div><div class="confidence-pill attention">Planner attention</div></div>
+        <div class="utilisation-panel">
+            <div><span>Today Load</span><strong>7h 55m</strong></div>
+            <div><span>Capacity</span><strong>7h 55m</strong></div>
+            <div><span>Utilisation</span><strong>100%</strong></div>
+            <div><span>Future Queue</span><strong>60h 48m</strong></div>
+        </div>
+        
+        
+    <div class="current-block late">
+        <div class="current-top"><div class="block-label">Current</div><div class="tag-row"><span class="mini-tag source-stable">Stable Queue</span><span class="mini-tag confidence-attention">Planner attention</span><span class="mini-tag priority-tag">P5</span></div></div>
+        <div class="current-order-number">200234519786</div>
+        <div class="current-material">CM0111-000</div>
+        <div class="current-description">BAH-028000535</div>
+        <div class="current-time">13:15 to 14:21</div>
+        
+    <div class="remaining-panel operational-panel">
+        <div>
+            <span>Remaining</span>
+            <strong>1h 6m</strong>
+        </div>
+        <div>
+            <span>Finish Estimate</span>
+            <strong>14:21</strong>
+        </div>
+    </div>
+    <div class="calculation-note">Based on the latest SAP remaining capacity (1h 6m). No staffing adjustment.</div>
+    
+        
+        <div class="due-line">LATE - Late by 2 working days</div>
+        <div class="why-row"><button type="button" class="why-button" data-why="{&quot;order_number&quot;: &quot;200234519786&quot;, &quot;material&quot;: &quot;CM0111-000&quot;, &quot;bench_id&quot;: &quot;LV02&quot;, &quot;source&quot;: &quot;Stable Queue&quot;, &quot;reason&quot;: &quot;LINEUP preserved this order on LV02 because it was the next automatic order in the previous plan.&quot;, &quot;confidence&quot;: &quot;ATTENTION&quot;, &quot;confidence_reason&quot;: &quot;The predicted finish is later than the SAP scheduled finish day.&quot;, &quot;queue_stability&quot;: &quot;STABLE NEXT&quot;, &quot;sap_remaining&quot;: &quot;1h 6m&quot;, &quot;adjusted_remaining&quot;: &quot;1h 6m&quot;, &quot;staffing_people&quot;: &quot;SAP normal&quot;, &quot;staffing_factor&quot;: &quot;1.0000&quot;, &quot;finish&quot;: &quot;14:21&quot;, &quot;due&quot;: &quot;Late by 2 working days&quot;}" onclick="openWhyPanel(this)">Why?</button></div>
+        <div class="work-action-panel"><div class="main-work-action">
+    <form method="post" action="/work/start" class="work-action-form">
+        <input type="hidden" name="bench_id" value="LV02">
+        <input type="hidden" name="order_number" value="200234519786">
+        <button type="submit" class="work-button start">Start Tracking</button>
+    </form>
+    </div><div class="hold-action-group"><div class="hold-action-label">Hold Reason</div><div class="hold-reason-row">
+        <form method="post" action="/hold/add" class="work-action-form">
+            <input type="hidden" name="source" value="dashboard">
+            <input type="hidden" name="bench_id" value="LV02">
+            <input type="hidden" name="order_number" value="200234519786">
+            <input type="hidden" name="hold_reason" value="Shortage">
+            <input type="hidden" name="hold_note" value="Held from dashboard: Shortage">
+            <button type="submit" class="hold-reason-button" onclick="return confirm('Put order 200234519786 on hold for Shortage?');">Shortage</button>
+        </form>
+        
+        <form method="post" action="/hold/add" class="work-action-form">
+            <input type="hidden" name="source" value="dashboard">
+            <input type="hidden" name="bench_id" value="LV02">
+            <input type="hidden" name="order_number" value="200234519786">
+            <input type="hidden" name="hold_reason" value="Quality">
+            <input type="hidden" name="hold_note" value="Held from dashboard: Quality">
+            <button type="submit" class="hold-reason-button" onclick="return confirm('Put order 200234519786 on hold for Quality?');">Quality</button>
+        </form>
+        
+        <form method="post" action="/hold/add" class="work-action-form">
+            <input type="hidden" name="source" value="dashboard">
+            <input type="hidden" name="bench_id" value="LV02">
+            <input type="hidden" name="order_number" value="200234519786">
+            <input type="hidden" name="hold_reason" value="People">
+            <input type="hidden" name="hold_note" value="Held from dashboard: People">
+            <button type="submit" class="hold-reason-button" onclick="return confirm('Put order 200234519786 on hold for People?');">People</button>
+        </form>
+        
+        <form method="post" action="/hold/add" class="work-action-form">
+            <input type="hidden" name="source" value="dashboard">
+            <input type="hidden" name="bench_id" value="LV02">
+            <input type="hidden" name="order_number" value="200234519786">
+            <input type="hidden" name="hold_reason" value="Space">
+            <input type="hidden" name="hold_note" value="Held from dashboard: Space">
+            <button type="submit" class="hold-reason-button" onclick="return confirm('Put order 200234519786 on hold for Space?');">Space</button>
+        </form>
+        </div></div></div>
+        
+    </div>
+    
+        <div class="queue-list">
+    <div class="queue-row on-target next-row">
+        <div class="queue-position">Next</div>
+        <div class="queue-main">
+            <div class="queue-order-number">200234496056</div>
+            <div class="queue-material">EB9970-000</div>
+            <div class="tag-row"><span class="mini-tag source-optimised">Optimised</span><span class="mini-tag confidence-medium">Medium confidence</span><span class="mini-tag priority-tag">P5</span></div>
+            <div class="queue-meta"><div class="queue-time"><div>14:21</div><span>to Thu 30/07 10:30</span></div><div class="queue-status">ON TARGET</div></div>
+            <div class="queue-summary"><span>Remaining 4h 49m</span><span>Finish Thu 30/07 10:30</span></div>
+            <div class="why-row"><button type="button" class="why-button" data-why="{&quot;order_number&quot;: &quot;200234496056&quot;, &quot;material&quot;: &quot;EB9970-000&quot;, &quot;bench_id&quot;: &quot;LV02&quot;, &quot;source&quot;: &quot;Optimised&quot;, &quot;reason&quot;: &quot;This bench gives an on-time predicted finish. The next-best bench, LV01, would create more due-date risk.&quot;, &quot;confidence&quot;: &quot;MEDIUM&quot;, &quot;confidence_reason&quot;: &quot;The current automatic plan is on target, but later automatic queue positions may still be re-optimised.&quot;, &quot;queue_stability&quot;: &quot;FLEXIBLE&quot;, &quot;sap_remaining&quot;: &quot;4h 49m&quot;, &quot;adjusted_remaining&quot;: &quot;4h 49m&quot;, &quot;staffing_people&quot;: &quot;SAP normal&quot;, &quot;staffing_factor&quot;: &quot;1.0000&quot;, &quot;finish&quot;: &quot;Thu 30/07 10:30&quot;, &quot;due&quot;: &quot;Finishes on scheduled working day&quot;}" onclick="openWhyPanel(this)">Why?</button></div>
+            
+            
+            <div class="queue-action-panel compact"><div class="main-work-action">
+    <form method="post" action="/work/start" class="work-action-form">
+        <input type="hidden" name="bench_id" value="LV02">
+        <input type="hidden" name="order_number" value="200234496056">
+        <button type="submit" class="work-button start">Start This</button>
+    </form>
+    </div><div class="hold-action-group"><div class="hold-action-label">Hold Reason</div><div class="hold-reason-row">
+        <form method="post" action="/hold/add" class="work-action-form">
+            <input type="hidden" name="source" value="dashboard">
+            <input type="hidden" name="bench_id" value="LV02">
+            <input type="hidden" name="order_number" value="200234496056">
+            <input type="hidden" name="hold_reason" value="Shortage">
+            <input type="hidden" name="hold_note" value="Held from dashboard: Shortage">
+            <button type="submit" class="hold-reason-button" onclick="return confirm('Put order 200234496056 on hold for Shortage?');">Shortage</button>
+        </form>
+        
+        <form method="post" action="/hold/add" class="work-action-form">
+            <input type="hidden" name="source" value="dashboard">
+            <input type="hidden" name="bench_id" value="LV02">
+            <input type="hidden" name="order_number" value="200234496056">
+            <input type="hidden" name="hold_reason" value="Quality">
+            <input type="hidden" name="hold_note" value="Held from dashboard: Quality">
+            <button type="submit" class="hold-reason-button" onclick="return confirm('Put order 200234496056 on hold for Quality?');">Quality</button>
+        </form>
+        
+        <form method="post" action="/hold/add" class="work-action-form">
+            <input type="hidden" name="source" value="dashboard">
+            <input type="hidden" name="bench_id" value="LV02">
+            <input type="hidden" name="order_number" value="200234496056">
+            <input type="hidden" name="hold_reason" value="People">
+            <input type="hidden" name="hold_note" value="Held from dashboard: People">
+            <button type="submit" class="hold-reason-button" onclick="return confirm('Put order 200234496056 on hold for People?');">People</button>
+        </form>
+        
+        <form method="post" action="/hold/add" class="work-action-form">
+            <input type="hidden" name="source" value="dashboard">
+            <input type="hidden" name="bench_id" value="LV02">
+            <input type="hidden" name="order_number" value="200234496056">
+            <input type="hidden" name="hold_reason" value="Space">
+            <input type="hidden" name="hold_note" value="Held from dashboard: Space">
+            <button type="submit" class="hold-reason-button" onclick="return confirm('Put order 200234496056 on hold for Space?');">Space</button>
+        </form>
+        </div></div></div>
+        </div>
+    </div>
+    
+    <div class="queue-row on-target ">
+        <div class="queue-position">Queue 2</div>
+        <div class="queue-main">
+            <div class="queue-order-number">200234510163</div>
+            <div class="queue-material">EB9971-000</div>
+            <div class="tag-row"><span class="mini-tag source-optimised">Optimised</span><span class="mini-tag confidence-medium">Medium confidence</span><span class="mini-tag priority-tag">P5</span></div>
+            <div class="queue-meta"><div class="queue-time"><div>Thu 30/07 10:30</div><span>to Thu 30/07 15:25</span></div><div class="queue-status">ON TARGET</div></div>
+            <div class="queue-summary"><span>Remaining 4h 10m</span><span>Finish Thu 30/07 15:25</span></div>
+            <div class="why-row"><button type="button" class="why-button" data-why="{&quot;order_number&quot;: &quot;200234510163&quot;, &quot;material&quot;: &quot;EB9971-000&quot;, &quot;bench_id&quot;: &quot;LV02&quot;, &quot;source&quot;: &quot;Optimised&quot;, &quot;reason&quot;: &quot;This bench gives an on-time predicted finish. The next-best bench, LV01, would create more due-date risk.&quot;, &quot;confidence&quot;: &quot;MEDIUM&quot;, &quot;confidence_reason&quot;: &quot;The current automatic plan is on target, but later automatic queue positions may still be re-optimised.&quot;, &quot;queue_stability&quot;: &quot;FLEXIBLE&quot;, &quot;sap_remaining&quot;: &quot;4h 10m&quot;, &quot;adjusted_remaining&quot;: &quot;4h 10m&quot;, &quot;staffing_people&quot;: &quot;SAP normal&quot;, &quot;staffing_factor&quot;: &quot;1.0000&quot;, &quot;finish&quot;: &quot;Thu 30/07 15:25&quot;, &quot;due&quot;: &quot;Finishes on scheduled working day&quot;}" onclick="openWhyPanel(this)">Why?</button></div>
+            
+            
+            <div class="queue-action-panel compact"><div class="main-work-action">
+    <form method="post" action="/work/start" class="work-action-form">
+        <input type="hidden" name="bench_id" value="LV02">
+        <input type="hidden" name="order_number" value="200234510163">
+        <button type="submit" class="work-button start">Start This</button>
+    </form>
+    </div><div class="hold-action-group"><div class="hold-action-label">Hold Reason</div><div class="hold-reason-row">
+        <form method="post" action="/hold/add" class="work-action-form">
+            <input type="hidden" name="source" value="dashboard">
+            <input type="hidden" name="bench_id" value="LV02">
+            <input type="hidden" name="order_number" value="200234510163">
+            <input type="hidden" name="hold_reason" value="Shortage">
+            <input type="hidden" name="hold_note" value="Held from dashboard: Shortage">
+            <button type="submit" class="hold-reason-button" onclick="return confirm('Put order 200234510163 on hold for Shortage?');">Shortage</button>
+        </form>
+        
+        <form method="post" action="/hold/add" class="work-action-form">
+            <input type="hidden" name="source" value="dashboard">
+            <input type="hidden" name="bench_id" value="LV02">
+            <input type="hidden" name="order_number" value="200234510163">
+            <input type="hidden" name="hold_reason" value="Quality">
+            <input type="hidden" name="hold_note" value="Held from dashboard: Quality">
+            <button type="submit" class="hold-reason-button" onclick="return confirm('Put order 200234510163 on hold for Quality?');">Quality</button>
+        </form>
+        
+        <form method="post" action="/hold/add" class="work-action-form">
+            <input type="hidden" name="source" value="dashboard">
+            <input type="hidden" name="bench_id" value="LV02">
+            <input type="hidden" name="order_number" value="200234510163">
+            <input type="hidden" name="hold_reason" value="People">
+            <input type="hidden" name="hold_note" value="Held from dashboard: People">
+            <button type="submit" class="hold-reason-button" onclick="return confirm('Put order 200234510163 on hold for People?');">People</button>
+        </form>
+        
+        <form method="post" action="/hold/add" class="work-action-form">
+            <input type="hidden" name="source" value="dashboard">
+            <input type="hidden" name="bench_id" value="LV02">
+            <input type="hidden" name="order_number" value="200234510163">
+            <input type="hidden" name="hold_reason" value="Space">
+            <input type="hidden" name="hold_note" value="Held from dashboard: Space">
+            <button type="submit" class="hold-reason-button" onclick="return confirm('Put order 200234510163 on hold for Space?');">Space</button>
+        </form>
+        </div></div></div>
+        </div>
+    </div>
+    
+    <div class="queue-row late ">
+        <div class="queue-position">Queue 3</div>
+        <div class="queue-main">
+            <div class="queue-order-number">200234519840</div>
+            <div class="queue-material">EB9997-000</div>
+            <div class="tag-row"><span class="mini-tag source-optimised">Optimised</span><span class="mini-tag confidence-attention">Planner attention</span><span class="mini-tag priority-tag">P5</span></div>
+            <div class="queue-meta"><div class="queue-time"><div>Thu 30/07 15:25</div><span>to Fri 31/07 07:47</span></div><div class="queue-status">LATE</div></div>
+            <div class="queue-summary"><span>Remaining 1h 12m</span><span>Finish Fri 31/07 07:47</span></div>
+            <div class="why-row"><button type="button" class="why-button" data-why="{&quot;order_number&quot;: &quot;200234519840&quot;, &quot;material&quot;: &quot;EB9997-000&quot;, &quot;bench_id&quot;: &quot;LV02&quot;, &quot;source&quot;: &quot;Optimised&quot;, &quot;reason&quot;: &quot;No evaluated option fully recovered the order; this bench produced the strongest overall result. The next-best bench, LV01, would finish later.&quot;, &quot;confidence&quot;: &quot;ATTENTION&quot;, &quot;confidence_reason&quot;: &quot;The predicted finish is later than the SAP scheduled finish day.&quot;, &quot;queue_stability&quot;: &quot;FLEXIBLE&quot;, &quot;sap_remaining&quot;: &quot;1h 12m&quot;, &quot;adjusted_remaining&quot;: &quot;1h 12m&quot;, &quot;staffing_people&quot;: &quot;SAP normal&quot;, &quot;staffing_factor&quot;: &quot;1.0000&quot;, &quot;finish&quot;: &quot;Fri 31/07 07:47&quot;, &quot;due&quot;: &quot;Late by 1 working day&quot;}" onclick="openWhyPanel(this)">Why?</button></div>
+            
+            
+            <div class="queue-action-panel compact"><div class="main-work-action">
+    <form method="post" action="/work/start" class="work-action-form">
+        <input type="hidden" name="bench_id" value="LV02">
+        <input type="hidden" name="order_number" value="200234519840">
+        <button type="submit" class="work-button start">Start This</button>
+    </form>
+    </div><div class="hold-action-group"><div class="hold-action-label">Hold Reason</div><div class="hold-reason-row">
+        <form method="post" action="/hold/add" class="work-action-form">
+            <input type="hidden" name="source" value="dashboard">
+            <input type="hidden" name="bench_id" value="LV02">
+            <input type="hidden" name="order_number" value="200234519840">
+            <input type="hidden" name="hold_reason" value="Shortage">
+            <input type="hidden" name="hold_note" value="Held from dashboard: Shortage">
+            <button type="submit" class="hold-reason-button" onclick="return confirm('Put order 200234519840 on hold for Shortage?');">Shortage</button>
+        </form>
+        
+        <form method="post" action="/hold/add" class="work-action-form">
+            <input type="hidden" name="source" value="dashboard">
+            <input type="hidden" name="bench_id" value="LV02">
+            <input type="hidden" name="order_number" value="200234519840">
+            <input type="hidden" name="hold_reason" value="Quality">
+            <input type="hidden" name="hold_note" value="Held from dashboard: Quality">
+            <button type="submit" class="hold-reason-button" onclick="return confirm('Put order 200234519840 on hold for Quality?');">Quality</button>
+        </form>
+        
+        <form method="post" action="/hold/add" class="work-action-form">
+            <input type="hidden" name="source" value="dashboard">
+            <input type="hidden" name="bench_id" value="LV02">
+            <input type="hidden" name="order_number" value="200234519840">
+            <input type="hidden" name="hold_reason" value="People">
+            <input type="hidden" name="hold_note" value="Held from dashboard: People">
+            <button type="submit" class="hold-reason-button" onclick="return confirm('Put order 200234519840 on hold for People?');">People</button>
+        </form>
+        
+        <form method="post" action="/hold/add" class="work-action-form">
+            <input type="hidden" name="source" value="dashboard">
+            <input type="hidden" name="bench_id" value="LV02">
+            <input type="hidden" name="order_number" value="200234519840">
+            <input type="hidden" name="hold_reason" value="Space">
+            <input type="hidden" name="hold_note" value="Held from dashboard: Space">
+            <button type="submit" class="hold-reason-button" onclick="return confirm('Put order 200234519840 on hold for Space?');">Space</button>
+        </form>
+        </div></div></div>
+        </div>
+    </div>
+    <div class="more-queue">+ 4 more queued</div></div>
+    </article>
+    </div>
+        </section>
+        </main><nav class="screen-nav"><button class="screen-dot active" data-screen-target="0">CSKI / MVKI</button><button class="screen-dot " data-screen-target="1">Box / Bag</button></nav>
+</div>
+<div class="why-backdrop" id="why-backdrop" onclick="closeWhyPanel(event)"><aside class="why-panel" onclick="event.stopPropagation()"><div class="why-panel-head"><div><h2 id="why-title">Why?</h2><div id="why-subtitle"></div></div><button type="button" onclick="closeWhyPanel()">Close</button></div><div class="why-section"><span>Assignment</span><strong id="why-source"></strong><p id="why-reason"></p></div><div class="why-section"><span>Queue Stability</span><strong id="why-stability"></strong></div><div class="why-section"><span>Confidence</span><strong id="why-confidence"></strong><p id="why-confidence-reason"></p></div><div class="why-section"><span>Remaining Time</span><p id="why-remaining"></p></div><div class="why-section"><span>Predicted Finish</span><strong id="why-finish"></strong><p id="why-due"></p></div></aside></div>
+<script>
+const screens=[...document.querySelectorAll('.screen')],dots=[...document.querySelectorAll('.screen-dot')];let currentScreen=0;function showScreen(index){if(!screens.length)return;currentScreen=index%screens.length;screens.forEach((s,i)=>s.classList.toggle('active',i===currentScreen));dots.forEach((d,i)=>d.classList.toggle('active',i===currentScreen))}dots.forEach(d=>d.addEventListener('click',()=>showScreen(parseInt(d.dataset.screenTarget,10))));if(false&&screens.length>1)setInterval(()=>showScreen(currentScreen+1),15000);
+const splitPanel=document.querySelector('.split-panel'),splitToggle=document.getElementById('split-toggle-button'),splitMore=document.getElementById('split-show-more-button');if(splitPanel&&splitToggle){if(localStorage.getItem('lineupSplitPanelCollapsed')==='yes'){splitPanel.classList.add('collapsed');splitToggle.textContent='Show'}splitToggle.addEventListener('click',()=>{splitPanel.classList.toggle('collapsed');const collapsed=splitPanel.classList.contains('collapsed');splitToggle.textContent=collapsed?'Show':'Hide';localStorage.setItem('lineupSplitPanelCollapsed',collapsed?'yes':'no')})}if(splitPanel&&splitMore){const original=splitMore.textContent;splitMore.addEventListener('click',()=>{const all=splitPanel.classList.toggle('show-all-splits');splitMore.textContent=all?'Show fewer recommendation(s)':original})} function openWhyPanel(button){let data={};try{data=JSON.parse(button.dataset.why||'{}')}catch(error){console.error(error)}document.getElementById('why-title').textContent='Order '+(data.order_number||'');document.getElementById('why-subtitle').textContent=(data.material||'')+' - '+(data.bench_id||'');document.getElementById('why-source').textContent=data.source||'-';document.getElementById('why-reason').textContent=data.reason||'-';document.getElementById('why-stability').textContent=data.queue_stability||'-';document.getElementById('why-confidence').textContent=data.confidence||'-';document.getElementById('why-confidence-reason').textContent=data.confidence_reason||'-';document.getElementById('why-remaining').textContent=(data.staffing_people&&data.staffing_people!=='SAP normal')?('Remaining '+(data.adjusted_remaining||'-')+'. SAP reported '+(data.sap_remaining||'-')+'. Staffing override: '+data.staffing_people+' people, factor '+(data.staffing_factor||'1.0')+'.'):('Remaining '+(data.adjusted_remaining||data.sap_remaining||'-')+'. Based on the latest SAP capacity with normal staffing.');document.getElementById('why-finish').textContent=data.finish||'-';document.getElementById('why-due').textContent=data.due||'-';document.getElementById('why-backdrop').classList.add('open')}function closeWhyPanel(event){if(event&&event.target.id!=='why-backdrop')return;document.getElementById('why-backdrop').classList.remove('open')}
+function formatMinutes(value){const minutes=Math.max(0,Math.floor(Number(value)||0));if(minutes<60)return minutes+' min';const hours=Math.floor(minutes/60),remainder=minutes%60;return remainder?hours+'h '+remainder+'m':hours+'h'} function workingBlocksForDate(date){const day=date.getDay();if(day===0||day===6)return[];if(day===5)return[[7*60+45,10*60],[10*60+10,13*60+10]];return[[7*60+45,10*60],[10*60+10,12*60+30],[13*60+15,16*60+35]]}
+function workingMinutesBetween(start,end){if(!start||!end||end<=start)return 0;let total=0;const cursor=new Date(start.getFullYear(),start.getMonth(),start.getDate());const finalDay=new Date(end.getFullYear(),end.getMonth(),end.getDate());while(cursor<=finalDay){const blocks=workingBlocksForDate(cursor);const startMinute=(cursor.toDateString()===start.toDateString())?start.getHours()*60+start.getMinutes():0;const endMinute=(cursor.toDateString()===end.toDateString())?end.getHours()*60+end.getMinutes():24*60;blocks.forEach(([blockStart,blockEnd])=>{const overlapStart=Math.max(startMinute,blockStart),overlapEnd=Math.min(endMinute,blockEnd);if(overlapEnd>overlapStart)total+=overlapEnd-overlapStart});cursor.setDate(cursor.getDate()+1)}return Math.max(0,total)} function updateLivePanels(){const now=new Date();document.querySelectorAll('.live-dynamic-panel').forEach(panel=>{const started=new Date(panel.dataset.liveStartedAt||''),baseAt=new Date(panel.dataset.liveBaseAt||''),baseRemaining=parseInt(panel.dataset.liveBaseRemaining||'0',10);const workedElement=panel.querySelector('.live-time-worked'),remainingElement=panel.querySelector('.live-remaining');if(workedElement&&!Number.isNaN(started.getTime()))workedElement.textContent=formatMinutes(workingMinutesBetween(started,now));if(remainingElement&&!Number.isNaN(baseAt.getTime()))remainingElement.textContent=formatMinutes(Math.max(0,baseRemaining-workingMinutesBetween(baseAt,now)))})}
+updateLivePanels();setInterval(updateLivePanels,60000);
+function updateStaleWarning(){const warning=document.getElementById('stale-warning'),text=document.getElementById('stale-warning-text');if(!warning||!text)return;const generated=new Date(document.body.dataset.generatedAt),limit=parseInt(document.body.dataset.staleWarningMinutes||'45',10);if(Number.isNaN(generated.getTime()))return;const age=Math.floor((Date.now()-generated.getTime())/60000);warning.classList.toggle('hidden',age<limit);if(age>=limit)text.textContent='Generated '+age+' minutes ago. Check the LINEUP update log before relying on it.'}updateStaleWarning();setInterval(updateStaleWarning,60000);
+</script>
+</body></html>

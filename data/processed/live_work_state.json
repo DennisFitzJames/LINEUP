@@ -1,0 +1,71 @@
+{
+    "version": 2,
+    "benches": {
+        "CM01": {
+            "active_order_number": "200233938906",
+            "started_at": "2026-07-29 08:13:07",
+            "started_remaining_minutes": 491,
+            "last_known_material": "CH8130-000",
+            "last_known_description": "CSJT-36D/1XU-1XU-GB03",
+            "last_known_scheduling_pool": "CSKI_MVKI",
+            "started_by": "dashboard",
+            "latest_sap_remaining_minutes": 247,
+            "latest_effective_remaining_minutes": 247,
+            "latest_sap_refresh_at": "2026-07-29 13:04:24",
+            "latest_staffing_factor": "1.0"
+        },
+        "CM06": {
+            "active_order_number": "200234624696",
+            "started_at": "2026-07-29 10:33:59",
+            "started_remaining_minutes": 253,
+            "last_known_material": "CS8298-000",
+            "last_known_description": "CSJA-24C/1XU-1XU-M1-NO01",
+            "last_known_scheduling_pool": "CSKI_MVKI",
+            "started_by": "dashboard",
+            "latest_sap_remaining_minutes": 195,
+            "latest_effective_remaining_minutes": 195,
+            "latest_sap_refresh_at": "2026-07-29 13:04:24",
+            "latest_staffing_factor": "1.0"
+        },
+        "CM03": {
+            "active_order_number": "200233938906",
+            "started_at": "2026-07-29 11:07:28",
+            "started_remaining_minutes": 488,
+            "last_known_material": "CH8130-000",
+            "last_known_description": "CSJT-36D/1XU-1XU-GB03",
+            "last_known_scheduling_pool": "CSKI_MVKI",
+            "started_by": "dashboard",
+            "latest_sap_remaining_minutes": 244,
+            "latest_effective_remaining_minutes": 488,
+            "latest_sap_refresh_at": "2026-07-29 13:04:24",
+            "latest_staffing_factor": "2.0"
+        },
+        "CM04": {
+            "active_order_number": "200234266728",
+            "started_at": "2026-07-29 12:35:28",
+            "started_remaining_minutes": 165,
+            "last_known_material": "172599-000",
+            "last_known_description": "SMOE-62546",
+            "last_known_scheduling_pool": "CSKI_MVKI",
+            "started_by": "dashboard",
+            "latest_sap_remaining_minutes": 165,
+            "latest_effective_remaining_minutes": 165,
+            "latest_sap_refresh_at": "2026-07-29 13:04:24",
+            "latest_staffing_factor": "1.0"
+        },
+        "CM05": {
+            "active_order_number": "200234582854",
+            "started_at": "2026-07-29 12:52:26",
+            "started_remaining_minutes": 234,
+            "last_known_material": "EK8957-000",
+            "last_known_description": "SMOE-64558",
+            "last_known_scheduling_pool": "CSKI_MVKI",
+            "started_by": "dashboard",
+            "latest_sap_remaining_minutes": 234,
+            "latest_effective_remaining_minutes": 234,
+            "latest_sap_refresh_at": "2026-07-29 13:04:24",
+            "latest_staffing_factor": "1.0"
+        }
+    },
+    "updated_at": "2026-07-29 13:04:24"
+}

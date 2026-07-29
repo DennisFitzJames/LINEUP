@@ -1,0 +1,15 @@
+{
+    "version": 2,
+    "planning_pool": [],
+    "manual_queues": {
+        "CM06": [
+            {
+                "order_number": "200234624696",
+                "added_at": "2026-07-29 10:33:53",
+                "added_by": "planning_board",
+                "note": ""
+            }
+        ]
+    },
+    "held_orders": {}
+}

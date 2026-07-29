@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>LINEUP Control</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='control.css') }}">
+</head>
+<body>
+{% macro order_card(order_number, location, bench_id="") %}
+    {% set order = order_lookup.get(order_number) %}
+    {% set meta = board_metadata.get(order_number, {}) %}
+    {% set state_label = "Ready" if location == "pool" else "Queued" %}
+    {% set state_class = "ready" if location == "pool" else "queued" %}
+    <div class="order-card" draggable="true"
+         data-order-number="{{ order_number }}"
+         data-compatible-benches="{{ meta.get('compatible_bench_ids', [])|join(',') }}">
+        <div class="order-head">
+            <div class="order-identity">
+                <div class="order-title-row">
+                    <div class="order-title">{{ order_number }}</div>
+                    <span class="state-badge {{ state_class }}">{{ state_label }}</span>
+                </div>
+                {% if order %}
+                    <div class="order-material">{{ order.material }}</div>
+                    <div class="muted">{{ order.material_description }}</div>
+                {% else %}
+                    <div class="muted">Order not in current SAP list.</div>
+                {% endif %}
+            </div>
+            {% if order %}<span class="pool-pill">{{ display_pool_name(order.scheduling_pool) }}</span>{% endif %}
+        </div>
+
+        {% if order %}
+        <div class="meta">
+            <span>Qty Left {{ order.remaining_quantity }}</span>
+            <span>SAP {{ order.bench_remaining_minutes }} min</span>
+            {% if order.priority %}<span>P{{ order.priority }}</span>{% endif %}
+        </div>
+        {% endif %}
+
+        <div class="order-actions">
+            {% if order %}
+            <button type="button" class="secondary small" onclick="openSplitModal('{{ order_number }}')">Split</button>
+            {% endif %}
+            <form method="post" action="/hold/add">
+                <input type="hidden" name="order_number" value="{{ order_number }}">
+                <input type="hidden" name="bench_id" value="{{ bench_id }}">
+                <input type="hidden" name="hold_reason" value="Shortage">
+                <input type="hidden" name="hold_note" value="Held from planning board">
+                <button type="submit" class="danger small">Hold</button>
+            </form>
+            {% if location == "pool" %}
+            <form method="post" action="/planning-pool/remove">
+                <input type="hidden" name="order_number" value="{{ order_number }}">
+                <button type="submit" class="secondary small">Remove</button>
+            </form>
+            {% else %}
+            <form method="post" action="/queue/remove">
+                <input type="hidden" name="bench_id" value="{{ bench_id }}">
+                <input type="hidden" name="order_number" value="{{ order_number }}">
+                <button type="submit" class="secondary small">Remove</button>
+            </form>
+            {% endif %}
+        </div>
+    </div>
+{% endmacro %}
+
+<div class="page">
+<header>
+    <div>
+        <h1>LINEUP</h1>
+        <div class="subtitle">Production Planning Control Centre</div>
+    </div>
+    <div class="actions">
+        <a class="button secondary" href="/dashboard" target="_blank">Open Dashboard</a>
+        <form method="post" action="/work/clear-all">
+            <button type="submit" class="danger" onclick="return confirm('Clear all live work tracking?');">Clear Live Work</button>
+        </form>
+        <button form="bench-form" type="submit">Save Bench Setup</button>
+    </div>
+</header>
+
+{% if message %}<div class="message">{{ message }}</div>{% endif %}
+
+<details open>
+<summary><div><h2>1. Bench Setup</h2><div class="muted">Set bench availability and temporary staffing changes.</div></div><span>Show / Hide</span></summary>
+<div class="section-body">
+    <form id="bench-form" method="post">
+        {% for pool, pool_benches in benches|groupby("scheduling_pool") %}
+        <section class="pool-section">
+            <h3>{{ display_pool_name(pool) }}</h3>
+            <div class="grid">
+                {% for bench in pool_benches %}
+                <article class="bench-card">
+                    <div class="bench-head">
+                        <div><strong>{{ bench.bench_name }}</strong><div class="muted">{{ bench.bench_id }}</div></div>
+                        <span class="pool-pill">{{ display_pool_name(bench.scheduling_pool) }}</span>
+                    </div>
+                    <div style="margin-top:10px">
+                        <label style="font-weight:900">
+                            <input type="checkbox" name="open_{{ bench.bench_id }}" {% if bench.is_open == "yes" %}checked{% endif %}>
+                            Open today
+                        </label>
+                    </div>
+                    <div class="staffing-summary">
+                        SAP baseline crew: {{ bench.standard_people }} people. LINEUP uses SAP remaining time unchanged unless a temporary staffing change is active.
+                    </div>
+                    <div class="staffing">
+                        <div class="bench-head">
+                            <strong>Temporary Staffing Change</strong>
+                            <span class="pill">{% if bench.staffing_override_active %}{{ bench.staffing_override_people }} people{% else %}SAP Baseline{% endif %}</span>
+                        </div>
+                        <div class="form-grid">
+                            <div class="field">
+                                <label>People Available</label>
+                                <select id="staff-people-{{ bench.bench_id }}">
+                                    {% for people in range(1,7) %}
+                                    <option value="{{ people }}" {% if bench.staffing_override_active and bench.staffing_override_people == people %}selected{% elif not bench.staffing_override_active and bench.standard_people == people %}selected{% endif %}>{{ people }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="field">
+                                <label>Reason</label>
+                                <input id="staff-note-{{ bench.bench_id }}" value="{{ bench.staffing_note }}" placeholder="Optional">
+                            </div>
+                        </div>
+                        <div class="panel-actions" style="margin-top:8px">
+                            <button type="button" class="small" onclick="setStaffing('{{ bench.bench_id }}')">Apply Staffing Change</button>
+                            {% if bench.staffing_override_active %}
+                            <button type="button" class="secondary small" onclick="clearStaffing('{{ bench.bench_id }}')">Use SAP Baseline</button>
+                            {% endif %}
+                        </div>
+                        {% if bench.staffing_override_active %}
+                        <div class="staffing-summary">Time multiplier: {{ "%.2f"|format(bench.staffing_factor) }}{% if bench.staffing_note %}  -  {{ bench.staffing_note }}{% endif %}</div>
+                        {% endif %}
+                    </div>
+                </article>
+                {% endfor %}
+            </div>
+        </section>
+        {% endfor %}
+        <div class="panel-actions" style="margin-top:12px">
+            <button type="submit">Save Bench Setup & Recalculate</button>
+            <button type="button" class="secondary" onclick="clearAllStaffing()">Clear All Staffing Changes</button>
+        </div>
+    </form>
+</div>
+</details>
+
+<details open>
+<summary><div><h2>2. Planning Board</h2><div class="muted">Drag orders into compatible bench queues. Valid moves save automatically.</div></div><span>Show / Hide</span></summary>
+<div class="section-body">
+    <form method="post" action="/planning-pool/add">
+        <div class="form-grid">
+            <div class="field">
+                <label>Add order</label>
+                <select name="pool_order_number"><option value="">Select order...</option>
+                {% for order in available_orders %}
+                <option value="{{ order.order_number }}">{{ order.order_number }}  -  {{ order.material }}  -  {{ display_pool_name(order.scheduling_pool) }}</option>
+                {% endfor %}
+                </select>
+                <input name="pool_manual_order_number" placeholder="Or type order number" style="margin-top:6px">
+            </div>
+            <div class="field"><label>Note</label><input name="pool_note" placeholder="Optional"></div>
+            <div class="field"><label>&nbsp;</label><button type="submit">Add to Ready to Schedule</button></div>
+        </div>
+    </form>
+
+    <div class="panel-actions" style="margin:12px 0">
+        <button type="button" class="success" onclick="savePlanningBoard(true)">Save Planning Board</button>
+        <span class="status saved" id="board-status">Board saved</span>
+        <form method="post" action="/planning-pool/clear"><button type="submit" class="secondary">Clear Ready to Schedule</button></form>
+        <form method="post" action="/queue/clear"><button type="submit" class="danger">Clear Bench Queues</button></form>
+    </div>
+
+    <div class="planning-layout">
+        <aside class="pool-panel">
+            <section class="flow-panel awaiting-panel">
+                <div class="lane-head">
+                    <div>
+                        <div class="flow-title-row">
+                            <strong>Awaiting Picking</strong>
+                            <span class="state-badge awaiting">Awaiting</span>
+                        </div>
+                        <div class="muted">Visible here until SAP reports the order as picked and ready.</div>
+                    </div>
+                    <span class="pill">{{ awaiting_picking_orders|length }}</span>
+                </div>
+                <div class="awaiting-list">
+                    {% for order in awaiting_picking_orders %}
+                    <article class="awaiting-card">
+                        <div class="order-title-row">
+                            <div class="order-title">{{ order.order_number }}</div>
+                            <span class="state-badge awaiting">Awaiting</span>
+                        </div>
+                        <div class="order-material">{{ order.material }}</div>
+                        <div class="muted awaiting-description">{{ order.material_description }}</div>
+                        <div class="meta">
+                            <span>Qty Left {{ order.remaining_quantity }}</span>
+                            <span>SAP {{ order.bench_remaining_minutes }} min</span>
+                            {% if order.priority %}<span>P{{ order.priority }}</span>{% endif %}
+                        </div>
+                        <span class="pool-pill awaiting-pool">{{ display_pool_name(order.scheduling_pool) }}</span>
+                    </article>
+                    {% else %}
+                    <div class="empty-state">No orders are currently awaiting picking.</div>
+                    {% endfor %}
+                </div>
+            </section>
+
+            <section class="flow-panel ready-panel">
+                <div class="lane-head">
+                    <div>
+                        <div class="flow-title-row">
+                            <strong>Ready to Schedule</strong>
+                            <span class="state-badge ready">Ready</span>
+                        </div>
+                        <div class="muted">Drag an order to the bench that should run it.</div>
+                    </div>
+                    <span class="pill">{{ queue_control.planning_pool|length }}</span>
+                </div>
+                <div class="stack lane" id="planning-pool-lane" data-lane-type="pool" data-bench-id="">
+                    {% for item in queue_control.planning_pool %}
+                        {{ order_card(item.order_number, "pool") }}
+                    {% else %}
+                        <div class="empty-state">No manual override orders are waiting to be scheduled.</div>
+                    {% endfor %}
+                </div>
+            </section>
+        </aside>
+
+        <main>
+            {% for pool, pool_benches in benches|groupby("scheduling_pool") %}
+            <section class="board-pool">
+                <h3>{{ display_pool_name(pool) }}</h3>
+                <div class="lanes">
+                    {% for bench in pool_benches if bench.is_open == "yes" %}
+                    {% set live_state = live_benches.get(bench.bench_id) %}
+                    {% set queue_items = queue_control.manual_queues.get(bench.bench_id, []) %}
+                    <section class="lane" data-lane-type="bench" data-bench-id="{{ bench.bench_id }}">
+                        <div class="lane-head"><div><strong>{{ bench.bench_id }}</strong><div class="muted">{{ bench.bench_name }}</div></div><span class="pill">{{ queue_items|length }}</span></div>
+                        {% if live_state %}
+                        <div class="live-banner"><span class="state-badge running">Running</span><span>Live WIP locked: {{ live_state.active_order_number }}. New work queues after it.</span></div>
+                        {% endif %}
+                        <div class="stack">
+                            {% for item in queue_items %}
+                                {{ order_card(item.order_number, "bench", bench.bench_id) }}
+                            {% endfor %}
+                        </div>
+                    </section>
+                    {% endfor %}
+                </div>
+            </section>
+            {% endfor %}
+        </main>
+    </div>
+
+    {% if overrides.manual_splits %}
+    <h3 style="margin-top:18px">Active Order Splits</h3>
+    <div class="grid">
+        {% for order, split in overrides.manual_splits.items() %}
+        <form method="post" action="/split/remove" class="mini-card">
+            <input type="hidden" name="order_number" value="{{ order }}">
+            <strong>{{ order }}</strong>
+            <div class="muted">
+                {% if split.split_mode == "multi" %}
+                    {% for part in split.parts %}{{ part.part_label }}: {{ part.bench_id }}  -  Qty {{ part.quantity }}  -  {{ part.minutes }} min{% if not loop.last %}<br>{% endif %}{% endfor %}
+                {% else %}
+                    {{ split.bench_a }} / {{ split.bench_b }}  -  Qty {{ split.qty_a }} / {{ split.qty_b }}
+                {% endif %}
+            </div>
+            <button type="submit" class="secondary small" style="margin-top:8px">Remove Split</button>
+        </form>
+        {% endfor %}
+    </div>
+    {% endif %}
+</div>
+</details>
+
+<details>
+<summary><div><h2>3. Holds</h2><div class="muted">Temporarily remove work from scheduling without deleting it.</div></div><span>Show / Hide</span></summary>
+<div class="section-body">
+<form method="post" action="/hold/add">
+<div class="form-grid">
+<div class="field"><label>Order</label><select name="hold_order_number"><option value="">Select...</option>{% for order in available_orders %}<option value="{{ order.order_number }}">{{ order.order_number }}  -  {{ order.material }}</option>{% endfor %}</select><input name="hold_manual_order_number" placeholder="Or type order" style="margin-top:6px"></div>
+<div class="field"><label>Bench</label><select name="hold_bench_id">{% for bench in benches %}<option value="{{ bench.bench_id }}">{{ bench.bench_id }} - {{ bench.bench_name }}</option>{% endfor %}</select></div>
+<div class="field"><label>Reason</label><select name="hold_reason"><option>Shortage</option><option>Material</option><option>Quality</option><option>Space</option><option>People</option><option>Other</option></select></div>
+<div class="field"><label>Note</label><input name="hold_note"></div>
+<div class="field"><label>&nbsp;</label><button type="submit" class="danger">Put On Hold</button></div>
+</div>
+</form>
+<div class="grid" style="margin-top:12px">
+{% for order_number, held in queue_control.held_orders.items() %}
+<div class="mini-card"><div class="order-title-row"><strong>{{ order_number }}</strong><span class="state-badge held">Held</span></div><div class="muted">{{ held.reason }}{% if held.bench_id %}  -  {{ held.bench_id }}{% endif %}</div>
+<form method="post" action="/hold/release" style="margin-top:8px"><input type="hidden" name="order_number" value="{{ order_number }}"><select name="bench_id">{% for bench in benches %}<option value="{{ bench.bench_id }}" {% if bench.bench_id == held.bench_id %}selected{% endif %}>{{ bench.bench_id }} - {{ bench.bench_name }}</option>{% endfor %}</select><button type="submit" style="margin-top:6px">Release</button></form>
+<form method="post" action="/hold/remove" style="margin-top:6px"><input type="hidden" name="order_number" value="{{ order_number }}"><button type="submit" class="danger small">Remove Hold</button></form>
+</div>
+{% else %}<div class="muted">No held orders.</div>{% endfor %}
+</div>
+</div>
+</details>
+
+<details>
+<summary><div><h2>4. Start Time Correction</h2><div class="muted">Correct the recorded start time when live tracking was started late.</div></div><span>Show / Hide</span></summary>
+<div class="section-body">
+<form method="post" action="/work/set-start"><div class="form-grid">
+<div class="field"><label>Order</label><select name="order_number" required><option value="">Select...</option>{% for order in available_orders %}<option value="{{ order.order_number }}">{{ order.order_number }}  -  {{ order.material }}</option>{% endfor %}</select></div>
+<div class="field"><label>Bench</label><select name="bench_id" required>{% for bench in benches %}<option value="{{ bench.bench_id }}">{{ bench.bench_id }} - {{ bench.bench_name }}</option>{% endfor %}</select></div>
+<div class="field"><label>Date</label><input type="date" name="started_date" value="{{ current_date_input }}" required></div>
+<div class="field"><label>Time</label><input type="time" name="started_time" value="{{ current_time_input }}" required></div>
+<div class="field"><label>&nbsp;</label><button type="submit">Set Start</button></div>
+</div></form>
+</div>
+</details>
+
+<details>
+<summary><div><h2>5. Notes</h2><div class="muted">Operational notes shown on the production dashboard.</div></div><span>Show / Hide</span></summary>
+<div class="section-body">
+<h3>Bench Notes</h3>
+<form method="post" action="/notes/benches"><div class="grid">{% for bench in benches %}<div class="mini-card"><strong>{{ bench.bench_name }}</strong><div class="muted">{{ bench.bench_id }}</div><textarea name="note_{{ bench.bench_id }}" style="margin-top:6px">{{ notes.bench_notes.get(bench.bench_id, "") }}</textarea></div>{% endfor %}</div><button type="submit" style="margin-top:10px">Save Bench Notes</button></form>
+<h3 style="margin-top:16px">Order Note</h3>
+<form method="post" action="/notes/orders"><div class="form-grid"><div class="field"><label>Order</label><select name="order_number"><option value="">Select...</option>{% for order in available_orders %}<option value="{{ order.order_number }}">{{ order.order_number }}  -  {{ order.material }}</option>{% endfor %}</select><input name="manual_order_number" placeholder="Or type order" style="margin-top:6px"></div><div class="field"><label>Note</label><textarea name="order_note"></textarea></div><div class="field"><label>&nbsp;</label><button type="submit">Save Note</button></div></div></form>
+</div>
+</details>
+
+<details>
+<summary><div><h2>6. Advanced Overrides</h2><div class="muted">Use only when the Planning Board cannot represent the required change.</div></div><span>Show / Hide</span></summary>
+<div class="section-body">
+<form method="post" action="/override/add"><div class="form-grid">
+<div class="field"><label>Order</label><select name="order_number"><option value="">Select...</option>{% for order in available_orders %}<option value="{{ order.order_number }}">{{ order.order_number }}  -  {{ order.material }}</option>{% endfor %}</select><input name="manual_order_number" placeholder="Or type order" style="margin-top:6px"></div>
+<div class="field"><label>Action</label><select name="override_type"><option value="exclude">Exclude</option><option value="force_bench">Force to Bench</option><option value="force_next">Prioritise on Bench</option></select></div>
+<div class="field"><label>Bench</label><select name="bench_id">{% for bench in benches %}<option value="{{ bench.bench_id }}">{{ bench.bench_id }} - {{ bench.bench_name }}</option>{% endfor %}</select></div>
+<div class="field"><label>&nbsp;</label><button type="submit">Apply Advanced Override</button></div>
+</div></form>
+<div class="panel-actions" style="margin-top:12px"><form method="post" action="/override/clear-all"><button type="submit" class="danger">Clear Advanced Overrides</button></form></div>
+</div>
+</details>
+</div>
+
+<div class="modal-backdrop" id="split-modal">
+<div class="modal">
+<div class="bench-head"><div><h2>Split Order</h2><div class="muted" id="split-label">Select compatible benches.</div></div><button type="button" class="secondary" onclick="closeSplitModal()">Close</button></div>
+<form method="post" action="/split/multi">
+<input type="hidden" name="split_order_number" id="split-order-number">
+<div class="check-grid" style="margin-top:12px">
+{% for bench in benches if bench.is_open == "yes" %}
+<label class="bench-check" data-bench-id="{{ bench.bench_id }}">
+<input type="checkbox" name="split_bench_ids" value="{{ bench.bench_id }}">
+<div><strong>{{ bench.bench_id }} - {{ bench.bench_name }}</strong><div class="muted">{{ display_pool_name(bench.scheduling_pool) }}</div></div>
+</label>
+{% endfor %}
+</div>
+<div class="help" id="split-summary" style="margin-top:10px">Select an order first.</div>
+<div class="panel-actions"><button type="submit" class="success">Create Equal Split</button><button type="button" class="secondary" onclick="closeSplitModal()">Cancel</button></div>
+</form>
+</div>
+</div>
+
+<script id="board-metadata" type="application/json">{{ board_metadata|tojson }}</script>
+<script src="{{ url_for('static', filename='control.js') }}"></script>
+</body>
+</html>

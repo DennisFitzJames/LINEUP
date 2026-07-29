@@ -1,0 +1,8 @@
+bench_id,bench_name,scheduling_pool,available_minutes,used_minutes,remaining_minutes,utilisation_percent,order_count,priority_order_count,australia_order_count,consecutive_same_material_count
+CM01,CSKI/MVKI Bench 1,CSKI_MVKI,475,1259,-784,265.1,2,2,0,0
+CM03,CSKI/MVKI Bench 3,CSKI_MVKI,238,1118,-880,469.7,4,4,0,0
+CM04,CSKI/MVKI Bench 4,CSKI_MVKI,475,1522,-1047,320.4,6,6,0,1
+CM05,CSKI/MVKI Bench 5,CSKI_MVKI,475,1176,-701,247.6,5,5,0,0
+CM06,CSKI/MVKI Bench 6,CSKI_MVKI,475,1285,-810,270.5,6,6,0,0
+LV01,LVPA Bench 1,LVPA,475,2593,-2118,545.9,12,12,1,1
+LV02,LVPA Bench 2,LVPA,475,4123,-3648,868.0,8,8,0,1

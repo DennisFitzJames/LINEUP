@@ -1,0 +1,175 @@
+{
+    "excluded_orders": [],
+    "forced_benches": {},
+    "forced_next": {},
+    "manual_splits": {
+        "200234264291": {
+            "split_mode": "multi",
+            "remaining_quantity": 300,
+            "total_minutes": 1288,
+            "created_at": "2026-07-23 11:13:16",
+            "created_by": "planning_board",
+            "parts": [
+                {
+                    "part_label": "Part A",
+                    "bench_id": "CM04",
+                    "quantity": 150,
+                    "minutes": 644
+                },
+                {
+                    "part_label": "Part B",
+                    "bench_id": "CM05",
+                    "quantity": 150,
+                    "minutes": 644
+                }
+            ]
+        },
+        "200233812329": {
+            "split_mode": "multi",
+            "remaining_quantity": 127,
+            "total_minutes": 675,
+            "created_at": "2026-07-23 14:53:27",
+            "created_by": "planning_board",
+            "parts": [
+                {
+                    "part_label": "Part A",
+                    "bench_id": "CM01",
+                    "quantity": 64,
+                    "minutes": 340
+                },
+                {
+                    "part_label": "Part B",
+                    "bench_id": "CM02",
+                    "quantity": 63,
+                    "minutes": 335
+                }
+            ]
+        },
+        "200234635293": {
+            "split_mode": "multi",
+            "remaining_quantity": 75,
+            "total_minutes": 381,
+            "created_at": "2026-07-24 09:04:54",
+            "created_by": "planning_board",
+            "parts": [
+                {
+                    "part_label": "Part A",
+                    "bench_id": "CM05",
+                    "quantity": 38,
+                    "minutes": 193
+                },
+                {
+                    "part_label": "Part B",
+                    "bench_id": "CM06",
+                    "quantity": 37,
+                    "minutes": 188
+                }
+            ]
+        },
+        "200234476124": {
+            "split_mode": "multi",
+            "remaining_quantity": 100,
+            "total_minutes": 469,
+            "created_at": "2026-07-27 14:31:02",
+            "created_by": "planning_board",
+            "parts": [
+                {
+                    "part_label": "Part A",
+                    "bench_id": "CM03",
+                    "quantity": 50,
+                    "minutes": 235
+                },
+                {
+                    "part_label": "Part B",
+                    "bench_id": "CM05",
+                    "quantity": 50,
+                    "minutes": 234
+                }
+            ]
+        },
+        "200233691661": {
+            "split_mode": "multi",
+            "remaining_quantity": 193,
+            "total_minutes": 732,
+            "created_at": "2026-07-28 09:14:18",
+            "created_by": "planning_board",
+            "parts": [
+                {
+                    "part_label": "Part A",
+                    "bench_id": "CM01",
+                    "quantity": 97,
+                    "minutes": 368
+                },
+                {
+                    "part_label": "Part B",
+                    "bench_id": "CM03",
+                    "quantity": 96,
+                    "minutes": 364
+                }
+            ]
+        },
+        "200233650578": {
+            "split_mode": "multi",
+            "remaining_quantity": 150,
+            "total_minutes": 245,
+            "created_at": "2026-07-28 10:05:20",
+            "created_by": "planning_board",
+            "parts": [
+                {
+                    "part_label": "Part A",
+                    "bench_id": "CM04",
+                    "quantity": 75,
+                    "minutes": 123
+                },
+                {
+                    "part_label": "Part B",
+                    "bench_id": "CM05",
+                    "quantity": 75,
+                    "minutes": 122
+                }
+            ]
+        },
+        "200233142507": {
+            "split_mode": "multi",
+            "remaining_quantity": 213,
+            "total_minutes": 725,
+            "created_at": "2026-07-28 14:20:38",
+            "created_by": "planning_board",
+            "parts": [
+                {
+                    "part_label": "Part A",
+                    "bench_id": "CM04",
+                    "quantity": 107,
+                    "minutes": 364
+                },
+                {
+                    "part_label": "Part B",
+                    "bench_id": "CM05",
+                    "quantity": 106,
+                    "minutes": 361
+                }
+            ]
+        },
+        "200234591299": {
+            "split_mode": "multi",
+            "remaining_quantity": 100,
+            "total_minutes": 469,
+            "created_at": "2026-07-29 09:16:56",
+            "created_by": "planning_board",
+            "parts": [
+                {
+                    "part_label": "Part A",
+                    "bench_id": "CM04",
+                    "quantity": 50,
+                    "minutes": 235
+                },
+                {
+                    "part_label": "Part B",
+                    "bench_id": "CM05",
+                    "quantity": 50,
+                    "minutes": 234
+                }
+            ]
+        }
+    }
+}

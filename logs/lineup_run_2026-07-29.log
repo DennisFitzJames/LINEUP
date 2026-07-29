@@ -1,0 +1,6201 @@
+ 
+=================================== 
+LINEUP background update started 
+29/07/2026  0:00:02.63 
+=================================== 
+[29/07/2026  0:00:02.63] Activating virtual environment... 
+[29/07/2026  0:00:03.31] Step 0 - Marking LINEUP run as started... 
+LINEUP status marked as running.
+[29/07/2026  0:00:03.69] Step 1 - Backing up LINEUP config... 
+
+===================================
+LINEUP Config Backup Complete
+===================================
+Backup folder : C:\LINEUP\backups\2026-07-29_000004
+Files copied  : 4
+Old backups removed: 1
+
+[29/07/2026  0:00:04.09] Step 2 - Running SAP capacity export... 
+COOIS capacities export complete:
+C:\LINEUP\data\raw\COOIS_Capacities_Latest.txt
+[29/07/2026  0:00:29.57] Step 3 - Running SAP production list export... 
+COOIS production list export complete:
+C:\LINEUP\data\raw\COOIS_ProductionList_Latest.txt
+[29/07/2026  0:03:29.42] Step 4 - Running LINEUP processing pipeline... 
+LINEUP
+Starting capacity parser...
+
+
+===================================
+LINEUP Capacity Parser Complete
+===================================
+Input : COOIS_Capacities_Latest.txt
+Output: capacities_clean.csv
+Rows  : 6340
+
+
+===================================
+LINEUP Production Parser Complete
+===================================
+Input : COOIS_ProductionList_Latest.txt
+Output: production_list_clean.csv
+Rows  : 2428
+
+
+===================================
+LINEUP Capacity Summary Complete
+===================================
+Input : capacities_clean.csv
+Output: capacities_order_summary.csv
+Rows  : 987
+
+
+===================================
+LINEUP Merge Complete
+===================================
+Production input : production_list_clean.csv
+Capacity input   : capacities_order_summary.csv
+Output           : master_schedule.csv
+Rows             : 987
+Missing metadata : 0
+
+
+===================================
+LINEUP Scheduling Complete
+===================================
+Scheduled orders : 36
+Overflow orders  : 0
+SAP minutes      : unchanged by default
+Staffing         : explicit overrides only
+Queue stability  : current + one automatic order
+Insights         : assignment reasons and confidence
+
+
+===================================
+LINEUP Dashboard Build Complete
+===================================
+Input       : scheduled_orders.csv
+Output      : C:\LINEUP\output\dashboard.html
+Insights    : assignment reasons and confidence
+Remaining   : SAP versus adjusted
+Utilisation : working-calendar aware
+
+
+===================================
+LINEUP Schedule Report Complete
+===================================
+Bench utilisation: bench_utilisation.csv
+Schedule summary : schedule_summary.csv
+
+
+===================================
+LINEUP Split Recommendations Complete
+===================================
+Recommendations : 0
+Window          : due today or next working day only
+SAP minutes     : used unchanged by default
+Staffing        : explicit overrides only
+Planner work    : live, held, split, forced and board orders excluded
+Output          : split_recommendations.csv
+
+[29/07/2026  0:03:29.93] Step 5 - Marking LINEUP run as successful... 
+LINEUP status marked as successful.
+[29/07/2026  0:03:30.24] Step 6 - Rebuilding dashboard with final status... 
+
+===================================
+LINEUP Dashboard Build Complete
+===================================
+Input       : scheduled_orders.csv
+Output      : C:\LINEUP\output\dashboard.html
+Insights    : assignment reasons and confidence
+Remaining   : SAP versus adjusted
+Utilisation : working-calendar aware
+
+=================================== 
+LINEUP background update finished 
+29/07/2026  0:03:30.58 
+=================================== 
+ 
+=================================== 
+LINEUP background update started 
+29/07/2026  0:15:03.22 
+=================================== 
+[29/07/2026  0:15:03.22] Activating virtual environment... 
+[29/07/2026  0:15:03.74] Step 0 - Marking LINEUP run as started... 
+LINEUP status marked as running.
+[29/07/2026  0:15:04.04] Step 1 - Backing up LINEUP config... 
+
+===================================
+LINEUP Config Backup Complete
+===================================
+Backup folder : C:\LINEUP\backups\2026-07-29_001504
+Files copied  : 4
+Old backups removed: 1
+
+[29/07/2026  0:15:04.42] Step 2 - Running SAP capacity export... 
+COOIS capacities export complete:
+C:\LINEUP\data\raw\COOIS_Capacities_Latest.txt
+[29/07/2026  0:15:29.22] Step 3 - Running SAP production list export... 
+COOIS production list export complete:
+C:\LINEUP\data\raw\COOIS_ProductionList_Latest.txt
+[29/07/2026  0:17:58.52] Step 4 - Running LINEUP processing pipeline... 
+LINEUP
+Starting capacity parser...
+
+
+===================================
+LINEUP Capacity Parser Complete
+===================================
+Input : COOIS_Capacities_Latest.txt
+Output: capacities_clean.csv
+Rows  : 6340
+
+
+===================================
+LINEUP Production Parser Complete
+===================================
+Input : COOIS_ProductionList_Latest.txt
+Output: production_list_clean.csv
+Rows  : 2428
+
+
+===================================
+LINEUP Capacity Summary Complete
+===================================
+Input : capacities_clean.csv
+Output: capacities_order_summary.csv
+Rows  : 987
+
+
+===================================
+LINEUP Merge Complete
+===================================
+Production input : production_list_clean.csv
+Capacity input   : capacities_order_summary.csv
+Output           : master_schedule.csv
+Rows             : 987
+Missing metadata : 0
+
+
+===================================
+LINEUP Scheduling Complete
+===================================
+Scheduled orders : 36
+Overflow orders  : 0
+SAP minutes      : unchanged by default
+Staffing         : explicit overrides only
+Queue stability  : current + one automatic order
+Insights         : assignment reasons and confidence
+
+
+===================================
+LINEUP Dashboard Build Complete
+===================================
+Input       : scheduled_orders.csv
+Output      : C:\LINEUP\output\dashboard.html
+Insights    : assignment reasons and confidence
+Remaining   : SAP versus adjusted
+Utilisation : working-calendar aware
+
+
+===================================
+LINEUP Schedule Report Complete
+===================================
+Bench utilisation: bench_utilisation.csv
+Schedule summary : schedule_summary.csv
+
+
+===================================
+LINEUP Split Recommendations Complete
+===================================
+Recommendations : 0
+Window          : due today or next working day only
+SAP minutes     : used unchanged by default
+Staffing        : explicit overrides only
+Planner work    : live, held, split, forced and board orders excluded
+Output          : split_recommendations.csv
+
+[29/07/2026  0:17:59.01] Step 5 - Marking LINEUP run as successful... 
+LINEUP status marked as successful.
+[29/07/2026  0:17:59.31] Step 6 - Rebuilding dashboard with final status... 
+
+===================================
+LINEUP Dashboard Build Complete
+===================================
+Input       : scheduled_orders.csv
+Output      : C:\LINEUP\output\dashboard.html
+Insights    : assignment reasons and confidence
+Remaining   : SAP versus adjusted
+Utilisation : working-calendar aware
+
+=================================== 
+LINEUP background update finished 
+29/07/2026  0:17:59.63 
+=================================== 
+ 
+=================================== 
+LINEUP background update started 
+29/07/2026  0:30:03.13 
+=================================== 
+[29/07/2026  0:30:03.13] Activating virtual environment... 
+[29/07/2026  0:30:03.65] Step 0 - Marking LINEUP run as started... 
+LINEUP status marked as running.
+[29/07/2026  0:30:03.97] Step 1 - Backing up LINEUP config... 
+
+===================================
+LINEUP Config Backup Complete
+===================================
+Backup folder : C:\LINEUP\backups\2026-07-29_003004
+Files copied  : 4
+Old backups removed: 1
+
+[29/07/2026  0:30:04.33] Step 2 - Running SAP capacity export... 
+COOIS capacities export complete:
+C:\LINEUP\data\raw\COOIS_Capacities_Latest.txt
+[29/07/2026  0:30:28.44] Step 3 - Running SAP production list export... 
+COOIS production list export complete:
+C:\LINEUP\data\raw\COOIS_ProductionList_Latest.txt
+[29/07/2026  0:33:08.50] Step 4 - Running LINEUP processing pipeline... 
+LINEUP
+Starting capacity parser...
+
+
+===================================
+LINEUP Capacity Parser Complete
+===================================
+Input : COOIS_Capacities_Latest.txt
+Output: capacities_clean.csv
+Rows  : 6340
+
+
+===================================
+LINEUP Production Parser Complete
+===================================
+Input : COOIS_ProductionList_Latest.txt
+Output: production_list_clean.csv
+Rows  : 2428
+
+
+===================================
+LINEUP Capacity Summary Complete
+===================================
+Input : capacities_clean.csv
+Output: capacities_order_summary.csv
+Rows  : 987
+
+
+===================================
+LINEUP Merge Complete
+===================================
+Production input : production_list_clean.csv
+Capacity input   : capacities_order_summary.csv
+Output           : master_schedule.csv
+Rows             : 987
+Missing metadata : 0
+
+
+===================================
+LINEUP Scheduling Complete
+===================================
+Scheduled orders : 36
+Overflow orders  : 0
+SAP minutes      : unchanged by default
+Staffing         : explicit overrides only
+Queue stability  : current + one automatic order
+Insights         : assignment reasons and confidence
+
+
+===================================
+LINEUP Dashboard Build Complete
+===================================
+Input       : scheduled_orders.csv
+Output      : C:\LINEUP\output\dashboard.html
+Insights    : assignment reasons and confidence
+Remaining   : SAP versus adjusted
+Utilisation : working-calendar aware
+
+
+===================================
+LINEUP Schedule Report Complete
+===================================
+Bench utilisation: bench_utilisation.csv
+Schedule summary : schedule_summary.csv
+
+
+===================================
+LINEUP Split Recommendations Complete
+===================================
+Recommendations : 0
+Window          : due today or next working day only
+SAP minutes     : used unchanged by default
+Staffing        : explicit overrides only
+Planner work    : live, held, split, forced and board orders excluded
+Output          : split_recommendations.csv
+
+[29/07/2026  0:33:09.02] Step 5 - Marking LINEUP run as successful... 
+LINEUP status marked as successful.
+[29/07/2026  0:33:09.31] Step 6 - Rebuilding dashboard with final status... 
+
+===================================
+LINEUP Dashboard Build Complete
+===================================
+Input       : scheduled_orders.csv
+Output      : C:\LINEUP\output\dashboard.html
+Insights    : assignment reasons and confidence
+Remaining   : SAP versus adjusted
+Utilisation : working-calendar aware
+
+=================================== 
+LINEUP background update finished 
+29/07/2026  0:33:09.64 
+=================================== 
+ 
+=================================== 
+LINEUP background update started 
+29/07/2026  0:45:03.15 
+=================================== 
+[29/07/2026  0:45:03.15] Activating virtual environment... 
+[29/07/2026  0:45:03.66] Step 0 - Marking LINEUP run as started... 
+LINEUP status marked as running.
+[29/07/2026  0:45:03.98] Step 1 - Backing up LINEUP config... 
+
+===================================
+LINEUP Config Backup Complete
+===================================
+Backup folder : C:\LINEUP\backups\2026-07-29_004504
+Files copied  : 4
+Old backups removed: 1
+
+[29/07/2026  0:45:04.33] Step 2 - Running SAP capacity export... 
+COOIS capacities export complete:
+C:\LINEUP\data\raw\COOIS_Capacities_Latest.txt
+[29/07/2026  0:45:28.38] Step 3 - Running SAP production list export... 
+COOIS production list export complete:
+C:\LINEUP\data\raw\COOIS_ProductionList_Latest.txt
+[29/07/2026  0:47:36.49] Step 4 - Running LINEUP processing pipeline... 
+LINEUP
+Starting capacity parser...
+
+
+===================================
+LINEUP Capacity Parser Complete
+===================================
+Input : COOIS_Capacities_Latest.txt
+Output: capacities_clean.csv
+Rows  : 6340
+
+
+===================================
+LINEUP Production Parser Complete
+===================================
+Input : COOIS_ProductionList_Latest.txt
+Output: production_list_clean.csv
+Rows  : 2428
+
+
+===================================
+LINEUP Capacity Summary Complete
+===================================
+Input : capacities_clean.csv
+Output: capacities_order_summary.csv
+Rows  : 987
+
+
+===================================
+LINEUP Merge Complete
+===================================
+Production input : production_list_clean.csv
+Capacity input   : capacities_order_summary.csv
+Output           : master_schedule.csv
+Rows             : 987
+Missing metadata : 0
+
+
+===================================
+LINEUP Scheduling Complete
+===================================
+Scheduled orders : 36
+Overflow orders  : 0
+SAP minutes      : unchanged by default
+Staffing         : explicit overrides only
+Queue stability  : current + one automatic order
+Insights         : assignment reasons and confidence
+
+
+===================================
+LINEUP Dashboard Build Complete
+===================================
+Input       : scheduled_orders.csv
+Output      : C:\LINEUP\output\dashboard.html
+Insights    : assignment reasons and confidence
+Remaining   : SAP versus adjusted
+Utilisation : working-calendar aware
+
+
+===================================
+LINEUP Schedule Report Complete
+===================================
+Bench utilisation: bench_utilisation.csv
+Schedule summary : schedule_summary.csv
+
+
+===================================
+LINEUP Split Recommendations Complete
+===================================
+Recommendations : 0
+Window          : due today or next working day only
+SAP minutes     : used unchanged by default
+Staffing        : explicit overrides only
+Planner work    : live, held, split, forced and board orders excluded
+Output          : split_recommendations.csv
+
+[29/07/2026  0:47:36.97] Step 5 - Marking LINEUP run as successful... 
+LINEUP status marked as successful.
+[29/07/2026  0:47:37.28] Step 6 - Rebuilding dashboard with final status... 
+
+===================================
+LINEUP Dashboard Build Complete
+===================================
+Input       : scheduled_orders.csv
+Output      : C:\LINEUP\output\dashboard.html
+Insights    : assignment reasons and confidence
+Remaining   : SAP versus adjusted
+Utilisation : working-calendar aware
+
+=================================== 
+LINEUP background update finished 
+29/07/2026  0:47:37.61 
+=================================== 
+ 
+=================================== 
+LINEUP background update started 
+29/07/2026  1:00:05.14 
+=================================== 
+[29/07/2026  1:00:05.14] Activating virtual environment... 
+[29/07/2026  1:00:05.66] Step 0 - Marking LINEUP run as started... 
+LINEUP status marked as running.
+[29/07/2026  1:00:05.98] Step 1 - Backing up LINEUP config... 
+
+===================================
+LINEUP Config Backup Complete
+===================================
+Backup folder : C:\LINEUP\backups\2026-07-29_010006
+Files copied  : 4
+Old backups removed: 1
+
+[29/07/2026  1:00:06.34] Step 2 - Running SAP capacity export... 
+COOIS capacities export complete:
+C:\LINEUP\data\raw\COOIS_Capacities_Latest.txt
+[29/07/2026  1:00:32.76] Step 3 - Running SAP production list export... 
+COOIS production list export complete:
+C:\LINEUP\data\raw\COOIS_ProductionList_Latest.txt
+[29/07/2026  1:03:40.43] Step 4 - Running LINEUP processing pipeline... 
+LINEUP
+Starting capacity parser...
+
+
+===================================
+LINEUP Capacity Parser Complete
+===================================
+Input : COOIS_Capacities_Latest.txt
+Output: capacities_clean.csv
+Rows  : 6340
+
+
+===================================
+LINEUP Production Parser Complete
+===================================
+Input : COOIS_ProductionList_Latest.txt
+Output: production_list_clean.csv
+Rows  : 2428
+
+
+===================================
+LINEUP Capacity Summary Complete
+===================================
+Input : capacities_clean.csv
+Output: capacities_order_summary.csv
+Rows  : 987
+
+
+===================================
+LINEUP Merge Complete
+===================================
+Production input : production_list_clean.csv
+Capacity input   : capacities_order_summary.csv
+Output           : master_schedule.csv
+Rows             : 987
+Missing metadata : 0
+
+
+===================================
+LINEUP Scheduling Complete
+===================================
+Scheduled orders : 36
+Overflow orders  : 0
+SAP minutes      : unchanged by default
+Staffing         : explicit overrides only
+Queue stability  : current + one automatic order
+Insights         : assignment reasons and confidence
+
+
+===================================
+LINEUP Dashboard Build Complete
+===================================
+Input       : scheduled_orders.csv
+Output      : C:\LINEUP\output\dashboard.html
+Insights    : assignment reasons and confidence
+Remaining   : SAP versus adjusted
+Utilisation : working-calendar aware
+
+
+===================================
+LINEUP Schedule Report Complete
+===================================
+Bench utilisation: bench_utilisation.csv
+Schedule summary : schedule_summary.csv
+
+
+===================================
+LINEUP Split Recommendations Complete
+===================================
+Recommendations : 0
+Window          : due today or next working day only
+SAP minutes     : used unchanged by default
+Staffing        : explicit overrides only
+Planner work    : live, held, split, forced and board orders excluded
+Output          : split_recommendations.csv
+
+[29/07/2026  1:03:40.99] Step 5 - Marking LINEUP run as successful... 
+LINEUP status marked as successful.
+[29/07/2026  1:03:41.30] Step 6 - Rebuilding dashboard with final status... 
+
+===================================
+LINEUP Dashboard Build Complete
+===================================
+Input       : scheduled_orders.csv
+Output      : C:\LINEUP\output\dashboard.html
+Insights    : assignment reasons and confidence
+Remaining   : SAP versus adjusted
+Utilisation : working-calendar aware
+
+=================================== 
+LINEUP background update finished 
+29/07/2026  1:03:41.67 
+=================================== 
+ 
+=================================== 
+LINEUP background update started 
+29/07/2026  1:15:03.24 
+=================================== 
+[29/07/2026  1:15:03.25] Activating virtual environment... 
+[29/07/2026  1:15:03.75] Step 0 - Marking LINEUP run as started... 
+LINEUP status marked as running.
+[29/07/2026  1:15:04.08] Step 1 - Backing up LINEUP config... 
+
+===================================
+LINEUP Config Backup Complete
+===================================
+Backup folder : C:\LINEUP\backups\2026-07-29_011504
+Files copied  : 4
+Old backups removed: 1
+
+[29/07/2026  1:15:04.45] Step 2 - Running SAP capacity export... 
+COOIS capacities export complete:
+C:\LINEUP\data\raw\COOIS_Capacities_Latest.txt
+[29/07/2026  1:15:29.31] Step 3 - Running SAP production list export... 
+COOIS production list export complete:
+C:\LINEUP\data\raw\COOIS_ProductionList_Latest.txt
+[29/07/2026  1:18:19.74] Step 4 - Running LINEUP processing pipeline... 
+LINEUP
+Starting capacity parser...
+
+
+===================================
+LINEUP Capacity Parser Complete
+===================================
+Input : COOIS_Capacities_Latest.txt
+Output: capacities_clean.csv
+Rows  : 6340
+
+
+===================================
+LINEUP Production Parser Complete
+===================================
+Input : COOIS_ProductionList_Latest.txt
+Output: production_list_clean.csv
+Rows  : 2428
+
+
+===================================
+LINEUP Capacity Summary Complete
+===================================
+Input : capacities_clean.csv
+Output: capacities_order_summary.csv
+Rows  : 987
+
+
+===================================
+LINEUP Merge Complete
+===================================
+Production input : production_list_clean.csv
+Capacity input   : capacities_order_summary.csv
+Output           : master_schedule.csv
+Rows             : 987
+Missing metadata : 0
+
+
+===================================
+LINEUP Scheduling Complete
+===================================
+Scheduled orders : 36
+Overflow orders  : 0
+SAP minutes      : unchanged by default
+Staffing         : explicit overrides only
+Queue stability  : current + one automatic order
+Insights         : assignment reasons and confidence
+
+
+===================================
+LINEUP Dashboard Build Complete
+===================================
+Input       : scheduled_orders.csv
+Output      : C:\LINEUP\output\dashboard.html
+Insights    : assignment reasons and confidence
+Remaining   : SAP versus adjusted
+Utilisation : working-calendar aware
+
+
+===================================
+LINEUP Schedule Report Complete
+===================================
+Bench utilisation: bench_utilisation.csv
+Schedule summary : schedule_summary.csv
+
+
+===================================
+LINEUP Split Recommendations Complete
+===================================
+Recommendations : 0
+Window          : due today or next working day only
+SAP minutes     : used unchanged by default
+Staffing        : explicit overrides only
+Planner work    : live, held, split, forced and board orders excluded
+Output          : split_recommendations.csv
+
+[29/07/2026  1:18:20.26] Step 5 - Marking LINEUP run as successful... 
+LINEUP status marked as successful.
+[29/07/2026  1:18:20.57] Step 6 - Rebuilding dashboard with final status... 
+
+===================================
+LINEUP Dashboard Build Complete
+===================================
+Input       : scheduled_orders.csv
+Output      : C:\LINEUP\output\dashboard.html
+Insights    : assignment reasons and confidence
+Remaining   : SAP versus adjusted
+Utilisation : working-calendar aware
+
+=================================== 
+LINEUP background update finished 
+29/07/2026  1:18:20.92 
+=================================== 
+ 
+=================================== 
+LINEUP background update started 
+29/07/2026  1:30:03.19 
+=================================== 
+[29/07/2026  1:30:03.21] Activating virtual environment... 
+[29/07/2026  1:30:03.76] Step 0 - Marking LINEUP run as started... 
+LINEUP status marked as running.
+[29/07/2026  1:30:04.13] Step 1 - Backing up LINEUP config... 
+
+===================================
+LINEUP Config Backup Complete
+===================================
+Backup folder : C:\LINEUP\backups\2026-07-29_013004
+Files copied  : 4
+Old backups removed: 1
+
+[29/07/2026  1:30:04.49] Step 2 - Running SAP capacity export... 
+COOIS capacities export complete:
+C:\LINEUP\data\raw\COOIS_Capacities_Latest.txt
+[29/07/2026  1:30:29.28] Step 3 - Running SAP production list export... 
+COOIS production list export complete:
+C:\LINEUP\data\raw\COOIS_ProductionList_Latest.txt
+[29/07/2026  1:33:26.40] Step 4 - Running LINEUP processing pipeline... 
+LINEUP
+Starting capacity parser...
+
+
+===================================
+LINEUP Capacity Parser Complete
+===================================
+Input : COOIS_Capacities_Latest.txt
+Output: capacities_clean.csv
+Rows  : 6340
+
+
+===================================
+LINEUP Production Parser Complete
+===================================
+Input : COOIS_ProductionList_Latest.txt
+Output: production_list_clean.csv
+Rows  : 2428
+
+
+===================================
+LINEUP Capacity Summary Complete
+===================================
+Input : capacities_clean.csv
+Output: capacities_order_summary.csv
+Rows  : 987
+
+
+===================================
+LINEUP Merge Complete
+===================================
+Production input : production_list_clean.csv
+Capacity input   : capacities_order_summary.csv
+Output           : master_schedule.csv
+Rows             : 987
+Missing metadata : 0
+
+
+===================================
+LINEUP Scheduling Complete
+===================================
+Scheduled orders : 36
+Overflow orders  : 0
+SAP minutes      : unchanged by default
+Staffing         : explicit overrides only
+Queue stability  : current + one automatic order
+Insights         : assignment reasons and confidence
+
+
+===================================
+LINEUP Dashboard Build Complete
+===================================
+Input       : scheduled_orders.csv
+Output      : C:\LINEUP\output\dashboard.html
+Insights    : assignment reasons and confidence
+Remaining   : SAP versus adjusted
+Utilisation : working-calendar aware
+
+
+===================================
+LINEUP Schedule Report Complete
+===================================
+Bench utilisation: bench_utilisation.csv
+Schedule summary : schedule_summary.csv
+
+
+===================================
+LINEUP Split Recommendations Complete
+===================================
+Recommendations : 0
+Window          : due today or next working day only
+SAP minutes     : used unchanged by default
+Staffing        : explicit overrides only
+Planner work    : live, held, split, forced and board orders excluded
+Output          : split_recommendations.csv
+
+[29/07/2026  1:33:26.92] Step 5 - Marking LINEUP run as successful... 
+LINEUP status marked as successful.
+[29/07/2026  1:33:27.23] Step 6 - Rebuilding dashboard with final status... 
+
+===================================
+LINEUP Dashboard Build Complete
+===================================
+Input       : scheduled_orders.csv
+Output      : C:\LINEUP\output\dashboard.html
+Insights    : assignment reasons and confidence
+Remaining   : SAP versus adjusted
+Utilisation : working-calendar aware
+
+=================================== 
+LINEUP background update finished 
+29/07/2026  1:33:27.59 
+=================================== 
+ 
+=================================== 
+LINEUP background update started 
+29/07/2026  1:45:03.13 
+=================================== 
+[29/07/2026  1:45:03.14] Activating virtual environment... 
+[29/07/2026  1:45:03.64] Step 0 - Marking LINEUP run as started... 
+LINEUP status marked as running.
+[29/07/2026  1:45:03.96] Step 1 - Backing up LINEUP config... 
+
+===================================
+LINEUP Config Backup Complete
+===================================
+Backup folder : C:\LINEUP\backups\2026-07-29_014504
+Files copied  : 4
+Old backups removed: 1
+
+[29/07/2026  1:45:04.37] Step 2 - Running SAP capacity export... 
+COOIS capacities export complete:
+C:\LINEUP\data\raw\COOIS_Capacities_Latest.txt
+[29/07/2026  1:45:28.75] Step 3 - Running SAP production list export... 
+COOIS production list export complete:
+C:\LINEUP\data\raw\COOIS_ProductionList_Latest.txt
+[29/07/2026  1:48:04.33] Step 4 - Running LINEUP processing pipeline... 
+LINEUP
+Starting capacity parser...
+
+
+===================================
+LINEUP Capacity Parser Complete
+===================================
+Input : COOIS_Capacities_Latest.txt
+Output: capacities_clean.csv
+Rows  : 6340
+
+
+===================================
+LINEUP Production Parser Complete
+===================================
+Input : COOIS_ProductionList_Latest.txt
+Output: production_list_clean.csv
+Rows  : 2428
+
+
+===================================
+LINEUP Capacity Summary Complete
+===================================
+Input : capacities_clean.csv
+Output: capacities_order_summary.csv
+Rows  : 987
+
+
+===================================
+LINEUP Merge Complete
+===================================
+Production input : production_list_clean.csv
+Capacity input   : capacities_order_summary.csv
+Output           : master_schedule.csv
+Rows             : 987
+Missing metadata : 0
+
+
+===================================
+LINEUP Scheduling Complete
+===================================
+Scheduled orders : 36
+Overflow orders  : 0
+SAP minutes      : unchanged by default
+Staffing         : explicit overrides only
+Queue stability  : current + one automatic order
+Insights         : assignment reasons and confidence
+
+
+===================================
+LINEUP Dashboard Build Complete
+===================================
+Input       : scheduled_orders.csv
+Output      : C:\LINEUP\output\dashboard.html
+Insights    : assignment reasons and confidence
+Remaining   : SAP versus adjusted
+Utilisation : working-calendar aware
+
+
+===================================
+LINEUP Schedule Report Complete
+===================================
+Bench utilisation: bench_utilisation.csv
+Schedule summary : schedule_summary.csv
+
+
+===================================
+LINEUP Split Recommendations Complete
+===================================
+Recommendations : 0
+Window          : due today or next working day only
+SAP minutes     : used unchanged by default
+Staffing        : explicit overrides only
+Planner work    : live, held, split, forced and board orders excluded
+Output          : split_recommendations.csv
+
+[29/07/2026  1:48:04.82] Step 5 - Marking LINEUP run as successful... 
+LINEUP status marked as successful.
+[29/07/2026  1:48:05.12] Step 6 - Rebuilding dashboard with final status... 
+
+===================================
+LINEUP Dashboard Build Complete
+===================================
+Input       : scheduled_orders.csv
+Output      : C:\LINEUP\output\dashboard.html
+Insights    : assignment reasons and confidence
+Remaining   : SAP versus adjusted
+Utilisation : working-calendar aware
+
+=================================== 
+LINEUP background update finished 
+29/07/2026  1:48:05.44 
+=================================== 
+ 
+=================================== 
+LINEUP background update started 
+29/07/2026  2:00:03.22 
+=================================== 
+[29/07/2026  2:00:03.22] Activating virtual environment... 
+[29/07/2026  2:00:03.73] Step 0 - Marking LINEUP run as started... 
+LINEUP status marked as running.
+[29/07/2026  2:00:04.05] Step 1 - Backing up LINEUP config... 
+
+===================================
+LINEUP Config Backup Complete
+===================================
+Backup folder : C:\LINEUP\backups\2026-07-29_020004
+Files copied  : 4
+Old backups removed: 1
+
+[29/07/2026  2:00:04.41] Step 2 - Running SAP capacity export... 
+COOIS capacities export complete:
+C:\LINEUP\data\raw\COOIS_Capacities_Latest.txt
+[29/07/2026  2:00:30.26] Step 3 - Running SAP production list export... 
+COOIS production list export complete:
+C:\LINEUP\data\raw\COOIS_ProductionList_Latest.txt
+[29/07/2026  2:03:34.88] Step 4 - Running LINEUP processing pipeline... 
+LINEUP
+Starting capacity parser...
+
+
+===================================
+LINEUP Capacity Parser Complete
+===================================
+Input : COOIS_Capacities_Latest.txt
+Output: capacities_clean.csv
+Rows  : 6340
+
+
+===================================
+LINEUP Production Parser Complete
+===================================
+Input : COOIS_ProductionList_Latest.txt
+Output: production_list_clean.csv
+Rows  : 2428
+
+
+===================================
+LINEUP Capacity Summary Complete
+===================================
+Input : capacities_clean.csv
+Output: capacities_order_summary.csv
+Rows  : 987
+
+
+===================================
+LINEUP Merge Complete
+===================================
+Production input : production_list_clean.csv
+Capacity input   : capacities_order_summary.csv
+Output           : master_schedule.csv
+Rows             : 987
+Missing metadata : 0
+
+
+===================================
+LINEUP Scheduling Complete
+===================================
+Scheduled orders : 36
+Overflow orders  : 0
+SAP minutes      : unchanged by default
+Staffing         : explicit overrides only
+Queue stability  : current + one automatic order
+Insights         : assignment reasons and confidence
+
+
+===================================
+LINEUP Dashboard Build Complete
+===================================
+Input       : scheduled_orders.csv
+Output      : C:\LINEUP\output\dashboard.html
+Insights    : assignment reasons and confidence
+Remaining   : SAP versus adjusted
+Utilisation : working-calendar aware
+
+
+===================================
+LINEUP Schedule Report Complete
+===================================
+Bench utilisation: bench_utilisation.csv
+Schedule summary : schedule_summary.csv
+
+
+===================================
+LINEUP Split Recommendations Complete
+===================================
+Recommendations : 0
+Window          : due today or next working day only
+SAP minutes     : used unchanged by default
+Staffing        : explicit overrides only
+Planner work    : live, held, split, forced and board orders excluded
+Output          : split_recommendations.csv
+
+[29/07/2026  2:03:35.35] Step 5 - Marking LINEUP run as successful... 
+LINEUP status marked as successful.
+[29/07/2026  2:03:35.68] Step 6 - Rebuilding dashboard with final status... 
+
+===================================
+LINEUP Dashboard Build Complete
+===================================
+Input       : scheduled_orders.csv
+Output      : C:\LINEUP\output\dashboard.html
+Insights    : assignment reasons and confidence
+Remaining   : SAP versus adjusted
+Utilisation : working-calendar aware
+
+=================================== 
+LINEUP background update finished 
+29/07/2026  2:03:36.01 
+=================================== 
+ 
+=================================== 
+LINEUP background update started 
+29/07/2026  2:15:04.31 
+=================================== 
+[29/07/2026  2:15:04.31] Activating virtual environment... 
+[29/07/2026  2:15:04.82] Step 0 - Marking LINEUP run as started... 
+LINEUP status marked as running.
+[29/07/2026  2:15:05.12] Step 1 - Backing up LINEUP config... 
+
+===================================
+LINEUP Config Backup Complete
+===================================
+Backup folder : C:\LINEUP\backups\2026-07-29_021505
+Files copied  : 4
+Old backups removed: 1
+
+[29/07/2026  2:15:05.46] Step 2 - Running SAP capacity export... 
+COOIS capacities export complete:
+C:\LINEUP\data\raw\COOIS_Capacities_Latest.txt
+[29/07/2026  2:15:29.69] Step 3 - Running SAP production list export... 
+COOIS production list export complete:
+C:\LINEUP\data\raw\COOIS_ProductionList_Latest.txt
+[29/07/2026  2:17:55.85] Step 4 - Running LINEUP processing pipeline... 
+LINEUP
+Starting capacity parser...
+
+
+===================================
+LINEUP Capacity Parser Complete
+===================================
+Input : COOIS_Capacities_Latest.txt
+Output: capacities_clean.csv
+Rows  : 6340
+
+
+===================================
+LINEUP Production Parser Complete
+===================================
+Input : COOIS_ProductionList_Latest.txt
+Output: production_list_clean.csv
+Rows  : 2428
+
+
+===================================
+LINEUP Capacity Summary Complete
+===================================
+Input : capacities_clean.csv
+Output: capacities_order_summary.csv
+Rows  : 987
+
+
+===================================
+LINEUP Merge Complete
+===================================
+Production input : production_list_clean.csv
+Capacity input   : capacities_order_summary.csv
+Output           : master_schedule.csv
+Rows             : 987
+Missing metadata : 0
+
+
+===================================
+LINEUP Scheduling Complete
+===================================
+Scheduled orders : 36
+Overflow orders  : 0
+SAP minutes      : unchanged by default
+Staffing         : explicit overrides only
+Queue stability  : current + one automatic order
+Insights         : assignment reasons and confidence
+
+
+===================================
+LINEUP Dashboard Build Complete
+===================================
+Input       : scheduled_orders.csv
+Output      : C:\LINEUP\output\dashboard.html
+Insights    : assignment reasons and confidence
+Remaining   : SAP versus adjusted
+Utilisation : working-calendar aware
+
+
+===================================
+LINEUP Schedule Report Complete
+===================================
+Bench utilisation: bench_utilisation.csv
+Schedule summary : schedule_summary.csv
+
+
+===================================
+LINEUP Split Recommendations Complete
+===================================
+Recommendations : 0
+Window          : due today or next working day only
+SAP minutes     : used unchanged by default
+Staffing        : explicit overrides only
+Planner work    : live, held, split, forced and board orders excluded
+Output          : split_recommendations.csv
+
+[29/07/2026  2:17:56.32] Step 5 - Marking LINEUP run as successful... 
+LINEUP status marked as successful.
+[29/07/2026  2:17:56.63] Step 6 - Rebuilding dashboard with final status... 
+
+===================================
+LINEUP Dashboard Build Complete
+===================================
+Input       : scheduled_orders.csv
+Output      : C:\LINEUP\output\dashboard.html
+Insights    : assignment reasons and confidence
+Remaining   : SAP versus adjusted
+Utilisation : working-calendar aware
+
+=================================== 
+LINEUP background update finished 
+29/07/2026  2:17:56.95 
+=================================== 
+ 
+=================================== 
+LINEUP background update started 
+29/07/2026  2:30:03.61 
+=================================== 
+[29/07/2026  2:30:03.61] Activating virtual environment... 
+[29/07/2026  2:30:04.26] Step 0 - Marking LINEUP run as started... 
+LINEUP status marked as running.
+[29/07/2026  2:30:04.58] Step 1 - Backing up LINEUP config... 
+
+===================================
+LINEUP Config Backup Complete
+===================================
+Backup folder : C:\LINEUP\backups\2026-07-29_023004
+Files copied  : 4
+Old backups removed: 1
+
+[29/07/2026  2:30:04.95] Step 2 - Running SAP capacity export... 
+COOIS capacities export complete:
+C:\LINEUP\data\raw\COOIS_Capacities_Latest.txt
+[29/07/2026  2:30:30.81] Step 3 - Running SAP production list export... 
+COOIS production list export complete:
+C:\LINEUP\data\raw\COOIS_ProductionList_Latest.txt
+[29/07/2026  2:33:14.35] Step 4 - Running LINEUP processing pipeline... 
+LINEUP
+Starting capacity parser...
+
+
+===================================
+LINEUP Capacity Parser Complete
+===================================
+Input : COOIS_Capacities_Latest.txt
+Output: capacities_clean.csv
+Rows  : 6340
+
+
+===================================
+LINEUP Production Parser Complete
+===================================
+Input : COOIS_ProductionList_Latest.txt
+Output: production_list_clean.csv
+Rows  : 2428
+
+
+===================================
+LINEUP Capacity Summary Complete
+===================================
+Input : capacities_clean.csv
+Output: capacities_order_summary.csv
+Rows  : 987
+
+
+===================================
+LINEUP Merge Complete
+===================================
+Production input : production_list_clean.csv
+Capacity input   : capacities_order_summary.csv
+Output           : master_schedule.csv
+Rows             : 987
+Missing metadata : 0
+
+
+===================================
+LINEUP Scheduling Complete
+===================================
+Scheduled orders : 36
+Overflow orders  : 0
+SAP minutes      : unchanged by default
+Staffing         : explicit overrides only
+Queue stability  : current + one automatic order
+Insights         : assignment reasons and confidence
+
+
+===================================
+LINEUP Dashboard Build Complete
+===================================
+Input       : scheduled_orders.csv
+Output      : C:\LINEUP\output\dashboard.html
+Insights    : assignment reasons and confidence
+Remaining   : SAP versus adjusted
+Utilisation : working-calendar aware
+
+
+===================================
+LINEUP Schedule Report Complete
+===================================
+Bench utilisation: bench_utilisation.csv
+Schedule summary : schedule_summary.csv
+
+
+===================================
+LINEUP Split Recommendations Complete
+===================================
+Recommendations : 0
+Window          : due today or next working day only
+SAP minutes     : used unchanged by default
+Staffing        : explicit overrides only
+Planner work    : live, held, split, forced and board orders excluded
+Output          : split_recommendations.csv
+
+[29/07/2026  2:33:14.84] Step 5 - Marking LINEUP run as successful... 
+LINEUP status marked as successful.
+[29/07/2026  2:33:15.15] Step 6 - Rebuilding dashboard with final status... 
+
+===================================
+LINEUP Dashboard Build Complete
+===================================
+Input       : scheduled_orders.csv
+Output      : C:\LINEUP\output\dashboard.html
+Insights    : assignment reasons and confidence
+Remaining   : SAP versus adjusted
+Utilisation : working-calendar aware
+
+=================================== 
+LINEUP background update finished 
+29/07/2026  2:33:15.51 
+=================================== 
+ 
+=================================== 
+LINEUP background update started 
+29/07/2026  2:45:03.11 
+=================================== 
+[29/07/2026  2:45:03.11] Activating virtual environment... 
+[29/07/2026  2:45:03.62] Step 0 - Marking LINEUP run as started... 
+LINEUP status marked as running.
+[29/07/2026  2:45:03.94] Step 1 - Backing up LINEUP config... 
+
+===================================
+LINEUP Config Backup Complete
+===================================
+Backup folder : C:\LINEUP\backups\2026-07-29_024504
+Files copied  : 4
+Old backups removed: 1
+
+[29/07/2026  2:45:04.27] Step 2 - Running SAP capacity export... 
+COOIS capacities export complete:
+C:\LINEUP\data\raw\COOIS_Capacities_Latest.txt
+[29/07/2026  2:45:30.23] Step 3 - Running SAP production list export... 
+COOIS production list export complete:
+C:\LINEUP\data\raw\COOIS_ProductionList_Latest.txt
+[29/07/2026  2:47:37.27] Step 4 - Running LINEUP processing pipeline... 
+LINEUP
+Starting capacity parser...
+
+
+===================================
+LINEUP Capacity Parser Complete
+===================================
+Input : COOIS_Capacities_Latest.txt
+Output: capacities_clean.csv
+Rows  : 6340
+
+
+===================================
+LINEUP Production Parser Complete
+===================================
+Input : COOIS_ProductionList_Latest.txt
+Output: production_list_clean.csv
+Rows  : 2428
+
+
+===================================
+LINEUP Capacity Summary Complete
+===================================
+Input : capacities_clean.csv
+Output: capacities_order_summary.csv
+Rows  : 987
+
+
+===================================
+LINEUP Merge Complete
+===================================
+Production input : production_list_clean.csv
+Capacity input   : capacities_order_summary.csv
+Output           : master_schedule.csv
+Rows             : 987
+Missing metadata : 0
+
+
+===================================
+LINEUP Scheduling Complete
+===================================
+Scheduled orders : 36
+Overflow orders  : 0
+SAP minutes      : unchanged by default
+Staffing         : explicit overrides only
+Queue stability  : current + one automatic order
+Insights         : assignment reasons and confidence
+
+
+===================================
+LINEUP Dashboard Build Complete
+===================================
+Input       : scheduled_orders.csv
+Output      : C:\LINEUP\output\dashboard.html
+Insights    : assignment reasons and confidence
+Remaining   : SAP versus adjusted
+Utilisation : working-calendar aware
+
+
+===================================
+LINEUP Schedule Report Complete
+===================================
+Bench utilisation: bench_utilisation.csv
+Schedule summary : schedule_summary.csv
+
+
+===================================
+LINEUP Split Recommendations Complete
+===================================
+Recommendations : 0
+Window          : due today or next working day only
+SAP minutes     : used unchanged by default
+Staffing        : explicit overrides only
+Planner work    : live, held, split, forced and board orders excluded
+Output          : split_recommendations.csv
+
+[29/07/2026  2:47:37.79] Step 5 - Marking LINEUP run as successful... 
+LINEUP status marked as successful.
+[29/07/2026  2:47:38.11] Step 6 - Rebuilding dashboard with final status... 
+
+===================================
+LINEUP Dashboard Build Complete
+===================================
+Input       : scheduled_orders.csv
+Output      : C:\LINEUP\output\dashboard.html
+Insights    : assignment reasons and confidence
+Remaining   : SAP versus adjusted
+Utilisation : working-calendar aware
+
+=================================== 
+LINEUP background update finished 
+29/07/2026  2:47:38.44 
+=================================== 
+ 
+=================================== 
+LINEUP background update started 
+29/07/2026  3:00:03.24 
+=================================== 
+[29/07/2026  3:00:03.24] Activating virtual environment... 
+[29/07/2026  3:00:03.78] Step 0 - Marking LINEUP run as started... 
+LINEUP status marked as running.
+[29/07/2026  3:00:04.20] Step 1 - Backing up LINEUP config... 
+
+===================================
+LINEUP Config Backup Complete
+===================================
+Backup folder : C:\LINEUP\backups\2026-07-29_030004
+Files copied  : 4
+Old backups removed: 1
+
+[29/07/2026  3:00:04.55] Step 2 - Running SAP capacity export... 
+COOIS capacities export complete:
+C:\LINEUP\data\raw\COOIS_Capacities_Latest.txt
+[29/07/2026  3:00:30.00] Step 3 - Running SAP production list export... 
+COOIS production list export complete:
+C:\LINEUP\data\raw\COOIS_ProductionList_Latest.txt
+[29/07/2026  3:03:59.05] Step 4 - Running LINEUP processing pipeline... 
+LINEUP
+Starting capacity parser...
+
+
+===================================
+LINEUP Capacity Parser Complete
+===================================
+Input : COOIS_Capacities_Latest.txt
+Output: capacities_clean.csv
+Rows  : 6340
+
+
+===================================
+LINEUP Production Parser Complete
+===================================
+Input : COOIS_ProductionList_Latest.txt
+Output: production_list_clean.csv
+Rows  : 2428
+
+
+===================================
+LINEUP Capacity Summary Complete
+===================================
+Input : capacities_clean.csv
+Output: capacities_order_summary.csv
+Rows  : 987
+
+
+===================================
+LINEUP Merge Complete
+===================================
+Production input : production_list_clean.csv
+Capacity input   : capacities_order_summary.csv
+Output           : master_schedule.csv
+Rows             : 987
+Missing metadata : 0
+
+
+===================================
+LINEUP Scheduling Complete
+===================================
+Scheduled orders : 36
+Overflow orders  : 0
+SAP minutes      : unchanged by default
+Staffing         : explicit overrides only
+Queue stability  : current + one automatic order
+Insights         : assignment reasons and confidence
+
+
+===================================
+LINEUP Dashboard Build Complete
+===================================
+Input       : scheduled_orders.csv
+Output      : C:\LINEUP\output\dashboard.html
+Insights    : assignment reasons and confidence
+Remaining   : SAP versus adjusted
+Utilisation : working-calendar aware
+
+
+===================================
+LINEUP Schedule Report Complete
+===================================
+Bench utilisation: bench_utilisation.csv
+Schedule summary : schedule_summary.csv
+
+
+===================================
+LINEUP Split Recommendations Complete
+===================================
+Recommendations : 0
+Window          : due today or next working day only
+SAP minutes     : used unchanged by default
+Staffing        : explicit overrides only
+Planner work    : live, held, split, forced and board orders excluded
+Output          : split_recommendations.csv
+
+[29/07/2026  3:03:59.56] Step 5 - Marking LINEUP run as successful... 
+LINEUP status marked as successful.
+[29/07/2026  3:03:59.87] Step 6 - Rebuilding dashboard with final status... 
+
+===================================
+LINEUP Dashboard Build Complete
+===================================
+Input       : scheduled_orders.csv
+Output      : C:\LINEUP\output\dashboard.html
+Insights    : assignment reasons and confidence
+Remaining   : SAP versus adjusted
+Utilisation : working-calendar aware
+
+=================================== 
+LINEUP background update finished 
+29/07/2026  3:04:00.21 
+=================================== 
+ 
+=================================== 
+LINEUP background update started 
+29/07/2026  3:15:03.18 
+=================================== 
+[29/07/2026  3:15:03.18] Activating virtual environment... 
+[29/07/2026  3:15:03.68] Step 0 - Marking LINEUP run as started... 
+LINEUP status marked as running.
+[29/07/2026  3:15:03.99] Step 1 - Backing up LINEUP config... 
+
+===================================
+LINEUP Config Backup Complete
+===================================
+Backup folder : C:\LINEUP\backups\2026-07-29_031504
+Files copied  : 4
+Old backups removed: 1
+
+[29/07/2026  3:15:04.34] Step 2 - Running SAP capacity export... 
+COOIS capacities export complete:
+C:\LINEUP\data\raw\COOIS_Capacities_Latest.txt
+[29/07/2026  3:15:31.47] Step 3 - Running SAP production list export... 
+COOIS production list export complete:
+C:\LINEUP\data\raw\COOIS_ProductionList_Latest.txt
+[29/07/2026  3:18:00.95] Step 4 - Running LINEUP processing pipeline... 
+LINEUP
+Starting capacity parser...
+
+
+===================================
+LINEUP Capacity Parser Complete
+===================================
+Input : COOIS_Capacities_Latest.txt
+Output: capacities_clean.csv
+Rows  : 6340
+
+
+===================================
+LINEUP Production Parser Complete
+===================================
+Input : COOIS_ProductionList_Latest.txt
+Output: production_list_clean.csv
+Rows  : 2428
+
+
+===================================
+LINEUP Capacity Summary Complete
+===================================
+Input : capacities_clean.csv
+Output: capacities_order_summary.csv
+Rows  : 987
+
+
+===================================
+LINEUP Merge Complete
+===================================
+Production input : production_list_clean.csv
+Capacity input   : capacities_order_summary.csv
+Output           : master_schedule.csv
+Rows             : 987
+Missing metadata : 0
+
+
+===================================
+LINEUP Scheduling Complete
+===================================
+Scheduled orders : 36
+Overflow orders  : 0
+SAP minutes      : unchanged by default
+Staffing         : explicit overrides only
+Queue stability  : current + one automatic order
+Insights         : assignment reasons and confidence
+
+
+===================================
+LINEUP Dashboard Build Complete
+===================================
+Input       : scheduled_orders.csv
+Output      : C:\LINEUP\output\dashboard.html
+Insights    : assignment reasons and confidence
+Remaining   : SAP versus adjusted
+Utilisation : working-calendar aware
+
+
+===================================
+LINEUP Schedule Report Complete
+===================================
+Bench utilisation: bench_utilisation.csv
+Schedule summary : schedule_summary.csv
+
+
+===================================
+LINEUP Split Recommendations Complete
+===================================
+Recommendations : 0
+Window          : due today or next working day only
+SAP minutes     : used unchanged by default
+Staffing        : explicit overrides only
+Planner work    : live, held, split, forced and board orders excluded
+Output          : split_recommendations.csv
+
+[29/07/2026  3:18:01.44] Step 5 - Marking LINEUP run as successful... 
+LINEUP status marked as successful.
+[29/07/2026  3:18:01.76] Step 6 - Rebuilding dashboard with final status... 
+
+===================================
+LINEUP Dashboard Build Complete
+===================================
+Input       : scheduled_orders.csv
+Output      : C:\LINEUP\output\dashboard.html
+Insights    : assignment reasons and confidence
+Remaining   : SAP versus adjusted
+Utilisation : working-calendar aware
+
+=================================== 
+LINEUP background update finished 
+29/07/2026  3:18:02.08 
+=================================== 
+ 
+=================================== 
+LINEUP background update started 
+29/07/2026  3:30:03.15 
+=================================== 
+[29/07/2026  3:30:03.15] Activating virtual environment... 
+[29/07/2026  3:30:03.68] Step 0 - Marking LINEUP run as started... 
+LINEUP status marked as running.
+[29/07/2026  3:30:04.00] Step 1 - Backing up LINEUP config... 
+
+===================================
+LINEUP Config Backup Complete
+===================================
+Backup folder : C:\LINEUP\backups\2026-07-29_033004
+Files copied  : 4
+Old backups removed: 1
+
+[29/07/2026  3:30:04.43] Step 2 - Running SAP capacity export... 
+COOIS capacities export complete:
+C:\LINEUP\data\raw\COOIS_Capacities_Latest.txt
+[29/07/2026  3:30:30.00] Step 3 - Running SAP production list export... 
+COOIS production list export complete:
+C:\LINEUP\data\raw\COOIS_ProductionList_Latest.txt
+[29/07/2026  3:33:33.51] Step 4 - Running LINEUP processing pipeline... 
+LINEUP
+Starting capacity parser...
+
+
+===================================
+LINEUP Capacity Parser Complete
+===================================
+Input : COOIS_Capacities_Latest.txt
+Output: capacities_clean.csv
+Rows  : 6334
+
+
+===================================
+LINEUP Production Parser Complete
+===================================
+Input : COOIS_ProductionList_Latest.txt
+Output: production_list_clean.csv
+Rows  : 2427
+
+
+===================================
+LINEUP Capacity Summary Complete
+===================================
+Input : capacities_clean.csv
+Output: capacities_order_summary.csv
+Rows  : 987
+
+
+===================================
+LINEUP Merge Complete
+===================================
+Production input : production_list_clean.csv
+Capacity input   : capacities_order_summary.csv
+Output           : master_schedule.csv
+Rows             : 987
+Missing metadata : 0
+
+
+===================================
+LINEUP Scheduling Complete
+===================================
+Scheduled orders : 36
+Overflow orders  : 0
+SAP minutes      : unchanged by default
+Staffing         : explicit overrides only
+Queue stability  : current + one automatic order
+Insights         : assignment reasons and confidence
+
+
+===================================
+LINEUP Dashboard Build Complete
+===================================
+Input       : scheduled_orders.csv
+Output      : C:\LINEUP\output\dashboard.html
+Insights    : assignment reasons and confidence
+Remaining   : SAP versus adjusted
+Utilisation : working-calendar aware
+
+
+===================================
+LINEUP Schedule Report Complete
+===================================
+Bench utilisation: bench_utilisation.csv
+Schedule summary : schedule_summary.csv
+
+
+===================================
+LINEUP Split Recommendations Complete
+===================================
+Recommendations : 0
+Window          : due today or next working day only
+SAP minutes     : used unchanged by default
+Staffing        : explicit overrides only
+Planner work    : live, held, split, forced and board orders excluded
+Output          : split_recommendations.csv
+
+[29/07/2026  3:33:34.00] Step 5 - Marking LINEUP run as successful... 
+LINEUP status marked as successful.
+[29/07/2026  3:33:34.30] Step 6 - Rebuilding dashboard with final status... 
+
+===================================
+LINEUP Dashboard Build Complete
+===================================
+Input       : scheduled_orders.csv
+Output      : C:\LINEUP\output\dashboard.html
+Insights    : assignment reasons and confidence
+Remaining   : SAP versus adjusted
+Utilisation : working-calendar aware
+
+=================================== 
+LINEUP background update finished 
+29/07/2026  3:33:34.62 
+=================================== 
+ 
+=================================== 
+LINEUP background update started 
+29/07/2026  3:45:03.13 
+=================================== 
+[29/07/2026  3:45:03.13] Activating virtual environment... 
+[29/07/2026  3:45:03.64] Step 0 - Marking LINEUP run as started... 
+LINEUP status marked as running.
+[29/07/2026  3:45:03.95] Step 1 - Backing up LINEUP config... 
+
+===================================
+LINEUP Config Backup Complete
+===================================
+Backup folder : C:\LINEUP\backups\2026-07-29_034504
+Files copied  : 4
+Old backups removed: 1
+
+[29/07/2026  3:45:04.29] Step 2 - Running SAP capacity export... 
+COOIS capacities export complete:
+C:\LINEUP\data\raw\COOIS_Capacities_Latest.txt
+[29/07/2026  3:45:28.74] Step 3 - Running SAP production list export... 
+COOIS production list export complete:
+C:\LINEUP\data\raw\COOIS_ProductionList_Latest.txt
+[29/07/2026  3:47:39.21] Step 4 - Running LINEUP processing pipeline... 
+LINEUP
+Starting capacity parser...
+
+
+===================================
+LINEUP Capacity Parser Complete
+===================================
+Input : COOIS_Capacities_Latest.txt
+Output: capacities_clean.csv
+Rows  : 6334
+
+
+===================================
+LINEUP Production Parser Complete
+===================================
+Input : COOIS_ProductionList_Latest.txt
+Output: production_list_clean.csv
+Rows  : 2427
+
+
+===================================
+LINEUP Capacity Summary Complete
+===================================
+Input : capacities_clean.csv
+Output: capacities_order_summary.csv
+Rows  : 987
+
+
+===================================
+LINEUP Merge Complete
+===================================
+Production input : production_list_clean.csv
+Capacity input   : capacities_order_summary.csv
+Output           : master_schedule.csv
+Rows             : 987
+Missing metadata : 0
+
+
+===================================
+LINEUP Scheduling Complete
+===================================
+Scheduled orders : 36
+Overflow orders  : 0
+SAP minutes      : unchanged by default
+Staffing         : explicit overrides only
+Queue stability  : current + one automatic order
+Insights         : assignment reasons and confidence
+
+
+===================================
+LINEUP Dashboard Build Complete
+===================================
+Input       : scheduled_orders.csv
+Output      : C:\LINEUP\output\dashboard.html
+Insights    : assignment reasons and confidence
+Remaining   : SAP versus adjusted
+Utilisation : working-calendar aware
+
+
+===================================
+LINEUP Schedule Report Complete
+===================================
+Bench utilisation: bench_utilisation.csv
+Schedule summary : schedule_summary.csv
+
+
+===================================
+LINEUP Split Recommendations Complete
+===================================
+Recommendations : 0
+Window          : due today or next working day only
+SAP minutes     : used unchanged by default
+Staffing        : explicit overrides only
+Planner work    : live, held, split, forced and board orders excluded
+Output          : split_recommendations.csv
+
+[29/07/2026  3:47:39.71] Step 5 - Marking LINEUP run as successful... 
+LINEUP status marked as successful.
+[29/07/2026  3:47:40.01] Step 6 - Rebuilding dashboard with final status... 
+
+===================================
+LINEUP Dashboard Build Complete
+===================================
+Input       : scheduled_orders.csv
+Output      : C:\LINEUP\output\dashboard.html
+Insights    : assignment reasons and confidence
+Remaining   : SAP versus adjusted
+Utilisation : working-calendar aware
+
+=================================== 
+LINEUP background update finished 
+29/07/2026  3:47:40.33 
+=================================== 
+ 
+=================================== 
+LINEUP background update started 
+29/07/2026  4:00:03.37 
+=================================== 
+[29/07/2026  4:00:03.37] Activating virtual environment... 
+[29/07/2026  4:00:04.03] Step 0 - Marking LINEUP run as started... 
+LINEUP status marked as running.
+[29/07/2026  4:00:04.98] Step 1 - Backing up LINEUP config... 
+
+===================================
+LINEUP Config Backup Complete
+===================================
+Backup folder : C:\LINEUP\backups\2026-07-29_040005
+Files copied  : 4
+Old backups removed: 1
+
+[29/07/2026  4:00:05.41] Step 2 - Running SAP capacity export... 
+COOIS capacities export complete:
+C:\LINEUP\data\raw\COOIS_Capacities_Latest.txt
+[29/07/2026  4:00:31.09] Step 3 - Running SAP production list export... 
+COOIS production list export complete:
+C:\LINEUP\data\raw\COOIS_ProductionList_Latest.txt
+[29/07/2026  4:04:04.23] Step 4 - Running LINEUP processing pipeline... 
+LINEUP
+Starting capacity parser...
+
+
+===================================
+LINEUP Capacity Parser Complete
+===================================
+Input : COOIS_Capacities_Latest.txt
+Output: capacities_clean.csv
+Rows  : 6334
+
+
+===================================
+LINEUP Production Parser Complete
+===================================
+Input : COOIS_ProductionList_Latest.txt
+Output: production_list_clean.csv
+Rows  : 2427
+
+
+===================================
+LINEUP Capacity Summary Complete
+===================================
+Input : capacities_clean.csv
+Output: capacities_order_summary.csv
+Rows  : 987
+
+
+===================================
+LINEUP Merge Complete
+===================================
+Production input : production_list_clean.csv
+Capacity input   : capacities_order_summary.csv
+Output           : master_schedule.csv
+Rows             : 987
+Missing metadata : 0
+
+
+===================================
+LINEUP Scheduling Complete
+===================================
+Scheduled orders : 36
+Overflow orders  : 0
+SAP minutes      : unchanged by default
+Staffing         : explicit overrides only
+Queue stability  : current + one automatic order
+Insights         : assignment reasons and confidence
+
+
+===================================
+LINEUP Dashboard Build Complete
+===================================
+Input       : scheduled_orders.csv
+Output      : C:\LINEUP\output\dashboard.html
+Insights    : assignment reasons and confidence
+Remaining   : SAP versus adjusted
+Utilisation : working-calendar aware
+
+
+===================================
+LINEUP Schedule Report Complete
+===================================
+Bench utilisation: bench_utilisation.csv
+Schedule summary : schedule_summary.csv
+
+
+===================================
+LINEUP Split Recommendations Complete
+===================================
+Recommendations : 0
+Window          : due today or next working day only
+SAP minutes     : used unchanged by default
+Staffing        : explicit overrides only
+Planner work    : live, held, split, forced and board orders excluded
+Output          : split_recommendations.csv
+
+[29/07/2026  4:04:04.76] Step 5 - Marking LINEUP run as successful... 
+LINEUP status marked as successful.
+[29/07/2026  4:04:05.07] Step 6 - Rebuilding dashboard with final status... 
+
+===================================
+LINEUP Dashboard Build Complete
+===================================
+Input       : scheduled_orders.csv
+Output      : C:\LINEUP\output\dashboard.html
+Insights    : assignment reasons and confidence
+Remaining   : SAP versus adjusted
+Utilisation : working-calendar aware
+
+=================================== 
+LINEUP background update finished 
+29/07/2026  4:04:05.40 
+=================================== 
+ 
+=================================== 
+LINEUP background update started 
+29/07/2026  4:15:03.17 
+=================================== 
+[29/07/2026  4:15:03.17] Activating virtual environment... 
+[29/07/2026  4:15:03.69] Step 0 - Marking LINEUP run as started... 
+LINEUP status marked as running.
+[29/07/2026  4:15:04.08] Step 1 - Backing up LINEUP config... 
+
+===================================
+LINEUP Config Backup Complete
+===================================
+Backup folder : C:\LINEUP\backups\2026-07-29_041504
+Files copied  : 4
+Old backups removed: 1
+
+[29/07/2026  4:15:04.43] Step 2 - Running SAP capacity export... 
+COOIS capacities export complete:
+C:\LINEUP\data\raw\COOIS_Capacities_Latest.txt
+[29/07/2026  4:15:29.06] Step 3 - Running SAP production list export... 
+COOIS production list export complete:
+C:\LINEUP\data\raw\COOIS_ProductionList_Latest.txt
+[29/07/2026  4:17:42.12] Step 4 - Running LINEUP processing pipeline... 
+LINEUP
+Starting capacity parser...
+
+
+===================================
+LINEUP Capacity Parser Complete
+===================================
+Input : COOIS_Capacities_Latest.txt
+Output: capacities_clean.csv
+Rows  : 6334
+
+
+===================================
+LINEUP Production Parser Complete
+===================================
+Input : COOIS_ProductionList_Latest.txt
+Output: production_list_clean.csv
+Rows  : 2427
+
+
+===================================
+LINEUP Capacity Summary Complete
+===================================
+Input : capacities_clean.csv
+Output: capacities_order_summary.csv
+Rows  : 987
+
+
+===================================
+LINEUP Merge Complete
+===================================
+Production input : production_list_clean.csv
+Capacity input   : capacities_order_summary.csv
+Output           : master_schedule.csv
+Rows             : 987
+Missing metadata : 0
+
+
+===================================
+LINEUP Scheduling Complete
+===================================
+Scheduled orders : 36
+Overflow orders  : 0
+SAP minutes      : unchanged by default
+Staffing         : explicit overrides only
+Queue stability  : current + one automatic order
+Insights         : assignment reasons and confidence
+
+
+===================================
+LINEUP Dashboard Build Complete
+===================================
+Input       : scheduled_orders.csv
+Output      : C:\LINEUP\output\dashboard.html
+Insights    : assignment reasons and confidence
+Remaining   : SAP versus adjusted
+Utilisation : working-calendar aware
+
+
+===================================
+LINEUP Schedule Report Complete
+===================================
+Bench utilisation: bench_utilisation.csv
+Schedule summary : schedule_summary.csv
+
+
+===================================
+LINEUP Split Recommendations Complete
+===================================
+Recommendations : 0
+Window          : due today or next working day only
+SAP minutes     : used unchanged by default
+Staffing        : explicit overrides only
+Planner work    : live, held, split, forced and board orders excluded
+Output          : split_recommendations.csv
+
+[29/07/2026  4:17:42.64] Step 5 - Marking LINEUP run as successful... 
+LINEUP status marked as successful.
+[29/07/2026  4:17:42.94] Step 6 - Rebuilding dashboard with final status... 
+
+===================================
+LINEUP Dashboard Build Complete
+===================================
+Input       : scheduled_orders.csv
+Output      : C:\LINEUP\output\dashboard.html
+Insights    : assignment reasons and confidence
+Remaining   : SAP versus adjusted
+Utilisation : working-calendar aware
+
+=================================== 
+LINEUP background update finished 
+29/07/2026  4:17:43.28 
+=================================== 
+ 
+=================================== 
+LINEUP background update started 
+29/07/2026  4:30:03.13 
+=================================== 
+[29/07/2026  4:30:03.13] Activating virtual environment... 
+[29/07/2026  4:30:03.65] Step 0 - Marking LINEUP run as started... 
+LINEUP status marked as running.
+[29/07/2026  4:30:04.07] Step 1 - Backing up LINEUP config... 
+
+===================================
+LINEUP Config Backup Complete
+===================================
+Backup folder : C:\LINEUP\backups\2026-07-29_043004
+Files copied  : 4
+Old backups removed: 1
+
+[29/07/2026  4:30:04.41] Step 2 - Running SAP capacity export... 
+COOIS capacities export complete:
+C:\LINEUP\data\raw\COOIS_Capacities_Latest.txt
+[29/07/2026  4:30:29.21] Step 3 - Running SAP production list export... 
+COOIS production list export complete:
+C:\LINEUP\data\raw\COOIS_ProductionList_Latest.txt
+[29/07/2026  4:33:31.29] Step 4 - Running LINEUP processing pipeline... 
+LINEUP
+Starting capacity parser...
+
+
+===================================
+LINEUP Capacity Parser Complete
+===================================
+Input : COOIS_Capacities_Latest.txt
+Output: capacities_clean.csv
+Rows  : 6334
+
+
+===================================
+LINEUP Production Parser Complete
+===================================
+Input : COOIS_ProductionList_Latest.txt
+Output: production_list_clean.csv
+Rows  : 2427
+
+
+===================================
+LINEUP Capacity Summary Complete
+===================================
+Input : capacities_clean.csv
+Output: capacities_order_summary.csv
+Rows  : 987
+
+
+===================================
+LINEUP Merge Complete
+===================================
+Production input : production_list_clean.csv
+Capacity input   : capacities_order_summary.csv
+Output           : master_schedule.csv
+Rows             : 987
+Missing metadata : 0
+
+
+===================================
+LINEUP Scheduling Complete
+===================================
+Scheduled orders : 36
+Overflow orders  : 0
+SAP minutes      : unchanged by default
+Staffing         : explicit overrides only
+Queue stability  : current + one automatic order
+Insights         : assignment reasons and confidence
+
+
+===================================
+LINEUP Dashboard Build Complete
+===================================
+Input       : scheduled_orders.csv
+Output      : C:\LINEUP\output\dashboard.html
+Insights    : assignment reasons and confidence
+Remaining   : SAP versus adjusted
+Utilisation : working-calendar aware
+
+
+===================================
+LINEUP Schedule Report Complete
+===================================
+Bench utilisation: bench_utilisation.csv
+Schedule summary : schedule_summary.csv
+
+
+===================================
+LINEUP Split Recommendations Complete
+===================================
+Recommendations : 0
+Window          : due today or next working day only
+SAP minutes     : used unchanged by default
+Staffing        : explicit overrides only
+Planner work    : live, held, split, forced and board orders excluded
+Output          : split_recommendations.csv
+
+[29/07/2026  4:33:31.78] Step 5 - Marking LINEUP run as successful... 
+LINEUP status marked as successful.
+[29/07/2026  4:33:32.09] Step 6 - Rebuilding dashboard with final status... 
+
+===================================
+LINEUP Dashboard Build Complete
+===================================
+Input       : scheduled_orders.csv
+Output      : C:\LINEUP\output\dashboard.html
+Insights    : assignment reasons and confidence
+Remaining   : SAP versus adjusted
+Utilisation : working-calendar aware
+
+=================================== 
+LINEUP background update finished 
+29/07/2026  4:33:32.44 
+=================================== 
+ 
+=================================== 
+LINEUP background update started 
+29/07/2026  4:45:03.17 
+=================================== 
+[29/07/2026  4:45:03.17] Activating virtual environment... 
+[29/07/2026  4:45:03.70] Step 0 - Marking LINEUP run as started... 
+LINEUP status marked as running.
+[29/07/2026  4:45:04.00] Step 1 - Backing up LINEUP config... 
+
+===================================
+LINEUP Config Backup Complete
+===================================
+Backup folder : C:\LINEUP\backups\2026-07-29_044504
+Files copied  : 4
+Old backups removed: 1
+
+[29/07/2026  4:45:04.33] Step 2 - Running SAP capacity export... 
+COOIS capacities export complete:
+C:\LINEUP\data\raw\COOIS_Capacities_Latest.txt
+[29/07/2026  4:45:28.73] Step 3 - Running SAP production list export... 
+COOIS production list export complete:
+C:\LINEUP\data\raw\COOIS_ProductionList_Latest.txt
+[29/07/2026  4:47:54.45] Step 4 - Running LINEUP processing pipeline... 
+LINEUP
+Starting capacity parser...
+
+
+===================================
+LINEUP Capacity Parser Complete
+===================================
+Input : COOIS_Capacities_Latest.txt
+Output: capacities_clean.csv
+Rows  : 6334
+
+
+===================================
+LINEUP Production Parser Complete
+===================================
+Input : COOIS_ProductionList_Latest.txt
+Output: production_list_clean.csv
+Rows  : 2427
+
+
+===================================
+LINEUP Capacity Summary Complete
+===================================
+Input : capacities_clean.csv
+Output: capacities_order_summary.csv
+Rows  : 987
+
+
+===================================
+LINEUP Merge Complete
+===================================
+Production input : production_list_clean.csv
+Capacity input   : capacities_order_summary.csv
+Output           : master_schedule.csv
+Rows             : 987
+Missing metadata : 0
+
+
+===================================
+LINEUP Scheduling Complete
+===================================
+Scheduled orders : 36
+Overflow orders  : 0
+SAP minutes      : unchanged by default
+Staffing         : explicit overrides only
+Queue stability  : current + one automatic order
+Insights         : assignment reasons and confidence
+
+
+===================================
+LINEUP Dashboard Build Complete
+===================================
+Input       : scheduled_orders.csv
+Output      : C:\LINEUP\output\dashboard.html
+Insights    : assignment reasons and confidence
+Remaining   : SAP versus adjusted
+Utilisation : working-calendar aware
+
+
+===================================
+LINEUP Schedule Report Complete
+===================================
+Bench utilisation: bench_utilisation.csv
+Schedule summary : schedule_summary.csv
+
+
+===================================
+LINEUP Split Recommendations Complete
+===================================
+Recommendations : 0
+Window          : due today or next working day only
+SAP minutes     : used unchanged by default
+Staffing        : explicit overrides only
+Planner work    : live, held, split, forced and board orders excluded
+Output          : split_recommendations.csv
+
+[29/07/2026  4:47:54.95] Step 5 - Marking LINEUP run as successful... 
+LINEUP status marked as successful.
+[29/07/2026  4:47:55.28] Step 6 - Rebuilding dashboard with final status... 
+
+===================================
+LINEUP Dashboard Build Complete
+===================================
+Input       : scheduled_orders.csv
+Output      : C:\LINEUP\output\dashboard.html
+Insights    : assignment reasons and confidence
+Remaining   : SAP versus adjusted
+Utilisation : working-calendar aware
+
+=================================== 
+LINEUP background update finished 
+29/07/2026  4:47:55.62 
+=================================== 
+ 
+=================================== 
+LINEUP background update started 
+29/07/2026  5:00:03.38 
+=================================== 
+[29/07/2026  5:00:03.39] Activating virtual environment... 
+[29/07/2026  5:00:03.89] Step 0 - Marking LINEUP run as started... 
+LINEUP status marked as running.
+[29/07/2026  5:00:04.23] Step 1 - Backing up LINEUP config... 
+
+===================================
+LINEUP Config Backup Complete
+===================================
+Backup folder : C:\LINEUP\backups\2026-07-29_050004
+Files copied  : 4
+Old backups removed: 1
+
+[29/07/2026  5:00:04.59] Step 2 - Running SAP capacity export... 
+COOIS capacities export complete:
+C:\LINEUP\data\raw\COOIS_Capacities_Latest.txt
+[29/07/2026  5:00:28.58] Step 3 - Running SAP production list export... 
+COOIS production list export complete:
+C:\LINEUP\data\raw\COOIS_ProductionList_Latest.txt
+[29/07/2026  5:03:18.14] Step 4 - Running LINEUP processing pipeline... 
+LINEUP
+Starting capacity parser...
+
+
+===================================
+LINEUP Capacity Parser Complete
+===================================
+Input : COOIS_Capacities_Latest.txt
+Output: capacities_clean.csv
+Rows  : 6333
+
+
+===================================
+LINEUP Production Parser Complete
+===================================
+Input : COOIS_ProductionList_Latest.txt
+Output: production_list_clean.csv
+Rows  : 2426
+
+
+===================================
+LINEUP Capacity Summary Complete
+===================================
+Input : capacities_clean.csv
+Output: capacities_order_summary.csv
+Rows  : 987
+
+
+===================================
+LINEUP Merge Complete
+===================================
+Production input : production_list_clean.csv
+Capacity input   : capacities_order_summary.csv
+Output           : master_schedule.csv
+Rows             : 987
+Missing metadata : 0
+
+
+===================================
+LINEUP Scheduling Complete
+===================================
+Scheduled orders : 36
+Overflow orders  : 0
+SAP minutes      : unchanged by default
+Staffing         : explicit overrides only
+Queue stability  : current + one automatic order
+Insights         : assignment reasons and confidence
+
+
+===================================
+LINEUP Dashboard Build Complete
+===================================
+Input       : scheduled_orders.csv
+Output      : C:\LINEUP\output\dashboard.html
+Insights    : assignment reasons and confidence
+Remaining   : SAP versus adjusted
+Utilisation : working-calendar aware
+
+
+===================================
+LINEUP Schedule Report Complete
+===================================
+Bench utilisation: bench_utilisation.csv
+Schedule summary : schedule_summary.csv
+
+
+===================================
+LINEUP Split Recommendations Complete
+===================================
+Recommendations : 0
+Window          : due today or next working day only
+SAP minutes     : used unchanged by default
+Staffing        : explicit overrides only
+Planner work    : live, held, split, forced and board orders excluded
+Output          : split_recommendations.csv
+
+[29/07/2026  5:03:18.69] Step 5 - Marking LINEUP run as successful... 
+LINEUP status marked as successful.
+[29/07/2026  5:03:19.02] Step 6 - Rebuilding dashboard with final status... 
+
+===================================
+LINEUP Dashboard Build Complete
+===================================
+Input       : scheduled_orders.csv
+Output      : C:\LINEUP\output\dashboard.html
+Insights    : assignment reasons and confidence
+Remaining   : SAP versus adjusted
+Utilisation : working-calendar aware
+
+=================================== 
+LINEUP background update finished 
+29/07/2026  5:03:19.35 
+=================================== 
+ 
+=================================== 
+LINEUP background update started 
+29/07/2026  5:15:03.29 
+=================================== 
+[29/07/2026  5:15:03.29] Activating virtual environment... 
+[29/07/2026  5:15:03.81] Step 0 - Marking LINEUP run as started... 
+LINEUP status marked as running.
+[29/07/2026  5:15:04.16] Step 1 - Backing up LINEUP config... 
+
+===================================
+LINEUP Config Backup Complete
+===================================
+Backup folder : C:\LINEUP\backups\2026-07-29_051504
+Files copied  : 4
+Old backups removed: 1
+
+[29/07/2026  5:15:04.52] Step 2 - Running SAP capacity export... 
+COOIS capacities export complete:
+C:\LINEUP\data\raw\COOIS_Capacities_Latest.txt
+[29/07/2026  5:15:30.75] Step 3 - Running SAP production list export... 
+COOIS production list export complete:
+C:\LINEUP\data\raw\COOIS_ProductionList_Latest.txt
+[29/07/2026  5:18:04.96] Step 4 - Running LINEUP processing pipeline... 
+LINEUP
+Starting capacity parser...
+
+
+===================================
+LINEUP Capacity Parser Complete
+===================================
+Input : COOIS_Capacities_Latest.txt
+Output: capacities_clean.csv
+Rows  : 6333
+
+
+===================================
+LINEUP Production Parser Complete
+===================================
+Input : COOIS_ProductionList_Latest.txt
+Output: production_list_clean.csv
+Rows  : 2426
+
+
+===================================
+LINEUP Capacity Summary Complete
+===================================
+Input : capacities_clean.csv
+Output: capacities_order_summary.csv
+Rows  : 987
+
+
+===================================
+LINEUP Merge Complete
+===================================
+Production input : production_list_clean.csv
+Capacity input   : capacities_order_summary.csv
+Output           : master_schedule.csv
+Rows             : 987
+Missing metadata : 0
+
+
+===================================
+LINEUP Scheduling Complete
+===================================
+Scheduled orders : 36
+Overflow orders  : 0
+SAP minutes      : unchanged by default
+Staffing         : explicit overrides only
+Queue stability  : current + one automatic order
+Insights         : assignment reasons and confidence
+
+
+===================================
+LINEUP Dashboard Build Complete
+===================================
+Input       : scheduled_orders.csv
+Output      : C:\LINEUP\output\dashboard.html
+Insights    : assignment reasons and confidence
+Remaining   : SAP versus adjusted
+Utilisation : working-calendar aware
+
+
+===================================
+LINEUP Schedule Report Complete
+===================================
+Bench utilisation: bench_utilisation.csv
+Schedule summary : schedule_summary.csv
+
+
+===================================
+LINEUP Split Recommendations Complete
+===================================
+Recommendations : 0
+Window          : due today or next working day only
+SAP minutes     : used unchanged by default
+Staffing        : explicit overrides only
+Planner work    : live, held, split, forced and board orders excluded
+Output          : split_recommendations.csv
+
+[29/07/2026  5:18:05.53] Step 5 - Marking LINEUP run as successful... 
+LINEUP status marked as successful.
+[29/07/2026  5:18:05.86] Step 6 - Rebuilding dashboard with final status... 
+
+===================================
+LINEUP Dashboard Build Complete
+===================================
+Input       : scheduled_orders.csv
+Output      : C:\LINEUP\output\dashboard.html
+Insights    : assignment reasons and confidence
+Remaining   : SAP versus adjusted
+Utilisation : working-calendar aware
+
+=================================== 
+LINEUP background update finished 
+29/07/2026  5:18:06.18 
+=================================== 
+ 
+=================================== 
+LINEUP background update started 
+29/07/2026  5:30:03.20 
+=================================== 
+[29/07/2026  5:30:03.21] Activating virtual environment... 
+[29/07/2026  5:30:03.74] Step 0 - Marking LINEUP run as started... 
+LINEUP status marked as running.
+[29/07/2026  5:30:04.13] Step 1 - Backing up LINEUP config... 
+
+===================================
+LINEUP Config Backup Complete
+===================================
+Backup folder : C:\LINEUP\backups\2026-07-29_053004
+Files copied  : 4
+Old backups removed: 1
+
+[29/07/2026  5:30:04.52] Step 2 - Running SAP capacity export... 
+COOIS capacities export complete:
+C:\LINEUP\data\raw\COOIS_Capacities_Latest.txt
+[29/07/2026  5:30:30.55] Step 3 - Running SAP production list export... 
+COOIS production list export complete:
+C:\LINEUP\data\raw\COOIS_ProductionList_Latest.txt
+[29/07/2026  5:33:33.88] Step 4 - Running LINEUP processing pipeline... 
+LINEUP
+Starting capacity parser...
+
+
+===================================
+LINEUP Capacity Parser Complete
+===================================
+Input : COOIS_Capacities_Latest.txt
+Output: capacities_clean.csv
+Rows  : 6333
+
+
+===================================
+LINEUP Production Parser Complete
+===================================
+Input : COOIS_ProductionList_Latest.txt
+Output: production_list_clean.csv
+Rows  : 2426
+
+
+===================================
+LINEUP Capacity Summary Complete
+===================================
+Input : capacities_clean.csv
+Output: capacities_order_summary.csv
+Rows  : 987
+
+
+===================================
+LINEUP Merge Complete
+===================================
+Production input : production_list_clean.csv
+Capacity input   : capacities_order_summary.csv
+Output           : master_schedule.csv
+Rows             : 987
+Missing metadata : 0
+
+
+===================================
+LINEUP Scheduling Complete
+===================================
+Scheduled orders : 36
+Overflow orders  : 0
+SAP minutes      : unchanged by default
+Staffing         : explicit overrides only
+Queue stability  : current + one automatic order
+Insights         : assignment reasons and confidence
+
+
+===================================
+LINEUP Dashboard Build Complete
+===================================
+Input       : scheduled_orders.csv
+Output      : C:\LINEUP\output\dashboard.html
+Insights    : assignment reasons and confidence
+Remaining   : SAP versus adjusted
+Utilisation : working-calendar aware
+
+
+===================================
+LINEUP Schedule Report Complete
+===================================
+Bench utilisation: bench_utilisation.csv
+Schedule summary : schedule_summary.csv
+
+
+===================================
+LINEUP Split Recommendations Complete
+===================================
+Recommendations : 0
+Window          : due today or next working day only
+SAP minutes     : used unchanged by default
+Staffing        : explicit overrides only
+Planner work    : live, held, split, forced and board orders excluded
+Output          : split_recommendations.csv
+
+[29/07/2026  5:33:34.39] Step 5 - Marking LINEUP run as successful... 
+LINEUP status marked as successful.
+[29/07/2026  5:33:34.69] Step 6 - Rebuilding dashboard with final status... 
+
+===================================
+LINEUP Dashboard Build Complete
+===================================
+Input       : scheduled_orders.csv
+Output      : C:\LINEUP\output\dashboard.html
+Insights    : assignment reasons and confidence
+Remaining   : SAP versus adjusted
+Utilisation : working-calendar aware
+
+=================================== 
+LINEUP background update finished 
+29/07/2026  5:33:35.04 
+=================================== 
+ 
+=================================== 
+LINEUP background update started 
+29/07/2026  5:45:03.16 
+=================================== 
+[29/07/2026  5:45:03.16] Activating virtual environment... 
+[29/07/2026  5:45:03.66] Step 0 - Marking LINEUP run as started... 
+LINEUP status marked as running.
+[29/07/2026  5:45:03.96] Step 1 - Backing up LINEUP config... 
+
+===================================
+LINEUP Config Backup Complete
+===================================
+Backup folder : C:\LINEUP\backups\2026-07-29_054504
+Files copied  : 4
+Old backups removed: 1
+
+[29/07/2026  5:45:04.33] Step 2 - Running SAP capacity export... 
+COOIS capacities export complete:
+C:\LINEUP\data\raw\COOIS_Capacities_Latest.txt
+[29/07/2026  5:45:29.01] Step 3 - Running SAP production list export... 
+COOIS production list export complete:
+C:\LINEUP\data\raw\COOIS_ProductionList_Latest.txt
+[29/07/2026  5:47:57.25] Step 4 - Running LINEUP processing pipeline... 
+LINEUP
+Starting capacity parser...
+
+
+===================================
+LINEUP Capacity Parser Complete
+===================================
+Input : COOIS_Capacities_Latest.txt
+Output: capacities_clean.csv
+Rows  : 6333
+
+
+===================================
+LINEUP Production Parser Complete
+===================================
+Input : COOIS_ProductionList_Latest.txt
+Output: production_list_clean.csv
+Rows  : 2426
+
+
+===================================
+LINEUP Capacity Summary Complete
+===================================
+Input : capacities_clean.csv
+Output: capacities_order_summary.csv
+Rows  : 987
+
+
+===================================
+LINEUP Merge Complete
+===================================
+Production input : production_list_clean.csv
+Capacity input   : capacities_order_summary.csv
+Output           : master_schedule.csv
+Rows             : 987
+Missing metadata : 0
+
+
+===================================
+LINEUP Scheduling Complete
+===================================
+Scheduled orders : 36
+Overflow orders  : 0
+SAP minutes      : unchanged by default
+Staffing         : explicit overrides only
+Queue stability  : current + one automatic order
+Insights         : assignment reasons and confidence
+
+
+===================================
+LINEUP Dashboard Build Complete
+===================================
+Input       : scheduled_orders.csv
+Output      : C:\LINEUP\output\dashboard.html
+Insights    : assignment reasons and confidence
+Remaining   : SAP versus adjusted
+Utilisation : working-calendar aware
+
+
+===================================
+LINEUP Schedule Report Complete
+===================================
+Bench utilisation: bench_utilisation.csv
+Schedule summary : schedule_summary.csv
+
+
+===================================
+LINEUP Split Recommendations Complete
+===================================
+Recommendations : 0
+Window          : due today or next working day only
+SAP minutes     : used unchanged by default
+Staffing        : explicit overrides only
+Planner work    : live, held, split, forced and board orders excluded
+Output          : split_recommendations.csv
+
+[29/07/2026  5:47:57.73] Step 5 - Marking LINEUP run as successful... 
+LINEUP status marked as successful.
+[29/07/2026  5:47:58.04] Step 6 - Rebuilding dashboard with final status... 
+
+===================================
+LINEUP Dashboard Build Complete
+===================================
+Input       : scheduled_orders.csv
+Output      : C:\LINEUP\output\dashboard.html
+Insights    : assignment reasons and confidence
+Remaining   : SAP versus adjusted
+Utilisation : working-calendar aware
+
+=================================== 
+LINEUP background update finished 
+29/07/2026  5:47:58.36 
+=================================== 
+ 
+=================================== 
+LINEUP background update started 
+29/07/2026  6:00:03.16 
+=================================== 
+[29/07/2026  6:00:03.17] Activating virtual environment... 
+[29/07/2026  6:00:03.67] Step 0 - Marking LINEUP run as started... 
+LINEUP status marked as running.
+[29/07/2026  6:00:04.01] Step 1 - Backing up LINEUP config... 
+
+===================================
+LINEUP Config Backup Complete
+===================================
+Backup folder : C:\LINEUP\backups\2026-07-29_060004
+Files copied  : 4
+Old backups removed: 1
+
+[29/07/2026  6:00:04.35] Step 2 - Running SAP capacity export... 
+COOIS capacities export complete:
+C:\LINEUP\data\raw\COOIS_Capacities_Latest.txt
+[29/07/2026  6:00:29.16] Step 3 - Running SAP production list export... 
+COOIS production list export complete:
+C:\LINEUP\data\raw\COOIS_ProductionList_Latest.txt
+[29/07/2026  6:03:35.41] Step 4 - Running LINEUP processing pipeline... 
+LINEUP
+Starting capacity parser...
+
+
+===================================
+LINEUP Capacity Parser Complete
+===================================
+Input : COOIS_Capacities_Latest.txt
+Output: capacities_clean.csv
+Rows  : 6333
+
+
+===================================
+LINEUP Production Parser Complete
+===================================
+Input : COOIS_ProductionList_Latest.txt
+Output: production_list_clean.csv
+Rows  : 2426
+
+
+===================================
+LINEUP Capacity Summary Complete
+===================================
+Input : capacities_clean.csv
+Output: capacities_order_summary.csv
+Rows  : 987
+
+
+===================================
+LINEUP Merge Complete
+===================================
+Production input : production_list_clean.csv
+Capacity input   : capacities_order_summary.csv
+Output           : master_schedule.csv
+Rows             : 987
+Missing metadata : 0
+
+
+===================================
+LINEUP Scheduling Complete
+===================================
+Scheduled orders : 36
+Overflow orders  : 0
+SAP minutes      : unchanged by default
+Staffing         : explicit overrides only
+Queue stability  : current + one automatic order
+Insights         : assignment reasons and confidence
+
+
+===================================
+LINEUP Dashboard Build Complete
+===================================
+Input       : scheduled_orders.csv
+Output      : C:\LINEUP\output\dashboard.html
+Insights    : assignment reasons and confidence
+Remaining   : SAP versus adjusted
+Utilisation : working-calendar aware
+
+
+===================================
+LINEUP Schedule Report Complete
+===================================
+Bench utilisation: bench_utilisation.csv
+Schedule summary : schedule_summary.csv
+
+
+===================================
+LINEUP Split Recommendations Complete
+===================================
+Recommendations : 0
+Window          : due today or next working day only
+SAP minutes     : used unchanged by default
+Staffing        : explicit overrides only
+Planner work    : live, held, split, forced and board orders excluded
+Output          : split_recommendations.csv
+
+[29/07/2026  6:03:35.88] Step 5 - Marking LINEUP run as successful... 
+LINEUP status marked as successful.
+[29/07/2026  6:03:36.18] Step 6 - Rebuilding dashboard with final status... 
+
+===================================
+LINEUP Dashboard Build Complete
+===================================
+Input       : scheduled_orders.csv
+Output      : C:\LINEUP\output\dashboard.html
+Insights    : assignment reasons and confidence
+Remaining   : SAP versus adjusted
+Utilisation : working-calendar aware
+
+=================================== 
+LINEUP background update finished 
+29/07/2026  6:03:36.50 
+=================================== 
+ 
+=================================== 
+LINEUP background update started 
+29/07/2026  6:15:03.19 
+=================================== 
+[29/07/2026  6:15:03.19] Activating virtual environment... 
+[29/07/2026  6:15:03.70] Step 0 - Marking LINEUP run as started... 
+LINEUP status marked as running.
+[29/07/2026  6:15:04.03] Step 1 - Backing up LINEUP config... 
+
+===================================
+LINEUP Config Backup Complete
+===================================
+Backup folder : C:\LINEUP\backups\2026-07-29_061504
+Files copied  : 4
+Old backups removed: 1
+
+[29/07/2026  6:15:04.43] Step 2 - Running SAP capacity export... 
+COOIS capacities export complete:
+C:\LINEUP\data\raw\COOIS_Capacities_Latest.txt
+[29/07/2026  6:15:30.46] Step 3 - Running SAP production list export... 
+COOIS production list export complete:
+C:\LINEUP\data\raw\COOIS_ProductionList_Latest.txt
+[29/07/2026  6:18:34.15] Step 4 - Running LINEUP processing pipeline... 
+LINEUP
+Starting capacity parser...
+
+
+===================================
+LINEUP Capacity Parser Complete
+===================================
+Input : COOIS_Capacities_Latest.txt
+Output: capacities_clean.csv
+Rows  : 6333
+
+
+===================================
+LINEUP Production Parser Complete
+===================================
+Input : COOIS_ProductionList_Latest.txt
+Output: production_list_clean.csv
+Rows  : 2426
+
+
+===================================
+LINEUP Capacity Summary Complete
+===================================
+Input : capacities_clean.csv
+Output: capacities_order_summary.csv
+Rows  : 987
+
+
+===================================
+LINEUP Merge Complete
+===================================
+Production input : production_list_clean.csv
+Capacity input   : capacities_order_summary.csv
+Output           : master_schedule.csv
+Rows             : 987
+Missing metadata : 0
+
+
+===================================
+LINEUP Scheduling Complete
+===================================
+Scheduled orders : 36
+Overflow orders  : 0
+SAP minutes      : unchanged by default
+Staffing         : explicit overrides only
+Queue stability  : current + one automatic order
+Insights         : assignment reasons and confidence
+
+
+===================================
+LINEUP Dashboard Build Complete
+===================================
+Input       : scheduled_orders.csv
+Output      : C:\LINEUP\output\dashboard.html
+Insights    : assignment reasons and confidence
+Remaining   : SAP versus adjusted
+Utilisation : working-calendar aware
+
+
+===================================
+LINEUP Schedule Report Complete
+===================================
+Bench utilisation: bench_utilisation.csv
+Schedule summary : schedule_summary.csv
+
+
+===================================
+LINEUP Split Recommendations Complete
+===================================
+Recommendations : 0
+Window          : due today or next working day only
+SAP minutes     : used unchanged by default
+Staffing        : explicit overrides only
+Planner work    : live, held, split, forced and board orders excluded
+Output          : split_recommendations.csv
+
+[29/07/2026  6:18:34.83] Step 5 - Marking LINEUP run as successful... 
+LINEUP status marked as successful.
+[29/07/2026  6:18:35.15] Step 6 - Rebuilding dashboard with final status... 
+
+===================================
+LINEUP Dashboard Build Complete
+===================================
+Input       : scheduled_orders.csv
+Output      : C:\LINEUP\output\dashboard.html
+Insights    : assignment reasons and confidence
+Remaining   : SAP versus adjusted
+Utilisation : working-calendar aware
+
+=================================== 
+LINEUP background update finished 
+29/07/2026  6:18:35.47 
+=================================== 
+ 
+=================================== 
+LINEUP background update started 
+29/07/2026  6:30:03.21 
+=================================== 
+[29/07/2026  6:30:03.22] Activating virtual environment... 
+[29/07/2026  6:30:03.72] Step 0 - Marking LINEUP run as started... 
+LINEUP status marked as running.
+[29/07/2026  6:30:04.12] Step 1 - Backing up LINEUP config... 
+
+===================================
+LINEUP Config Backup Complete
+===================================
+Backup folder : C:\LINEUP\backups\2026-07-29_063004
+Files copied  : 4
+Old backups removed: 1
+
+[29/07/2026  6:30:04.44] Step 2 - Running SAP capacity export... 
+COOIS capacities export complete:
+C:\LINEUP\data\raw\COOIS_Capacities_Latest.txt
+[29/07/2026  6:30:30.37] Step 3 - Running SAP production list export... 
+COOIS production list export complete:
+C:\LINEUP\data\raw\COOIS_ProductionList_Latest.txt
+[29/07/2026  6:34:19.75] Step 4 - Running LINEUP processing pipeline... 
+LINEUP
+Starting capacity parser...
+
+
+===================================
+LINEUP Capacity Parser Complete
+===================================
+Input : COOIS_Capacities_Latest.txt
+Output: capacities_clean.csv
+Rows  : 6333
+
+
+===================================
+LINEUP Production Parser Complete
+===================================
+Input : COOIS_ProductionList_Latest.txt
+Output: production_list_clean.csv
+Rows  : 2426
+
+
+===================================
+LINEUP Capacity Summary Complete
+===================================
+Input : capacities_clean.csv
+Output: capacities_order_summary.csv
+Rows  : 987
+
+
+===================================
+LINEUP Merge Complete
+===================================
+Production input : production_list_clean.csv
+Capacity input   : capacities_order_summary.csv
+Output           : master_schedule.csv
+Rows             : 987
+Missing metadata : 0
+
+
+===================================
+LINEUP Scheduling Complete
+===================================
+Scheduled orders : 36
+Overflow orders  : 0
+SAP minutes      : unchanged by default
+Staffing         : explicit overrides only
+Queue stability  : current + one automatic order
+Insights         : assignment reasons and confidence
+
+
+===================================
+LINEUP Dashboard Build Complete
+===================================
+Input       : scheduled_orders.csv
+Output      : C:\LINEUP\output\dashboard.html
+Insights    : assignment reasons and confidence
+Remaining   : SAP versus adjusted
+Utilisation : working-calendar aware
+
+
+===================================
+LINEUP Schedule Report Complete
+===================================
+Bench utilisation: bench_utilisation.csv
+Schedule summary : schedule_summary.csv
+
+
+===================================
+LINEUP Split Recommendations Complete
+===================================
+Recommendations : 0
+Window          : due today or next working day only
+SAP minutes     : used unchanged by default
+Staffing        : explicit overrides only
+Planner work    : live, held, split, forced and board orders excluded
+Output          : split_recommendations.csv
+
+[29/07/2026  6:34:20.24] Step 5 - Marking LINEUP run as successful... 
+LINEUP status marked as successful.
+[29/07/2026  6:34:20.54] Step 6 - Rebuilding dashboard with final status... 
+
+===================================
+LINEUP Dashboard Build Complete
+===================================
+Input       : scheduled_orders.csv
+Output      : C:\LINEUP\output\dashboard.html
+Insights    : assignment reasons and confidence
+Remaining   : SAP versus adjusted
+Utilisation : working-calendar aware
+
+=================================== 
+LINEUP background update finished 
+29/07/2026  6:34:20.85 
+=================================== 
+ 
+=================================== 
+LINEUP background update started 
+29/07/2026  6:45:03.34 
+=================================== 
+[29/07/2026  6:45:03.34] Activating virtual environment... 
+[29/07/2026  6:45:03.90] Step 0 - Marking LINEUP run as started... 
+LINEUP status marked as running.
+[29/07/2026  6:45:04.25] Step 1 - Backing up LINEUP config... 
+
+===================================
+LINEUP Config Backup Complete
+===================================
+Backup folder : C:\LINEUP\backups\2026-07-29_064504
+Files copied  : 4
+Old backups removed: 1
+
+[29/07/2026  6:45:04.64] Step 2 - Running SAP capacity export... 
+COOIS capacities export complete:
+C:\LINEUP\data\raw\COOIS_Capacities_Latest.txt
+[29/07/2026  6:45:33.37] Step 3 - Running SAP production list export... 
+COOIS production list export complete:
+C:\LINEUP\data\raw\COOIS_ProductionList_Latest.txt
+[29/07/2026  6:48:26.31] Step 4 - Running LINEUP processing pipeline... 
+LINEUP
+Starting capacity parser...
+
+
+===================================
+LINEUP Capacity Parser Complete
+===================================
+Input : COOIS_Capacities_Latest.txt
+Output: capacities_clean.csv
+Rows  : 6333
+
+
+===================================
+LINEUP Production Parser Complete
+===================================
+Input : COOIS_ProductionList_Latest.txt
+Output: production_list_clean.csv
+Rows  : 2426
+
+
+===================================
+LINEUP Capacity Summary Complete
+===================================
+Input : capacities_clean.csv
+Output: capacities_order_summary.csv
+Rows  : 987
+
+
+===================================
+LINEUP Merge Complete
+===================================
+Production input : production_list_clean.csv
+Capacity input   : capacities_order_summary.csv
+Output           : master_schedule.csv
+Rows             : 987
+Missing metadata : 0
+
+
+===================================
+LINEUP Scheduling Complete
+===================================
+Scheduled orders : 36
+Overflow orders  : 0
+SAP minutes      : unchanged by default
+Staffing         : explicit overrides only
+Queue stability  : current + one automatic order
+Insights         : assignment reasons and confidence
+
+
+===================================
+LINEUP Dashboard Build Complete
+===================================
+Input       : scheduled_orders.csv
+Output      : C:\LINEUP\output\dashboard.html
+Insights    : assignment reasons and confidence
+Remaining   : SAP versus adjusted
+Utilisation : working-calendar aware
+
+
+===================================
+LINEUP Schedule Report Complete
+===================================
+Bench utilisation: bench_utilisation.csv
+Schedule summary : schedule_summary.csv
+
+
+===================================
+LINEUP Split Recommendations Complete
+===================================
+Recommendations : 0
+Window          : due today or next working day only
+SAP minutes     : used unchanged by default
+Staffing        : explicit overrides only
+Planner work    : live, held, split, forced and board orders excluded
+Output          : split_recommendations.csv
+
+[29/07/2026  6:48:26.84] Step 5 - Marking LINEUP run as successful... 
+LINEUP status marked as successful.
+[29/07/2026  6:48:27.16] Step 6 - Rebuilding dashboard with final status... 
+
+===================================
+LINEUP Dashboard Build Complete
+===================================
+Input       : scheduled_orders.csv
+Output      : C:\LINEUP\output\dashboard.html
+Insights    : assignment reasons and confidence
+Remaining   : SAP versus adjusted
+Utilisation : working-calendar aware
+
+=================================== 
+LINEUP background update finished 
+29/07/2026  6:48:27.49 
+=================================== 
+ 
+=================================== 
+LINEUP background update started 
+29/07/2026  7:00:03.40 
+=================================== 
+[29/07/2026  7:00:03.40] Activating virtual environment... 
+[29/07/2026  7:00:04.01] Step 0 - Marking LINEUP run as started... 
+LINEUP status marked as running.
+[29/07/2026  7:00:04.50] Step 1 - Backing up LINEUP config... 
+
+===================================
+LINEUP Config Backup Complete
+===================================
+Backup folder : C:\LINEUP\backups\2026-07-29_070004
+Files copied  : 4
+Old backups removed: 1
+
+[29/07/2026  7:00:04.91] Step 2 - Running SAP capacity export... 
+COOIS capacities export complete:
+C:\LINEUP\data\raw\COOIS_Capacities_Latest.txt
+[29/07/2026  7:00:31.98] Step 3 - Running SAP production list export... 
+COOIS production list export complete:
+C:\LINEUP\data\raw\COOIS_ProductionList_Latest.txt
+[29/07/2026  7:03:51.03] Step 4 - Running LINEUP processing pipeline... 
+LINEUP
+Starting capacity parser...
+
+
+===================================
+LINEUP Capacity Parser Complete
+===================================
+Input : COOIS_Capacities_Latest.txt
+Output: capacities_clean.csv
+Rows  : 6333
+
+
+===================================
+LINEUP Production Parser Complete
+===================================
+Input : COOIS_ProductionList_Latest.txt
+Output: production_list_clean.csv
+Rows  : 2426
+
+
+===================================
+LINEUP Capacity Summary Complete
+===================================
+Input : capacities_clean.csv
+Output: capacities_order_summary.csv
+Rows  : 987
+
+
+===================================
+LINEUP Merge Complete
+===================================
+Production input : production_list_clean.csv
+Capacity input   : capacities_order_summary.csv
+Output           : master_schedule.csv
+Rows             : 987
+Missing metadata : 0
+
+
+===================================
+LINEUP Scheduling Complete
+===================================
+Scheduled orders : 36
+Overflow orders  : 0
+SAP minutes      : unchanged by default
+Staffing         : explicit overrides only
+Queue stability  : current + one automatic order
+Insights         : assignment reasons and confidence
+
+
+===================================
+LINEUP Dashboard Build Complete
+===================================
+Input       : scheduled_orders.csv
+Output      : C:\LINEUP\output\dashboard.html
+Insights    : assignment reasons and confidence
+Remaining   : SAP versus adjusted
+Utilisation : working-calendar aware
+
+
+===================================
+LINEUP Schedule Report Complete
+===================================
+Bench utilisation: bench_utilisation.csv
+Schedule summary : schedule_summary.csv
+
+
+===================================
+LINEUP Split Recommendations Complete
+===================================
+Recommendations : 0
+Window          : due today or next working day only
+SAP minutes     : used unchanged by default
+Staffing        : explicit overrides only
+Planner work    : live, held, split, forced and board orders excluded
+Output          : split_recommendations.csv
+
+[29/07/2026  7:03:51.59] Step 5 - Marking LINEUP run as successful... 
+LINEUP status marked as successful.
+[29/07/2026  7:03:51.92] Step 6 - Rebuilding dashboard with final status... 
+
+===================================
+LINEUP Dashboard Build Complete
+===================================
+Input       : scheduled_orders.csv
+Output      : C:\LINEUP\output\dashboard.html
+Insights    : assignment reasons and confidence
+Remaining   : SAP versus adjusted
+Utilisation : working-calendar aware
+
+=================================== 
+LINEUP background update finished 
+29/07/2026  7:03:52.28 
+=================================== 
+ 
+=================================== 
+LINEUP background update started 
+29/07/2026  7:15:03.48 
+=================================== 
+[29/07/2026  7:15:03.49] Activating virtual environment... 
+[29/07/2026  7:15:04.01] Step 0 - Marking LINEUP run as started... 
+LINEUP status marked as running.
+[29/07/2026  7:15:04.57] Step 1 - Backing up LINEUP config... 
+
+===================================
+LINEUP Config Backup Complete
+===================================
+Backup folder : C:\LINEUP\backups\2026-07-29_071504
+Files copied  : 4
+Old backups removed: 1
+
+[29/07/2026  7:15:04.98] Step 2 - Running SAP capacity export... 
+COOIS capacities export complete:
+C:\LINEUP\data\raw\COOIS_Capacities_Latest.txt
+[29/07/2026  7:15:34.34] Step 3 - Running SAP production list export... 
+COOIS production list export complete:
+C:\LINEUP\data\raw\COOIS_ProductionList_Latest.txt
+[29/07/2026  7:18:32.59] Step 4 - Running LINEUP processing pipeline... 
+LINEUP
+Starting capacity parser...
+
+
+===================================
+LINEUP Capacity Parser Complete
+===================================
+Input : COOIS_Capacities_Latest.txt
+Output: capacities_clean.csv
+Rows  : 6333
+
+
+===================================
+LINEUP Production Parser Complete
+===================================
+Input : COOIS_ProductionList_Latest.txt
+Output: production_list_clean.csv
+Rows  : 2426
+
+
+===================================
+LINEUP Capacity Summary Complete
+===================================
+Input : capacities_clean.csv
+Output: capacities_order_summary.csv
+Rows  : 987
+
+
+===================================
+LINEUP Merge Complete
+===================================
+Production input : production_list_clean.csv
+Capacity input   : capacities_order_summary.csv
+Output           : master_schedule.csv
+Rows             : 987
+Missing metadata : 0
+
+
+===================================
+LINEUP Scheduling Complete
+===================================
+Scheduled orders : 36
+Overflow orders  : 0
+SAP minutes      : unchanged by default
+Staffing         : explicit overrides only
+Queue stability  : current + one automatic order
+Insights         : assignment reasons and confidence
+
+
+===================================
+LINEUP Dashboard Build Complete
+===================================
+Input       : scheduled_orders.csv
+Output      : C:\LINEUP\output\dashboard.html
+Insights    : assignment reasons and confidence
+Remaining   : SAP versus adjusted
+Utilisation : working-calendar aware
+
+
+===================================
+LINEUP Schedule Report Complete
+===================================
+Bench utilisation: bench_utilisation.csv
+Schedule summary : schedule_summary.csv
+
+
+===================================
+LINEUP Split Recommendations Complete
+===================================
+Recommendations : 0
+Window          : due today or next working day only
+SAP minutes     : used unchanged by default
+Staffing        : explicit overrides only
+Planner work    : live, held, split, forced and board orders excluded
+Output          : split_recommendations.csv
+
+[29/07/2026  7:18:33.09] Step 5 - Marking LINEUP run as successful... 
+LINEUP status marked as successful.
+[29/07/2026  7:18:33.40] Step 6 - Rebuilding dashboard with final status... 
+
+===================================
+LINEUP Dashboard Build Complete
+===================================
+Input       : scheduled_orders.csv
+Output      : C:\LINEUP\output\dashboard.html
+Insights    : assignment reasons and confidence
+Remaining   : SAP versus adjusted
+Utilisation : working-calendar aware
+
+=================================== 
+LINEUP background update finished 
+29/07/2026  7:18:33.75 
+=================================== 
+ 
+=================================== 
+LINEUP background update started 
+29/07/2026  7:30:03.19 
+=================================== 
+[29/07/2026  7:30:03.19] Activating virtual environment... 
+[29/07/2026  7:30:03.78] Step 0 - Marking LINEUP run as started... 
+LINEUP status marked as running.
+[29/07/2026  7:30:04.12] Step 1 - Backing up LINEUP config... 
+
+===================================
+LINEUP Config Backup Complete
+===================================
+Backup folder : C:\LINEUP\backups\2026-07-29_073004
+Files copied  : 4
+Old backups removed: 1
+
+[29/07/2026  7:30:04.49] Step 2 - Running SAP capacity export... 
+COOIS capacities export complete:
+C:\LINEUP\data\raw\COOIS_Capacities_Latest.txt
+[29/07/2026  7:30:31.38] Step 3 - Running SAP production list export... 
+COOIS production list export complete:
+C:\LINEUP\data\raw\COOIS_ProductionList_Latest.txt
+[29/07/2026  7:33:09.07] Step 4 - Running LINEUP processing pipeline... 
+LINEUP
+Starting capacity parser...
+
+
+===================================
+LINEUP Capacity Parser Complete
+===================================
+Input : COOIS_Capacities_Latest.txt
+Output: capacities_clean.csv
+Rows  : 6332
+
+
+===================================
+LINEUP Production Parser Complete
+===================================
+Input : COOIS_ProductionList_Latest.txt
+Output: production_list_clean.csv
+Rows  : 2425
+
+
+===================================
+LINEUP Capacity Summary Complete
+===================================
+Input : capacities_clean.csv
+Output: capacities_order_summary.csv
+Rows  : 987
+
+
+===================================
+LINEUP Merge Complete
+===================================
+Production input : production_list_clean.csv
+Capacity input   : capacities_order_summary.csv
+Output           : master_schedule.csv
+Rows             : 987
+Missing metadata : 0
+
+
+===================================
+LINEUP Scheduling Complete
+===================================
+Scheduled orders : 36
+Overflow orders  : 0
+SAP minutes      : unchanged by default
+Staffing         : explicit overrides only
+Queue stability  : current + one automatic order
+Insights         : assignment reasons and confidence
+
+
+===================================
+LINEUP Dashboard Build Complete
+===================================
+Input       : scheduled_orders.csv
+Output      : C:\LINEUP\output\dashboard.html
+Insights    : assignment reasons and confidence
+Remaining   : SAP versus adjusted
+Utilisation : working-calendar aware
+
+
+===================================
+LINEUP Schedule Report Complete
+===================================
+Bench utilisation: bench_utilisation.csv
+Schedule summary : schedule_summary.csv
+
+
+===================================
+LINEUP Split Recommendations Complete
+===================================
+Recommendations : 0
+Window          : due today or next working day only
+SAP minutes     : used unchanged by default
+Staffing        : explicit overrides only
+Planner work    : live, held, split, forced and board orders excluded
+Output          : split_recommendations.csv
+
+[29/07/2026  7:33:09.57] Step 5 - Marking LINEUP run as successful... 
+LINEUP status marked as successful.
+[29/07/2026  7:33:09.89] Step 6 - Rebuilding dashboard with final status... 
+
+===================================
+LINEUP Dashboard Build Complete
+===================================
+Input       : scheduled_orders.csv
+Output      : C:\LINEUP\output\dashboard.html
+Insights    : assignment reasons and confidence
+Remaining   : SAP versus adjusted
+Utilisation : working-calendar aware
+
+=================================== 
+LINEUP background update finished 
+29/07/2026  7:33:10.25 
+=================================== 
+ 
+=================================== 
+LINEUP background update started 
+29/07/2026  7:45:03.24 
+=================================== 
+[29/07/2026  7:45:03.25] Activating virtual environment... 
+[29/07/2026  7:45:03.82] Step 0 - Marking LINEUP run as started... 
+LINEUP status marked as running.
+[29/07/2026  7:45:04.21] Step 1 - Backing up LINEUP config... 
+
+===================================
+LINEUP Config Backup Complete
+===================================
+Backup folder : C:\LINEUP\backups\2026-07-29_074504
+Files copied  : 4
+Old backups removed: 1
+
+[29/07/2026  7:45:04.66] Step 2 - Running SAP capacity export... 
+COOIS capacities export complete:
+C:\LINEUP\data\raw\COOIS_Capacities_Latest.txt
+[29/07/2026  7:45:34.29] Step 3 - Running SAP production list export... 
+COOIS production list export complete:
+C:\LINEUP\data\raw\COOIS_ProductionList_Latest.txt
+[29/07/2026  7:48:05.35] Step 4 - Running LINEUP processing pipeline... 
+LINEUP
+Starting capacity parser...
+
+
+===================================
+LINEUP Capacity Parser Complete
+===================================
+Input : COOIS_Capacities_Latest.txt
+Output: capacities_clean.csv
+Rows  : 6330
+
+
+===================================
+LINEUP Production Parser Complete
+===================================
+Input : COOIS_ProductionList_Latest.txt
+Output: production_list_clean.csv
+Rows  : 2424
+
+
+===================================
+LINEUP Capacity Summary Complete
+===================================
+Input : capacities_clean.csv
+Output: capacities_order_summary.csv
+Rows  : 987
+
+
+===================================
+LINEUP Merge Complete
+===================================
+Production input : production_list_clean.csv
+Capacity input   : capacities_order_summary.csv
+Output           : master_schedule.csv
+Rows             : 987
+Missing metadata : 0
+
+
+===================================
+LINEUP Scheduling Complete
+===================================
+Scheduled orders : 37
+Overflow orders  : 0
+SAP minutes      : unchanged by default
+Staffing         : explicit overrides only
+Queue stability  : current + one automatic order
+Insights         : assignment reasons and confidence
+
+
+===================================
+LINEUP Dashboard Build Complete
+===================================
+Input       : scheduled_orders.csv
+Output      : C:\LINEUP\output\dashboard.html
+Insights    : assignment reasons and confidence
+Remaining   : SAP versus adjusted
+Utilisation : working-calendar aware
+
+
+===================================
+LINEUP Schedule Report Complete
+===================================
+Bench utilisation: bench_utilisation.csv
+Schedule summary : schedule_summary.csv
+
+
+===================================
+LINEUP Split Recommendations Complete
+===================================
+Recommendations : 2
+Window          : due today or next working day only
+SAP minutes     : used unchanged by default
+Staffing        : explicit overrides only
+Planner work    : live, held, split, forced and board orders excluded
+Output          : split_recommendations.csv
+
+[29/07/2026  7:48:05.93] Step 5 - Marking LINEUP run as successful... 
+LINEUP status marked as successful.
+[29/07/2026  7:48:06.27] Step 6 - Rebuilding dashboard with final status... 
+
+===================================
+LINEUP Dashboard Build Complete
+===================================
+Input       : scheduled_orders.csv
+Output      : C:\LINEUP\output\dashboard.html
+Insights    : assignment reasons and confidence
+Remaining   : SAP versus adjusted
+Utilisation : working-calendar aware
+
+=================================== 
+LINEUP background update finished 
+29/07/2026  7:48:06.64 
+=================================== 
+ 
+=================================== 
+LINEUP background update started 
+29/07/2026  8:00:09.60 
+=================================== 
+[29/07/2026  8:00:09.60] Activating virtual environment... 
+[29/07/2026  8:00:10.42] Step 0 - Marking LINEUP run as started... 
+LINEUP status marked as running.
+[29/07/2026  8:00:11.26] Step 1 - Backing up LINEUP config... 
+
+===================================
+LINEUP Config Backup Complete
+===================================
+Backup folder : C:\LINEUP\backups\2026-07-29_080012
+Files copied  : 4
+Old backups removed: 1
+
+[29/07/2026  8:00:12.07] Step 2 - Running SAP capacity export... 
+COOIS capacities export complete:
+C:\LINEUP\data\raw\COOIS_Capacities_Latest.txt
+[29/07/2026  8:00:40.66] Step 3 - Running SAP production list export... 
+COOIS production list export complete:
+C:\LINEUP\data\raw\COOIS_ProductionList_Latest.txt
+[29/07/2026  8:04:02.73] Step 4 - Running LINEUP processing pipeline... 
+LINEUP
+Starting capacity parser...
+
+
+===================================
+LINEUP Capacity Parser Complete
+===================================
+Input : COOIS_Capacities_Latest.txt
+Output: capacities_clean.csv
+Rows  : 6325
+
+
+===================================
+LINEUP Production Parser Complete
+===================================
+Input : COOIS_ProductionList_Latest.txt
+Output: production_list_clean.csv
+Rows  : 2422
+
+
+===================================
+LINEUP Capacity Summary Complete
+===================================
+Input : capacities_clean.csv
+Output: capacities_order_summary.csv
+Rows  : 986
+
+
+===================================
+LINEUP Merge Complete
+===================================
+Production input : production_list_clean.csv
+Capacity input   : capacities_order_summary.csv
+Output           : master_schedule.csv
+Rows             : 986
+Missing metadata : 0
+
+
+===================================
+LINEUP Scheduling Complete
+===================================
+Scheduled orders : 37
+Overflow orders  : 0
+SAP minutes      : unchanged by default
+Staffing         : explicit overrides only
+Queue stability  : current + one automatic order
+Insights         : assignment reasons and confidence
+
+
+===================================
+LINEUP Dashboard Build Complete
+===================================
+Input       : scheduled_orders.csv
+Output      : C:\LINEUP\output\dashboard.html
+Insights    : assignment reasons and confidence
+Remaining   : SAP versus adjusted
+Utilisation : working-calendar aware
+
+
+===================================
+LINEUP Schedule Report Complete
+===================================
+Bench utilisation: bench_utilisation.csv
+Schedule summary : schedule_summary.csv
+
+
+===================================
+LINEUP Split Recommendations Complete
+===================================
+Recommendations : 0
+Window          : due today or next working day only
+SAP minutes     : used unchanged by default
+Staffing        : explicit overrides only
+Planner work    : live, held, split, forced and board orders excluded
+Output          : split_recommendations.csv
+
+[29/07/2026  8:04:03.28] Step 5 - Marking LINEUP run as successful... 
+LINEUP status marked as successful.
+[29/07/2026  8:04:03.59] Step 6 - Rebuilding dashboard with final status... 
+
+===================================
+LINEUP Dashboard Build Complete
+===================================
+Input       : scheduled_orders.csv
+Output      : C:\LINEUP\output\dashboard.html
+Insights    : assignment reasons and confidence
+Remaining   : SAP versus adjusted
+Utilisation : working-calendar aware
+
+=================================== 
+LINEUP background update finished 
+29/07/2026  8:04:03.93 
+=================================== 
+ 
+=================================== 
+LINEUP background update started 
+29/07/2026  8:15:03.21 
+=================================== 
+[29/07/2026  8:15:03.22] Activating virtual environment... 
+[29/07/2026  8:15:03.73] Step 0 - Marking LINEUP run as started... 
+LINEUP status marked as running.
+[29/07/2026  8:15:04.10] Step 1 - Backing up LINEUP config... 
+
+===================================
+LINEUP Config Backup Complete
+===================================
+Backup folder : C:\LINEUP\backups\2026-07-29_081504
+Files copied  : 4
+Old backups removed: 1
+
+[29/07/2026  8:15:04.45] Step 2 - Running SAP capacity export... 
+COOIS capacities export complete:
+C:\LINEUP\data\raw\COOIS_Capacities_Latest.txt
+[29/07/2026  8:15:37.12] Step 3 - Running SAP production list export... 
+COOIS production list export complete:
+C:\LINEUP\data\raw\COOIS_ProductionList_Latest.txt
+[29/07/2026  8:18:30.17] Step 4 - Running LINEUP processing pipeline... 
+LINEUP
+Starting capacity parser...
+
+
+===================================
+LINEUP Capacity Parser Complete
+===================================
+Input : COOIS_Capacities_Latest.txt
+Output: capacities_clean.csv
+Rows  : 6328
+
+
+===================================
+LINEUP Production Parser Complete
+===================================
+Input : COOIS_ProductionList_Latest.txt
+Output: production_list_clean.csv
+Rows  : 2422
+
+
+===================================
+LINEUP Capacity Summary Complete
+===================================
+Input : capacities_clean.csv
+Output: capacities_order_summary.csv
+Rows  : 985
+
+
+===================================
+LINEUP Merge Complete
+===================================
+Production input : production_list_clean.csv
+Capacity input   : capacities_order_summary.csv
+Output           : master_schedule.csv
+Rows             : 985
+Missing metadata : 0
+
+
+===================================
+LINEUP Scheduling Complete
+===================================
+Scheduled orders : 36
+Overflow orders  : 0
+SAP minutes      : unchanged by default
+Staffing         : explicit overrides only
+Queue stability  : current + one automatic order
+Insights         : assignment reasons and confidence
+
+
+===================================
+LINEUP Dashboard Build Complete
+===================================
+Input       : scheduled_orders.csv
+Output      : C:\LINEUP\output\dashboard.html
+Insights    : assignment reasons and confidence
+Remaining   : SAP versus adjusted
+Utilisation : working-calendar aware
+
+
+===================================
+LINEUP Schedule Report Complete
+===================================
+Bench utilisation: bench_utilisation.csv
+Schedule summary : schedule_summary.csv
+
+
+===================================
+LINEUP Split Recommendations Complete
+===================================
+Recommendations : 0
+Window          : due today or next working day only
+SAP minutes     : used unchanged by default
+Staffing        : explicit overrides only
+Planner work    : live, held, split, forced and board orders excluded
+Output          : split_recommendations.csv
+
+[29/07/2026  8:18:30.70] Step 5 - Marking LINEUP run as successful... 
+LINEUP status marked as successful.
+[29/07/2026  8:18:31.02] Step 6 - Rebuilding dashboard with final status... 
+
+===================================
+LINEUP Dashboard Build Complete
+===================================
+Input       : scheduled_orders.csv
+Output      : C:\LINEUP\output\dashboard.html
+Insights    : assignment reasons and confidence
+Remaining   : SAP versus adjusted
+Utilisation : working-calendar aware
+
+=================================== 
+LINEUP background update finished 
+29/07/2026  8:18:31.37 
+=================================== 
+ 
+=================================== 
+LINEUP background update started 
+29/07/2026  8:30:03.22 
+=================================== 
+[29/07/2026  8:30:03.22] Activating virtual environment... 
+[29/07/2026  8:30:03.74] Step 0 - Marking LINEUP run as started... 
+LINEUP status marked as running.
+[29/07/2026  8:30:04.07] Step 1 - Backing up LINEUP config... 
+
+===================================
+LINEUP Config Backup Complete
+===================================
+Backup folder : C:\LINEUP\backups\2026-07-29_083004
+Files copied  : 4
+Old backups removed: 1
+
+[29/07/2026  8:30:04.44] Step 2 - Running SAP capacity export... 
+COOIS capacities export complete:
+C:\LINEUP\data\raw\COOIS_Capacities_Latest.txt
+[29/07/2026  8:30:32.21] Step 3 - Running SAP production list export... 
+COOIS production list export complete:
+C:\LINEUP\data\raw\COOIS_ProductionList_Latest.txt
+[29/07/2026  8:33:39.35] Step 4 - Running LINEUP processing pipeline... 
+LINEUP
+Starting capacity parser...
+
+
+===================================
+LINEUP Capacity Parser Complete
+===================================
+Input : COOIS_Capacities_Latest.txt
+Output: capacities_clean.csv
+Rows  : 6323
+
+
+===================================
+LINEUP Production Parser Complete
+===================================
+Input : COOIS_ProductionList_Latest.txt
+Output: production_list_clean.csv
+Rows  : 2418
+
+
+===================================
+LINEUP Capacity Summary Complete
+===================================
+Input : capacities_clean.csv
+Output: capacities_order_summary.csv
+Rows  : 985
+
+
+===================================
+LINEUP Merge Complete
+===================================
+Production input : production_list_clean.csv
+Capacity input   : capacities_order_summary.csv
+Output           : master_schedule.csv
+Rows             : 985
+Missing metadata : 0
+
+
+===================================
+LINEUP Scheduling Complete
+===================================
+Scheduled orders : 36
+Overflow orders  : 0
+SAP minutes      : unchanged by default
+Staffing         : explicit overrides only
+Queue stability  : current + one automatic order
+Insights         : assignment reasons and confidence
+
+
+===================================
+LINEUP Dashboard Build Complete
+===================================
+Input       : scheduled_orders.csv
+Output      : C:\LINEUP\output\dashboard.html
+Insights    : assignment reasons and confidence
+Remaining   : SAP versus adjusted
+Utilisation : working-calendar aware
+
+
+===================================
+LINEUP Schedule Report Complete
+===================================
+Bench utilisation: bench_utilisation.csv
+Schedule summary : schedule_summary.csv
+
+
+===================================
+LINEUP Split Recommendations Complete
+===================================
+Recommendations : 0
+Window          : due today or next working day only
+SAP minutes     : used unchanged by default
+Staffing        : explicit overrides only
+Planner work    : live, held, split, forced and board orders excluded
+Output          : split_recommendations.csv
+
+[29/07/2026  8:33:39.89] Step 5 - Marking LINEUP run as successful... 
+LINEUP status marked as successful.
+[29/07/2026  8:33:40.20] Step 6 - Rebuilding dashboard with final status... 
+
+===================================
+LINEUP Dashboard Build Complete
+===================================
+Input       : scheduled_orders.csv
+Output      : C:\LINEUP\output\dashboard.html
+Insights    : assignment reasons and confidence
+Remaining   : SAP versus adjusted
+Utilisation : working-calendar aware
+
+=================================== 
+LINEUP background update finished 
+29/07/2026  8:33:40.55 
+=================================== 
+ 
+=================================== 
+LINEUP background update started 
+29/07/2026  8:45:03.18 
+=================================== 
+[29/07/2026  8:45:03.18] Activating virtual environment... 
+[29/07/2026  8:45:03.70] Step 0 - Marking LINEUP run as started... 
+LINEUP status marked as running.
+[29/07/2026  8:45:04.04] Step 1 - Backing up LINEUP config... 
+
+===================================
+LINEUP Config Backup Complete
+===================================
+Backup folder : C:\LINEUP\backups\2026-07-29_084504
+Files copied  : 4
+Old backups removed: 1
+
+[29/07/2026  8:45:04.43] Step 2 - Running SAP capacity export... 
+COOIS capacities export complete:
+C:\LINEUP\data\raw\COOIS_Capacities_Latest.txt
+[29/07/2026  8:45:30.23] Step 3 - Running SAP production list export... 
+COOIS production list export complete:
+C:\LINEUP\data\raw\COOIS_ProductionList_Latest.txt
+[29/07/2026  8:48:05.09] Step 4 - Running LINEUP processing pipeline... 
+LINEUP
+Starting capacity parser...
+
+
+===================================
+LINEUP Capacity Parser Complete
+===================================
+Input : COOIS_Capacities_Latest.txt
+Output: capacities_clean.csv
+Rows  : 6317
+
+
+===================================
+LINEUP Production Parser Complete
+===================================
+Input : COOIS_ProductionList_Latest.txt
+Output: production_list_clean.csv
+Rows  : 2419
+
+
+===================================
+LINEUP Capacity Summary Complete
+===================================
+Input : capacities_clean.csv
+Output: capacities_order_summary.csv
+Rows  : 986
+
+
+===================================
+LINEUP Merge Complete
+===================================
+Production input : production_list_clean.csv
+Capacity input   : capacities_order_summary.csv
+Output           : master_schedule.csv
+Rows             : 986
+Missing metadata : 0
+
+
+===================================
+LINEUP Scheduling Complete
+===================================
+Scheduled orders : 36
+Overflow orders  : 0
+SAP minutes      : unchanged by default
+Staffing         : explicit overrides only
+Queue stability  : current + one automatic order
+Insights         : assignment reasons and confidence
+
+
+===================================
+LINEUP Dashboard Build Complete
+===================================
+Input       : scheduled_orders.csv
+Output      : C:\LINEUP\output\dashboard.html
+Insights    : assignment reasons and confidence
+Remaining   : SAP versus adjusted
+Utilisation : working-calendar aware
+
+
+===================================
+LINEUP Schedule Report Complete
+===================================
+Bench utilisation: bench_utilisation.csv
+Schedule summary : schedule_summary.csv
+
+
+===================================
+LINEUP Split Recommendations Complete
+===================================
+Recommendations : 0
+Window          : due today or next working day only
+SAP minutes     : used unchanged by default
+Staffing        : explicit overrides only
+Planner work    : live, held, split, forced and board orders excluded
+Output          : split_recommendations.csv
+
+[29/07/2026  8:48:05.60] Step 5 - Marking LINEUP run as successful... 
+LINEUP status marked as successful.
+[29/07/2026  8:48:05.90] Step 6 - Rebuilding dashboard with final status... 
+
+===================================
+LINEUP Dashboard Build Complete
+===================================
+Input       : scheduled_orders.csv
+Output      : C:\LINEUP\output\dashboard.html
+Insights    : assignment reasons and confidence
+Remaining   : SAP versus adjusted
+Utilisation : working-calendar aware
+
+=================================== 
+LINEUP background update finished 
+29/07/2026  8:48:06.22 
+=================================== 
+ 
+=================================== 
+LINEUP background update started 
+29/07/2026  9:00:03.25 
+=================================== 
+[29/07/2026  9:00:03.25] Activating virtual environment... 
+[29/07/2026  9:00:03.75] Step 0 - Marking LINEUP run as started... 
+LINEUP status marked as running.
+[29/07/2026  9:00:04.09] Step 1 - Backing up LINEUP config... 
+
+===================================
+LINEUP Config Backup Complete
+===================================
+Backup folder : C:\LINEUP\backups\2026-07-29_090004
+Files copied  : 4
+Old backups removed: 1
+
+[29/07/2026  9:00:04.42] Step 2 - Running SAP capacity export... 
+COOIS capacities export complete:
+C:\LINEUP\data\raw\COOIS_Capacities_Latest.txt
+[29/07/2026  9:00:32.99] Step 3 - Running SAP production list export... 
+COOIS production list export complete:
+C:\LINEUP\data\raw\COOIS_ProductionList_Latest.txt
+[29/07/2026  9:04:25.27] Step 4 - Running LINEUP processing pipeline... 
+LINEUP
+Starting capacity parser...
+
+
+===================================
+LINEUP Capacity Parser Complete
+===================================
+Input : COOIS_Capacities_Latest.txt
+Output: capacities_clean.csv
+Rows  : 6319
+
+
+===================================
+LINEUP Production Parser Complete
+===================================
+Input : COOIS_ProductionList_Latest.txt
+Output: production_list_clean.csv
+Rows  : 2420
+
+
+===================================
+LINEUP Capacity Summary Complete
+===================================
+Input : capacities_clean.csv
+Output: capacities_order_summary.csv
+Rows  : 987
+
+
+===================================
+LINEUP Merge Complete
+===================================
+Production input : production_list_clean.csv
+Capacity input   : capacities_order_summary.csv
+Output           : master_schedule.csv
+Rows             : 987
+Missing metadata : 0
+
+
+===================================
+LINEUP Scheduling Complete
+===================================
+Scheduled orders : 37
+Overflow orders  : 0
+SAP minutes      : unchanged by default
+Staffing         : explicit overrides only
+Queue stability  : current + one automatic order
+Insights         : assignment reasons and confidence
+
+
+===================================
+LINEUP Dashboard Build Complete
+===================================
+Input       : scheduled_orders.csv
+Output      : C:\LINEUP\output\dashboard.html
+Insights    : assignment reasons and confidence
+Remaining   : SAP versus adjusted
+Utilisation : working-calendar aware
+
+
+===================================
+LINEUP Schedule Report Complete
+===================================
+Bench utilisation: bench_utilisation.csv
+Schedule summary : schedule_summary.csv
+
+
+===================================
+LINEUP Split Recommendations Complete
+===================================
+Recommendations : 0
+Window          : due today or next working day only
+SAP minutes     : used unchanged by default
+Staffing        : explicit overrides only
+Planner work    : live, held, split, forced and board orders excluded
+Output          : split_recommendations.csv
+
+[29/07/2026  9:04:25.83] Step 5 - Marking LINEUP run as successful... 
+LINEUP status marked as successful.
+[29/07/2026  9:04:26.18] Step 6 - Rebuilding dashboard with final status... 
+
+===================================
+LINEUP Dashboard Build Complete
+===================================
+Input       : scheduled_orders.csv
+Output      : C:\LINEUP\output\dashboard.html
+Insights    : assignment reasons and confidence
+Remaining   : SAP versus adjusted
+Utilisation : working-calendar aware
+
+=================================== 
+LINEUP background update finished 
+29/07/2026  9:04:26.53 
+=================================== 
+ 
+=================================== 
+LINEUP background update started 
+29/07/2026  9:15:03.26 
+=================================== 
+[29/07/2026  9:15:03.26] Activating virtual environment... 
+[29/07/2026  9:15:03.80] Step 0 - Marking LINEUP run as started... 
+LINEUP status marked as running.
+[29/07/2026  9:15:04.13] Step 1 - Backing up LINEUP config... 
+
+===================================
+LINEUP Config Backup Complete
+===================================
+Backup folder : C:\LINEUP\backups\2026-07-29_091504
+Files copied  : 4
+Old backups removed: 1
+
+[29/07/2026  9:15:04.50] Step 2 - Running SAP capacity export... 
+COOIS capacities export complete:
+C:\LINEUP\data\raw\COOIS_Capacities_Latest.txt
+[29/07/2026  9:15:36.42] Step 3 - Running SAP production list export... 
+COOIS production list export complete:
+C:\LINEUP\data\raw\COOIS_ProductionList_Latest.txt
+[29/07/2026  9:18:38.03] Step 4 - Running LINEUP processing pipeline... 
+LINEUP
+Starting capacity parser...
+
+
+===================================
+LINEUP Capacity Parser Complete
+===================================
+Input : COOIS_Capacities_Latest.txt
+Output: capacities_clean.csv
+Rows  : 6315
+
+
+===================================
+LINEUP Production Parser Complete
+===================================
+Input : COOIS_ProductionList_Latest.txt
+Output: production_list_clean.csv
+Rows  : 2418
+
+
+===================================
+LINEUP Capacity Summary Complete
+===================================
+Input : capacities_clean.csv
+Output: capacities_order_summary.csv
+Rows  : 986
+
+
+===================================
+LINEUP Merge Complete
+===================================
+Production input : production_list_clean.csv
+Capacity input   : capacities_order_summary.csv
+Output           : master_schedule.csv
+Rows             : 986
+Missing metadata : 0
+
+
+===================================
+LINEUP Scheduling Complete
+===================================
+Scheduled orders : 36
+Overflow orders  : 0
+SAP minutes      : unchanged by default
+Staffing         : explicit overrides only
+Queue stability  : current + one automatic order
+Insights         : assignment reasons and confidence
+
+
+===================================
+LINEUP Dashboard Build Complete
+===================================
+Input       : scheduled_orders.csv
+Output      : C:\LINEUP\output\dashboard.html
+Insights    : assignment reasons and confidence
+Remaining   : SAP versus adjusted
+Utilisation : working-calendar aware
+
+
+===================================
+LINEUP Schedule Report Complete
+===================================
+Bench utilisation: bench_utilisation.csv
+Schedule summary : schedule_summary.csv
+
+
+===================================
+LINEUP Split Recommendations Complete
+===================================
+Recommendations : 2
+Window          : due today or next working day only
+SAP minutes     : used unchanged by default
+Staffing        : explicit overrides only
+Planner work    : live, held, split, forced and board orders excluded
+Output          : split_recommendations.csv
+
+[29/07/2026  9:18:38.58] Step 5 - Marking LINEUP run as successful... 
+LINEUP status marked as successful.
+[29/07/2026  9:18:38.88] Step 6 - Rebuilding dashboard with final status... 
+
+===================================
+LINEUP Dashboard Build Complete
+===================================
+Input       : scheduled_orders.csv
+Output      : C:\LINEUP\output\dashboard.html
+Insights    : assignment reasons and confidence
+Remaining   : SAP versus adjusted
+Utilisation : working-calendar aware
+
+=================================== 
+LINEUP background update finished 
+29/07/2026  9:18:39.20 
+=================================== 
+ 
+=================================== 
+LINEUP background update started 
+29/07/2026  9:30:03.20 
+=================================== 
+[29/07/2026  9:30:03.21] Activating virtual environment... 
+[29/07/2026  9:30:03.74] Step 0 - Marking LINEUP run as started... 
+LINEUP status marked as running.
+[29/07/2026  9:30:04.10] Step 1 - Backing up LINEUP config... 
+
+===================================
+LINEUP Config Backup Complete
+===================================
+Backup folder : C:\LINEUP\backups\2026-07-29_093004
+Files copied  : 4
+Old backups removed: 1
+
+[29/07/2026  9:30:04.46] Step 2 - Running SAP capacity export... 
+COOIS capacities export complete:
+C:\LINEUP\data\raw\COOIS_Capacities_Latest.txt
+[29/07/2026  9:30:33.49] Step 3 - Running SAP production list export... 
+COOIS production list export complete:
+C:\LINEUP\data\raw\COOIS_ProductionList_Latest.txt
+[29/07/2026  9:33:33.92] Step 4 - Running LINEUP processing pipeline... 
+LINEUP
+Starting capacity parser...
+
+
+===================================
+LINEUP Capacity Parser Complete
+===================================
+Input : COOIS_Capacities_Latest.txt
+Output: capacities_clean.csv
+Rows  : 6300
+
+
+===================================
+LINEUP Production Parser Complete
+===================================
+Input : COOIS_ProductionList_Latest.txt
+Output: production_list_clean.csv
+Rows  : 2414
+
+
+===================================
+LINEUP Capacity Summary Complete
+===================================
+Input : capacities_clean.csv
+Output: capacities_order_summary.csv
+Rows  : 986
+
+
+===================================
+LINEUP Merge Complete
+===================================
+Production input : production_list_clean.csv
+Capacity input   : capacities_order_summary.csv
+Output           : master_schedule.csv
+Rows             : 986
+Missing metadata : 0
+
+
+===================================
+LINEUP Scheduling Complete
+===================================
+Scheduled orders : 38
+Overflow orders  : 0
+SAP minutes      : unchanged by default
+Staffing         : explicit overrides only
+Queue stability  : current + one automatic order
+Insights         : assignment reasons and confidence
+
+
+===================================
+LINEUP Dashboard Build Complete
+===================================
+Input       : scheduled_orders.csv
+Output      : C:\LINEUP\output\dashboard.html
+Insights    : assignment reasons and confidence
+Remaining   : SAP versus adjusted
+Utilisation : working-calendar aware
+
+
+===================================
+LINEUP Schedule Report Complete
+===================================
+Bench utilisation: bench_utilisation.csv
+Schedule summary : schedule_summary.csv
+
+
+===================================
+LINEUP Split Recommendations Complete
+===================================
+Recommendations : 0
+Window          : due today or next working day only
+SAP minutes     : used unchanged by default
+Staffing        : explicit overrides only
+Planner work    : live, held, split, forced and board orders excluded
+Output          : split_recommendations.csv
+
+[29/07/2026  9:33:34.56] Step 5 - Marking LINEUP run as successful... 
+LINEUP status marked as successful.
+[29/07/2026  9:33:34.86] Step 6 - Rebuilding dashboard with final status... 
+
+===================================
+LINEUP Dashboard Build Complete
+===================================
+Input       : scheduled_orders.csv
+Output      : C:\LINEUP\output\dashboard.html
+Insights    : assignment reasons and confidence
+Remaining   : SAP versus adjusted
+Utilisation : working-calendar aware
+
+=================================== 
+LINEUP background update finished 
+29/07/2026  9:33:35.17 
+=================================== 
+ 
+=================================== 
+LINEUP background update started 
+29/07/2026  9:45:03.19 
+=================================== 
+[29/07/2026  9:45:03.19] Activating virtual environment... 
+[29/07/2026  9:45:03.73] Step 0 - Marking LINEUP run as started... 
+LINEUP status marked as running.
+[29/07/2026  9:45:04.04] Step 1 - Backing up LINEUP config... 
+
+===================================
+LINEUP Config Backup Complete
+===================================
+Backup folder : C:\LINEUP\backups\2026-07-29_094504
+Files copied  : 4
+Old backups removed: 1
+
+[29/07/2026  9:45:04.41] Step 2 - Running SAP capacity export... 
+COOIS capacities export complete:
+C:\LINEUP\data\raw\COOIS_Capacities_Latest.txt
+[29/07/2026  9:45:33.16] Step 3 - Running SAP production list export... 
+COOIS production list export complete:
+C:\LINEUP\data\raw\COOIS_ProductionList_Latest.txt
+[29/07/2026  9:48:27.92] Step 4 - Running LINEUP processing pipeline... 
+LINEUP
+Starting capacity parser...
+
+
+===================================
+LINEUP Capacity Parser Complete
+===================================
+Input : COOIS_Capacities_Latest.txt
+Output: capacities_clean.csv
+Rows  : 6289
+
+
+===================================
+LINEUP Production Parser Complete
+===================================
+Input : COOIS_ProductionList_Latest.txt
+Output: production_list_clean.csv
+Rows  : 2409
+
+
+===================================
+LINEUP Capacity Summary Complete
+===================================
+Input : capacities_clean.csv
+Output: capacities_order_summary.csv
+Rows  : 981
+
+
+===================================
+LINEUP Merge Complete
+===================================
+Production input : production_list_clean.csv
+Capacity input   : capacities_order_summary.csv
+Output           : master_schedule.csv
+Rows             : 981
+Missing metadata : 0
+
+
+===================================
+LINEUP Scheduling Complete
+===================================
+Scheduled orders : 39
+Overflow orders  : 0
+SAP minutes      : unchanged by default
+Staffing         : explicit overrides only
+Queue stability  : current + one automatic order
+Insights         : assignment reasons and confidence
+
+
+===================================
+LINEUP Dashboard Build Complete
+===================================
+Input       : scheduled_orders.csv
+Output      : C:\LINEUP\output\dashboard.html
+Insights    : assignment reasons and confidence
+Remaining   : SAP versus adjusted
+Utilisation : working-calendar aware
+
+
+===================================
+LINEUP Schedule Report Complete
+===================================
+Bench utilisation: bench_utilisation.csv
+Schedule summary : schedule_summary.csv
+
+
+===================================
+LINEUP Split Recommendations Complete
+===================================
+Recommendations : 0
+Window          : due today or next working day only
+SAP minutes     : used unchanged by default
+Staffing        : explicit overrides only
+Planner work    : live, held, split, forced and board orders excluded
+Output          : split_recommendations.csv
+
+[29/07/2026  9:48:28.41] Step 5 - Marking LINEUP run as successful... 
+LINEUP status marked as successful.
+[29/07/2026  9:48:28.73] Step 6 - Rebuilding dashboard with final status... 
+
+===================================
+LINEUP Dashboard Build Complete
+===================================
+Input       : scheduled_orders.csv
+Output      : C:\LINEUP\output\dashboard.html
+Insights    : assignment reasons and confidence
+Remaining   : SAP versus adjusted
+Utilisation : working-calendar aware
+
+=================================== 
+LINEUP background update finished 
+29/07/2026  9:48:29.06 
+=================================== 
+ 
+=================================== 
+LINEUP background update started 
+29/07/2026 10:00:03.13 
+=================================== 
+[29/07/2026 10:00:03.14] Activating virtual environment... 
+[29/07/2026 10:00:03.64] Step 0 - Marking LINEUP run as started... 
+LINEUP status marked as running.
+[29/07/2026 10:00:03.97] Step 1 - Backing up LINEUP config... 
+
+===================================
+LINEUP Config Backup Complete
+===================================
+Backup folder : C:\LINEUP\backups\2026-07-29_100004
+Files copied  : 4
+Old backups removed: 1
+
+[29/07/2026 10:00:04.30] Step 2 - Running SAP capacity export... 
+COOIS capacities export complete:
+C:\LINEUP\data\raw\COOIS_Capacities_Latest.txt
+[29/07/2026 10:00:31.33] Step 3 - Running SAP production list export... 
+COOIS production list export complete:
+C:\LINEUP\data\raw\COOIS_ProductionList_Latest.txt
+[29/07/2026 10:04:23.48] Step 4 - Running LINEUP processing pipeline... 
+LINEUP
+Starting capacity parser...
+
+
+===================================
+LINEUP Capacity Parser Complete
+===================================
+Input : COOIS_Capacities_Latest.txt
+Output: capacities_clean.csv
+Rows  : 6284
+
+
+===================================
+LINEUP Production Parser Complete
+===================================
+Input : COOIS_ProductionList_Latest.txt
+Output: production_list_clean.csv
+Rows  : 2407
+
+
+===================================
+LINEUP Capacity Summary Complete
+===================================
+Input : capacities_clean.csv
+Output: capacities_order_summary.csv
+Rows  : 980
+
+
+===================================
+LINEUP Merge Complete
+===================================
+Production input : production_list_clean.csv
+Capacity input   : capacities_order_summary.csv
+Output           : master_schedule.csv
+Rows             : 980
+Missing metadata : 0
+
+
+===================================
+LINEUP Scheduling Complete
+===================================
+Scheduled orders : 39
+Overflow orders  : 0
+SAP minutes      : unchanged by default
+Staffing         : explicit overrides only
+Queue stability  : current + one automatic order
+Insights         : assignment reasons and confidence
+
+
+===================================
+LINEUP Dashboard Build Complete
+===================================
+Input       : scheduled_orders.csv
+Output      : C:\LINEUP\output\dashboard.html
+Insights    : assignment reasons and confidence
+Remaining   : SAP versus adjusted
+Utilisation : working-calendar aware
+
+
+===================================
+LINEUP Schedule Report Complete
+===================================
+Bench utilisation: bench_utilisation.csv
+Schedule summary : schedule_summary.csv
+
+
+===================================
+LINEUP Split Recommendations Complete
+===================================
+Recommendations : 0
+Window          : due today or next working day only
+SAP minutes     : used unchanged by default
+Staffing        : explicit overrides only
+Planner work    : live, held, split, forced and board orders excluded
+Output          : split_recommendations.csv
+
+[29/07/2026 10:04:23.96] Step 5 - Marking LINEUP run as successful... 
+LINEUP status marked as successful.
+[29/07/2026 10:04:24.27] Step 6 - Rebuilding dashboard with final status... 
+
+===================================
+LINEUP Dashboard Build Complete
+===================================
+Input       : scheduled_orders.csv
+Output      : C:\LINEUP\output\dashboard.html
+Insights    : assignment reasons and confidence
+Remaining   : SAP versus adjusted
+Utilisation : working-calendar aware
+
+=================================== 
+LINEUP background update finished 
+29/07/2026 10:04:24.60 
+=================================== 
+ 
+=================================== 
+LINEUP background update started 
+29/07/2026 10:15:03.64 
+=================================== 
+[29/07/2026 10:15:03.65] Activating virtual environment... 
+[29/07/2026 10:15:04.26] Step 0 - Marking LINEUP run as started... 
+LINEUP status marked as running.
+[29/07/2026 10:15:04.79] Step 1 - Backing up LINEUP config... 
+
+===================================
+LINEUP Config Backup Complete
+===================================
+Backup folder : C:\LINEUP\backups\2026-07-29_101505
+Files copied  : 4
+Old backups removed: 1
+
+[29/07/2026 10:15:05.25] Step 2 - Running SAP capacity export... 
+COOIS capacities export complete:
+C:\LINEUP\data\raw\COOIS_Capacities_Latest.txt
+[29/07/2026 10:15:33.50] Step 3 - Running SAP production list export... 
+COOIS production list export complete:
+C:\LINEUP\data\raw\COOIS_ProductionList_Latest.txt
+[29/07/2026 10:18:05.42] Step 4 - Running LINEUP processing pipeline... 
+LINEUP
+Starting capacity parser...
+
+
+===================================
+LINEUP Capacity Parser Complete
+===================================
+Input : COOIS_Capacities_Latest.txt
+Output: capacities_clean.csv
+Rows  : 6275
+
+
+===================================
+LINEUP Production Parser Complete
+===================================
+Input : COOIS_ProductionList_Latest.txt
+Output: production_list_clean.csv
+Rows  : 2404
+
+
+===================================
+LINEUP Capacity Summary Complete
+===================================
+Input : capacities_clean.csv
+Output: capacities_order_summary.csv
+Rows  : 980
+
+
+===================================
+LINEUP Merge Complete
+===================================
+Production input : production_list_clean.csv
+Capacity input   : capacities_order_summary.csv
+Output           : master_schedule.csv
+Rows             : 980
+Missing metadata : 0
+
+
+===================================
+LINEUP Scheduling Complete
+===================================
+Scheduled orders : 39
+Overflow orders  : 0
+SAP minutes      : unchanged by default
+Staffing         : explicit overrides only
+Queue stability  : current + one automatic order
+Insights         : assignment reasons and confidence
+
+
+===================================
+LINEUP Dashboard Build Complete
+===================================
+Input       : scheduled_orders.csv
+Output      : C:\LINEUP\output\dashboard.html
+Insights    : assignment reasons and confidence
+Remaining   : SAP versus adjusted
+Utilisation : working-calendar aware
+
+
+===================================
+LINEUP Schedule Report Complete
+===================================
+Bench utilisation: bench_utilisation.csv
+Schedule summary : schedule_summary.csv
+
+
+===================================
+LINEUP Split Recommendations Complete
+===================================
+Recommendations : 0
+Window          : due today or next working day only
+SAP minutes     : used unchanged by default
+Staffing        : explicit overrides only
+Planner work    : live, held, split, forced and board orders excluded
+Output          : split_recommendations.csv
+
+[29/07/2026 10:18:05.97] Step 5 - Marking LINEUP run as successful... 
+LINEUP status marked as successful.
+[29/07/2026 10:18:06.30] Step 6 - Rebuilding dashboard with final status... 
+
+===================================
+LINEUP Dashboard Build Complete
+===================================
+Input       : scheduled_orders.csv
+Output      : C:\LINEUP\output\dashboard.html
+Insights    : assignment reasons and confidence
+Remaining   : SAP versus adjusted
+Utilisation : working-calendar aware
+
+=================================== 
+LINEUP background update finished 
+29/07/2026 10:18:06.65 
+=================================== 
+ 
+=================================== 
+LINEUP background update started 
+29/07/2026 10:30:03.19 
+=================================== 
+[29/07/2026 10:30:03.19] Activating virtual environment... 
+[29/07/2026 10:30:03.69] Step 0 - Marking LINEUP run as started... 
+LINEUP status marked as running.
+[29/07/2026 10:30:04.02] Step 1 - Backing up LINEUP config... 
+
+===================================
+LINEUP Config Backup Complete
+===================================
+Backup folder : C:\LINEUP\backups\2026-07-29_103004
+Files copied  : 4
+Old backups removed: 1
+
+[29/07/2026 10:30:04.39] Step 2 - Running SAP capacity export... 
+COOIS capacities export complete:
+C:\LINEUP\data\raw\COOIS_Capacities_Latest.txt
+[29/07/2026 10:30:34.02] Step 3 - Running SAP production list export... 
+COOIS production list export complete:
+C:\LINEUP\data\raw\COOIS_ProductionList_Latest.txt
+[29/07/2026 10:33:13.12] Step 4 - Running LINEUP processing pipeline... 
+LINEUP
+Starting capacity parser...
+
+
+===================================
+LINEUP Capacity Parser Complete
+===================================
+Input : COOIS_Capacities_Latest.txt
+Output: capacities_clean.csv
+Rows  : 6275
+
+
+===================================
+LINEUP Production Parser Complete
+===================================
+Input : COOIS_ProductionList_Latest.txt
+Output: production_list_clean.csv
+Rows  : 2404
+
+
+===================================
+LINEUP Capacity Summary Complete
+===================================
+Input : capacities_clean.csv
+Output: capacities_order_summary.csv
+Rows  : 980
+
+
+===================================
+LINEUP Merge Complete
+===================================
+Production input : production_list_clean.csv
+Capacity input   : capacities_order_summary.csv
+Output           : master_schedule.csv
+Rows             : 980
+Missing metadata : 0
+
+
+===================================
+LINEUP Scheduling Complete
+===================================
+Scheduled orders : 38
+Overflow orders  : 0
+SAP minutes      : unchanged by default
+Staffing         : explicit overrides only
+Queue stability  : current + one automatic order
+Insights         : assignment reasons and confidence
+
+
+===================================
+LINEUP Dashboard Build Complete
+===================================
+Input       : scheduled_orders.csv
+Output      : C:\LINEUP\output\dashboard.html
+Insights    : assignment reasons and confidence
+Remaining   : SAP versus adjusted
+Utilisation : working-calendar aware
+
+
+===================================
+LINEUP Schedule Report Complete
+===================================
+Bench utilisation: bench_utilisation.csv
+Schedule summary : schedule_summary.csv
+
+
+===================================
+LINEUP Split Recommendations Complete
+===================================
+Recommendations : 0
+Window          : due today or next working day only
+SAP minutes     : used unchanged by default
+Staffing        : explicit overrides only
+Planner work    : live, held, split, forced and board orders excluded
+Output          : split_recommendations.csv
+
+[29/07/2026 10:33:13.60] Step 5 - Marking LINEUP run as successful... 
+LINEUP status marked as successful.
+[29/07/2026 10:33:13.90] Step 6 - Rebuilding dashboard with final status... 
+
+===================================
+LINEUP Dashboard Build Complete
+===================================
+Input       : scheduled_orders.csv
+Output      : C:\LINEUP\output\dashboard.html
+Insights    : assignment reasons and confidence
+Remaining   : SAP versus adjusted
+Utilisation : working-calendar aware
+
+=================================== 
+LINEUP background update finished 
+29/07/2026 10:33:14.24 
+=================================== 
+ 
+=================================== 
+LINEUP background update started 
+29/07/2026 10:45:03.18 
+=================================== 
+[29/07/2026 10:45:03.18] Activating virtual environment... 
+[29/07/2026 10:45:03.69] Step 0 - Marking LINEUP run as started... 
+LINEUP status marked as running.
+[29/07/2026 10:45:03.99] Step 1 - Backing up LINEUP config... 
+
+===================================
+LINEUP Config Backup Complete
+===================================
+Backup folder : C:\LINEUP\backups\2026-07-29_104504
+Files copied  : 4
+Old backups removed: 1
+
+[29/07/2026 10:45:04.36] Step 2 - Running SAP capacity export... 
+COOIS capacities export complete:
+C:\LINEUP\data\raw\COOIS_Capacities_Latest.txt
+[29/07/2026 10:45:28.59] Step 3 - Running SAP production list export... 
+COOIS production list export complete:
+C:\LINEUP\data\raw\COOIS_ProductionList_Latest.txt
+[29/07/2026 10:47:41.61] Step 4 - Running LINEUP processing pipeline... 
+LINEUP
+Starting capacity parser...
+
+
+===================================
+LINEUP Capacity Parser Complete
+===================================
+Input : COOIS_Capacities_Latest.txt
+Output: capacities_clean.csv
+Rows  : 6271
+
+
+===================================
+LINEUP Production Parser Complete
+===================================
+Input : COOIS_ProductionList_Latest.txt
+Output: production_list_clean.csv
+Rows  : 2402
+
+
+===================================
+LINEUP Capacity Summary Complete
+===================================
+Input : capacities_clean.csv
+Output: capacities_order_summary.csv
+Rows  : 979
+
+
+===================================
+LINEUP Merge Complete
+===================================
+Production input : production_list_clean.csv
+Capacity input   : capacities_order_summary.csv
+Output           : master_schedule.csv
+Rows             : 979
+Missing metadata : 0
+
+
+===================================
+LINEUP Scheduling Complete
+===================================
+Scheduled orders : 39
+Overflow orders  : 0
+SAP minutes      : unchanged by default
+Staffing         : explicit overrides only
+Queue stability  : current + one automatic order
+Insights         : assignment reasons and confidence
+
+
+===================================
+LINEUP Dashboard Build Complete
+===================================
+Input       : scheduled_orders.csv
+Output      : C:\LINEUP\output\dashboard.html
+Insights    : assignment reasons and confidence
+Remaining   : SAP versus adjusted
+Utilisation : working-calendar aware
+
+
+===================================
+LINEUP Schedule Report Complete
+===================================
+Bench utilisation: bench_utilisation.csv
+Schedule summary : schedule_summary.csv
+
+
+===================================
+LINEUP Split Recommendations Complete
+===================================
+Recommendations : 0
+Window          : due today or next working day only
+SAP minutes     : used unchanged by default
+Staffing        : explicit overrides only
+Planner work    : live, held, split, forced and board orders excluded
+Output          : split_recommendations.csv
+
+[29/07/2026 10:47:42.11] Step 5 - Marking LINEUP run as successful... 
+LINEUP status marked as successful.
+[29/07/2026 10:47:42.40] Step 6 - Rebuilding dashboard with final status... 
+
+===================================
+LINEUP Dashboard Build Complete
+===================================
+Input       : scheduled_orders.csv
+Output      : C:\LINEUP\output\dashboard.html
+Insights    : assignment reasons and confidence
+Remaining   : SAP versus adjusted
+Utilisation : working-calendar aware
+
+=================================== 
+LINEUP background update finished 
+29/07/2026 10:47:42.73 
+=================================== 
+ 
+=================================== 
+LINEUP background update started 
+29/07/2026 11:00:03.96 
+=================================== 
+[29/07/2026 11:00:03.96] Activating virtual environment... 
+[29/07/2026 11:00:04.51] Step 0 - Marking LINEUP run as started... 
+LINEUP status marked as running.
+[29/07/2026 11:00:04.83] Step 1 - Backing up LINEUP config... 
+
+===================================
+LINEUP Config Backup Complete
+===================================
+Backup folder : C:\LINEUP\backups\2026-07-29_110005
+Files copied  : 4
+Old backups removed: 1
+
+[29/07/2026 11:00:05.15] Step 2 - Running SAP capacity export... 
+COOIS capacities export complete:
+C:\LINEUP\data\raw\COOIS_Capacities_Latest.txt
+[29/07/2026 11:00:38.09] Step 3 - Running SAP production list export... 
+COOIS production list export complete:
+C:\LINEUP\data\raw\COOIS_ProductionList_Latest.txt
+[29/07/2026 11:03:54.55] Step 4 - Running LINEUP processing pipeline... 
+LINEUP
+Starting capacity parser...
+
+
+===================================
+LINEUP Capacity Parser Complete
+===================================
+Input : COOIS_Capacities_Latest.txt
+Output: capacities_clean.csv
+Rows  : 6266
+
+
+===================================
+LINEUP Production Parser Complete
+===================================
+Input : COOIS_ProductionList_Latest.txt
+Output: production_list_clean.csv
+Rows  : 2400
+
+
+===================================
+LINEUP Capacity Summary Complete
+===================================
+Input : capacities_clean.csv
+Output: capacities_order_summary.csv
+Rows  : 977
+
+
+===================================
+LINEUP Merge Complete
+===================================
+Production input : production_list_clean.csv
+Capacity input   : capacities_order_summary.csv
+Output           : master_schedule.csv
+Rows             : 977
+Missing metadata : 0
+
+
+===================================
+LINEUP Scheduling Complete
+===================================
+Scheduled orders : 37
+Overflow orders  : 0
+SAP minutes      : unchanged by default
+Staffing         : explicit overrides only
+Queue stability  : current + one automatic order
+Insights         : assignment reasons and confidence
+
+
+===================================
+LINEUP Dashboard Build Complete
+===================================
+Input       : scheduled_orders.csv
+Output      : C:\LINEUP\output\dashboard.html
+Insights    : assignment reasons and confidence
+Remaining   : SAP versus adjusted
+Utilisation : working-calendar aware
+
+
+===================================
+LINEUP Schedule Report Complete
+===================================
+Bench utilisation: bench_utilisation.csv
+Schedule summary : schedule_summary.csv
+
+
+===================================
+LINEUP Split Recommendations Complete
+===================================
+Recommendations : 0
+Window          : due today or next working day only
+SAP minutes     : used unchanged by default
+Staffing        : explicit overrides only
+Planner work    : live, held, split, forced and board orders excluded
+Output          : split_recommendations.csv
+
+[29/07/2026 11:03:55.26] Step 5 - Marking LINEUP run as successful... 
+LINEUP status marked as successful.
+[29/07/2026 11:03:55.59] Step 6 - Rebuilding dashboard with final status... 
+
+===================================
+LINEUP Dashboard Build Complete
+===================================
+Input       : scheduled_orders.csv
+Output      : C:\LINEUP\output\dashboard.html
+Insights    : assignment reasons and confidence
+Remaining   : SAP versus adjusted
+Utilisation : working-calendar aware
+
+=================================== 
+LINEUP background update finished 
+29/07/2026 11:03:55.92 
+=================================== 
+ 
+=================================== 
+LINEUP background update started 
+29/07/2026 11:15:03.22 
+=================================== 
+[29/07/2026 11:15:03.24] Activating virtual environment... 
+[29/07/2026 11:15:03.75] Step 0 - Marking LINEUP run as started... 
+LINEUP status marked as running.
+[29/07/2026 11:15:04.10] Step 1 - Backing up LINEUP config... 
+
+===================================
+LINEUP Config Backup Complete
+===================================
+Backup folder : C:\LINEUP\backups\2026-07-29_111504
+Files copied  : 4
+Old backups removed: 1
+
+[29/07/2026 11:15:04.46] Step 2 - Running SAP capacity export... 
+COOIS capacities export complete:
+C:\LINEUP\data\raw\COOIS_Capacities_Latest.txt
+[29/07/2026 11:15:29.07] Step 3 - Running SAP production list export... 
+COOIS production list export complete:
+C:\LINEUP\data\raw\COOIS_ProductionList_Latest.txt
+[29/07/2026 11:18:00.71] Step 4 - Running LINEUP processing pipeline... 
+LINEUP
+Starting capacity parser...
+
+
+===================================
+LINEUP Capacity Parser Complete
+===================================
+Input : COOIS_Capacities_Latest.txt
+Output: capacities_clean.csv
+Rows  : 6266
+
+
+===================================
+LINEUP Production Parser Complete
+===================================
+Input : COOIS_ProductionList_Latest.txt
+Output: production_list_clean.csv
+Rows  : 2400
+
+
+===================================
+LINEUP Capacity Summary Complete
+===================================
+Input : capacities_clean.csv
+Output: capacities_order_summary.csv
+Rows  : 977
+
+
+===================================
+LINEUP Merge Complete
+===================================
+Production input : production_list_clean.csv
+Capacity input   : capacities_order_summary.csv
+Output           : master_schedule.csv
+Rows             : 977
+Missing metadata : 0
+
+
+===================================
+LINEUP Scheduling Complete
+===================================
+Scheduled orders : 40
+Overflow orders  : 0
+SAP minutes      : unchanged by default
+Staffing         : explicit overrides only
+Queue stability  : current + one automatic order
+Insights         : assignment reasons and confidence
+
+
+===================================
+LINEUP Dashboard Build Complete
+===================================
+Input       : scheduled_orders.csv
+Output      : C:\LINEUP\output\dashboard.html
+Insights    : assignment reasons and confidence
+Remaining   : SAP versus adjusted
+Utilisation : working-calendar aware
+
+
+===================================
+LINEUP Schedule Report Complete
+===================================
+Bench utilisation: bench_utilisation.csv
+Schedule summary : schedule_summary.csv
+
+
+===================================
+LINEUP Split Recommendations Complete
+===================================
+Recommendations : 0
+Window          : due today or next working day only
+SAP minutes     : used unchanged by default
+Staffing        : explicit overrides only
+Planner work    : live, held, split, forced and board orders excluded
+Output          : split_recommendations.csv
+
+[29/07/2026 11:18:01.35] Step 5 - Marking LINEUP run as successful... 
+LINEUP status marked as successful.
+[29/07/2026 11:18:01.69] Step 6 - Rebuilding dashboard with final status... 
+
+===================================
+LINEUP Dashboard Build Complete
+===================================
+Input       : scheduled_orders.csv
+Output      : C:\LINEUP\output\dashboard.html
+Insights    : assignment reasons and confidence
+Remaining   : SAP versus adjusted
+Utilisation : working-calendar aware
+
+=================================== 
+LINEUP background update finished 
+29/07/2026 11:18:02.02 
+=================================== 
+ 
+=================================== 
+LINEUP background update started 
+29/07/2026 11:30:03.28 
+=================================== 
+[29/07/2026 11:30:03.30] Activating virtual environment... 
+[29/07/2026 11:30:03.88] Step 0 - Marking LINEUP run as started... 
+LINEUP status marked as running.
+[29/07/2026 11:30:04.23] Step 1 - Backing up LINEUP config... 
+
+===================================
+LINEUP Config Backup Complete
+===================================
+Backup folder : C:\LINEUP\backups\2026-07-29_113004
+Files copied  : 4
+Old backups removed: 1
+
+[29/07/2026 11:30:04.59] Step 2 - Running SAP capacity export... 
+COOIS capacities export complete:
+C:\LINEUP\data\raw\COOIS_Capacities_Latest.txt
+[29/07/2026 11:30:30.38] Step 3 - Running SAP production list export... 
+COOIS production list export complete:
+C:\LINEUP\data\raw\COOIS_ProductionList_Latest.txt
+[29/07/2026 11:33:07.10] Step 4 - Running LINEUP processing pipeline... 
+LINEUP
+Starting capacity parser...
+
+
+===================================
+LINEUP Capacity Parser Complete
+===================================
+Input : COOIS_Capacities_Latest.txt
+Output: capacities_clean.csv
+Rows  : 6266
+
+
+===================================
+LINEUP Production Parser Complete
+===================================
+Input : COOIS_ProductionList_Latest.txt
+Output: production_list_clean.csv
+Rows  : 2400
+
+
+===================================
+LINEUP Capacity Summary Complete
+===================================
+Input : capacities_clean.csv
+Output: capacities_order_summary.csv
+Rows  : 977
+
+
+===================================
+LINEUP Merge Complete
+===================================
+Production input : production_list_clean.csv
+Capacity input   : capacities_order_summary.csv
+Output           : master_schedule.csv
+Rows             : 977
+Missing metadata : 0
+
+
+===================================
+LINEUP Scheduling Complete
+===================================
+Scheduled orders : 41
+Overflow orders  : 0
+SAP minutes      : unchanged by default
+Staffing         : explicit overrides only
+Queue stability  : current + one automatic order
+Insights         : assignment reasons and confidence
+
+
+===================================
+LINEUP Dashboard Build Complete
+===================================
+Input       : scheduled_orders.csv
+Output      : C:\LINEUP\output\dashboard.html
+Insights    : assignment reasons and confidence
+Remaining   : SAP versus adjusted
+Utilisation : working-calendar aware
+
+
+===================================
+LINEUP Schedule Report Complete
+===================================
+Bench utilisation: bench_utilisation.csv
+Schedule summary : schedule_summary.csv
+
+
+===================================
+LINEUP Split Recommendations Complete
+===================================
+Recommendations : 0
+Window          : due today or next working day only
+SAP minutes     : used unchanged by default
+Staffing        : explicit overrides only
+Planner work    : live, held, split, forced and board orders excluded
+Output          : split_recommendations.csv
+
+[29/07/2026 11:33:07.61] Step 5 - Marking LINEUP run as successful... 
+LINEUP status marked as successful.
+[29/07/2026 11:33:07.92] Step 6 - Rebuilding dashboard with final status... 
+
+===================================
+LINEUP Dashboard Build Complete
+===================================
+Input       : scheduled_orders.csv
+Output      : C:\LINEUP\output\dashboard.html
+Insights    : assignment reasons and confidence
+Remaining   : SAP versus adjusted
+Utilisation : working-calendar aware
+
+=================================== 
+LINEUP background update finished 
+29/07/2026 11:33:08.25 
+=================================== 
+ 
+=================================== 
+LINEUP background update started 
+29/07/2026 11:45:03.16 
+=================================== 
+[29/07/2026 11:45:03.17] Activating virtual environment... 
+[29/07/2026 11:45:03.69] Step 0 - Marking LINEUP run as started... 
+LINEUP status marked as running.
+[29/07/2026 11:45:04.02] Step 1 - Backing up LINEUP config... 
+
+===================================
+LINEUP Config Backup Complete
+===================================
+Backup folder : C:\LINEUP\backups\2026-07-29_114504
+Files copied  : 4
+Old backups removed: 1
+
+[29/07/2026 11:45:04.40] Step 2 - Running SAP capacity export... 
+COOIS capacities export complete:
+C:\LINEUP\data\raw\COOIS_Capacities_Latest.txt
+[29/07/2026 11:45:31.44] Step 3 - Running SAP production list export... 
+COOIS production list export complete:
+C:\LINEUP\data\raw\COOIS_ProductionList_Latest.txt
+[29/07/2026 11:47:43.09] Step 4 - Running LINEUP processing pipeline... 
+LINEUP
+Starting capacity parser...
+
+
+===================================
+LINEUP Capacity Parser Complete
+===================================
+Input : COOIS_Capacities_Latest.txt
+Output: capacities_clean.csv
+Rows  : 6263
+
+
+===================================
+LINEUP Production Parser Complete
+===================================
+Input : COOIS_ProductionList_Latest.txt
+Output: production_list_clean.csv
+Rows  : 2398
+
+
+===================================
+LINEUP Capacity Summary Complete
+===================================
+Input : capacities_clean.csv
+Output: capacities_order_summary.csv
+Rows  : 979
+
+
+===================================
+LINEUP Merge Complete
+===================================
+Production input : production_list_clean.csv
+Capacity input   : capacities_order_summary.csv
+Output           : master_schedule.csv
+Rows             : 979
+Missing metadata : 0
+
+
+===================================
+LINEUP Scheduling Complete
+===================================
+Scheduled orders : 42
+Overflow orders  : 0
+SAP minutes      : unchanged by default
+Staffing         : explicit overrides only
+Queue stability  : current + one automatic order
+Insights         : assignment reasons and confidence
+
+
+===================================
+LINEUP Dashboard Build Complete
+===================================
+Input       : scheduled_orders.csv
+Output      : C:\LINEUP\output\dashboard.html
+Insights    : assignment reasons and confidence
+Remaining   : SAP versus adjusted
+Utilisation : working-calendar aware
+
+
+===================================
+LINEUP Schedule Report Complete
+===================================
+Bench utilisation: bench_utilisation.csv
+Schedule summary : schedule_summary.csv
+
+
+===================================
+LINEUP Split Recommendations Complete
+===================================
+Recommendations : 0
+Window          : due today or next working day only
+SAP minutes     : used unchanged by default
+Staffing        : explicit overrides only
+Planner work    : live, held, split, forced and board orders excluded
+Output          : split_recommendations.csv
+
+[29/07/2026 11:47:43.60] Step 5 - Marking LINEUP run as successful... 
+LINEUP status marked as successful.
+[29/07/2026 11:47:44.16] Step 6 - Rebuilding dashboard with final status... 
+
+===================================
+LINEUP Dashboard Build Complete
+===================================
+Input       : scheduled_orders.csv
+Output      : C:\LINEUP\output\dashboard.html
+Insights    : assignment reasons and confidence
+Remaining   : SAP versus adjusted
+Utilisation : working-calendar aware
+
+=================================== 
+LINEUP background update finished 
+29/07/2026 11:47:44.52 
+=================================== 
+ 
+=================================== 
+LINEUP background update started 
+29/07/2026 12:00:03.20 
+=================================== 
+[29/07/2026 12:00:03.20] Activating virtual environment... 
+[29/07/2026 12:00:03.72] Step 0 - Marking LINEUP run as started... 
+LINEUP status marked as running.
+[29/07/2026 12:00:04.06] Step 1 - Backing up LINEUP config... 
+
+===================================
+LINEUP Config Backup Complete
+===================================
+Backup folder : C:\LINEUP\backups\2026-07-29_120004
+Files copied  : 4
+Old backups removed: 1
+
+[29/07/2026 12:00:04.42] Step 2 - Running SAP capacity export... 
+COOIS capacities export complete:
+C:\LINEUP\data\raw\COOIS_Capacities_Latest.txt
+[29/07/2026 12:00:34.51] Step 3 - Running SAP production list export... 
+COOIS production list export complete:
+C:\LINEUP\data\raw\COOIS_ProductionList_Latest.txt
+[29/07/2026 12:04:05.37] Step 4 - Running LINEUP processing pipeline... 
+LINEUP
+Starting capacity parser...
+
+
+===================================
+LINEUP Capacity Parser Complete
+===================================
+Input : COOIS_Capacities_Latest.txt
+Output: capacities_clean.csv
+Rows  : 6256
+
+
+===================================
+LINEUP Production Parser Complete
+===================================
+Input : COOIS_ProductionList_Latest.txt
+Output: production_list_clean.csv
+Rows  : 2396
+
+
+===================================
+LINEUP Capacity Summary Complete
+===================================
+Input : capacities_clean.csv
+Output: capacities_order_summary.csv
+Rows  : 979
+
+
+===================================
+LINEUP Merge Complete
+===================================
+Production input : production_list_clean.csv
+Capacity input   : capacities_order_summary.csv
+Output           : master_schedule.csv
+Rows             : 979
+Missing metadata : 0
+
+
+===================================
+LINEUP Scheduling Complete
+===================================
+Scheduled orders : 45
+Overflow orders  : 0
+SAP minutes      : unchanged by default
+Staffing         : explicit overrides only
+Queue stability  : current + one automatic order
+Insights         : assignment reasons and confidence
+
+
+===================================
+LINEUP Dashboard Build Complete
+===================================
+Input       : scheduled_orders.csv
+Output      : C:\LINEUP\output\dashboard.html
+Insights    : assignment reasons and confidence
+Remaining   : SAP versus adjusted
+Utilisation : working-calendar aware
+
+
+===================================
+LINEUP Schedule Report Complete
+===================================
+Bench utilisation: bench_utilisation.csv
+Schedule summary : schedule_summary.csv
+
+
+===================================
+LINEUP Split Recommendations Complete
+===================================
+Recommendations : 0
+Window          : due today or next working day only
+SAP minutes     : used unchanged by default
+Staffing        : explicit overrides only
+Planner work    : live, held, split, forced and board orders excluded
+Output          : split_recommendations.csv
+
+[29/07/2026 12:04:05.87] Step 5 - Marking LINEUP run as successful... 
+LINEUP status marked as successful.
+[29/07/2026 12:04:06.19] Step 6 - Rebuilding dashboard with final status... 
+
+===================================
+LINEUP Dashboard Build Complete
+===================================
+Input       : scheduled_orders.csv
+Output      : C:\LINEUP\output\dashboard.html
+Insights    : assignment reasons and confidence
+Remaining   : SAP versus adjusted
+Utilisation : working-calendar aware
+
+=================================== 
+LINEUP background update finished 
+29/07/2026 12:04:06.56 
+=================================== 
+ 
+=================================== 
+LINEUP background update started 
+29/07/2026 12:15:03.14 
+=================================== 
+[29/07/2026 12:15:03.14] Activating virtual environment... 
+[29/07/2026 12:15:03.67] Step 0 - Marking LINEUP run as started... 
+LINEUP status marked as running.
+[29/07/2026 12:15:03.99] Step 1 - Backing up LINEUP config... 
+
+===================================
+LINEUP Config Backup Complete
+===================================
+Backup folder : C:\LINEUP\backups\2026-07-29_121504
+Files copied  : 4
+Old backups removed: 1
+
+[29/07/2026 12:15:04.34] Step 2 - Running SAP capacity export... 
+COOIS capacities export complete:
+C:\LINEUP\data\raw\COOIS_Capacities_Latest.txt
+[29/07/2026 12:15:30.90] Step 3 - Running SAP production list export... 
+COOIS production list export complete:
+C:\LINEUP\data\raw\COOIS_ProductionList_Latest.txt
+[29/07/2026 12:18:04.01] Step 4 - Running LINEUP processing pipeline... 
+LINEUP
+Starting capacity parser...
+
+
+===================================
+LINEUP Capacity Parser Complete
+===================================
+Input : COOIS_Capacities_Latest.txt
+Output: capacities_clean.csv
+Rows  : 6251
+
+
+===================================
+LINEUP Production Parser Complete
+===================================
+Input : COOIS_ProductionList_Latest.txt
+Output: production_list_clean.csv
+Rows  : 2393
+
+
+===================================
+LINEUP Capacity Summary Complete
+===================================
+Input : capacities_clean.csv
+Output: capacities_order_summary.csv
+Rows  : 979
+
+
+===================================
+LINEUP Merge Complete
+===================================
+Production input : production_list_clean.csv
+Capacity input   : capacities_order_summary.csv
+Output           : master_schedule.csv
+Rows             : 979
+Missing metadata : 0
+
+
+===================================
+LINEUP Scheduling Complete
+===================================
+Scheduled orders : 45
+Overflow orders  : 0
+SAP minutes      : unchanged by default
+Staffing         : explicit overrides only
+Queue stability  : current + one automatic order
+Insights         : assignment reasons and confidence
+
+
+===================================
+LINEUP Dashboard Build Complete
+===================================
+Input       : scheduled_orders.csv
+Output      : C:\LINEUP\output\dashboard.html
+Insights    : assignment reasons and confidence
+Remaining   : SAP versus adjusted
+Utilisation : working-calendar aware
+
+
+===================================
+LINEUP Schedule Report Complete
+===================================
+Bench utilisation: bench_utilisation.csv
+Schedule summary : schedule_summary.csv
+
+
+===================================
+LINEUP Split Recommendations Complete
+===================================
+Recommendations : 0
+Window          : due today or next working day only
+SAP minutes     : used unchanged by default
+Staffing        : explicit overrides only
+Planner work    : live, held, split, forced and board orders excluded
+Output          : split_recommendations.csv
+
+[29/07/2026 12:18:04.55] Step 5 - Marking LINEUP run as successful... 
+LINEUP status marked as successful.
+[29/07/2026 12:18:04.85] Step 6 - Rebuilding dashboard with final status... 
+
+===================================
+LINEUP Dashboard Build Complete
+===================================
+Input       : scheduled_orders.csv
+Output      : C:\LINEUP\output\dashboard.html
+Insights    : assignment reasons and confidence
+Remaining   : SAP versus adjusted
+Utilisation : working-calendar aware
+
+=================================== 
+LINEUP background update finished 
+29/07/2026 12:18:05.18 
+=================================== 
+ 
+=================================== 
+LINEUP background update started 
+29/07/2026 12:30:03.33 
+=================================== 
+[29/07/2026 12:30:03.33] Activating virtual environment... 
+[29/07/2026 12:30:03.84] Step 0 - Marking LINEUP run as started... 
+LINEUP status marked as running.
+[29/07/2026 12:30:04.16] Step 1 - Backing up LINEUP config... 
+
+===================================
+LINEUP Config Backup Complete
+===================================
+Backup folder : C:\LINEUP\backups\2026-07-29_123004
+Files copied  : 4
+Old backups removed: 1
+
+[29/07/2026 12:30:04.52] Step 2 - Running SAP capacity export... 
+COOIS capacities export complete:
+C:\LINEUP\data\raw\COOIS_Capacities_Latest.txt
+[29/07/2026 12:30:29.17] Step 3 - Running SAP production list export... 
+COOIS production list export complete:
+C:\LINEUP\data\raw\COOIS_ProductionList_Latest.txt
+[29/07/2026 12:33:09.37] Step 4 - Running LINEUP processing pipeline... 
+LINEUP
+Starting capacity parser...
+
+
+===================================
+LINEUP Capacity Parser Complete
+===================================
+Input : COOIS_Capacities_Latest.txt
+Output: capacities_clean.csv
+Rows  : 6247
+
+
+===================================
+LINEUP Production Parser Complete
+===================================
+Input : COOIS_ProductionList_Latest.txt
+Output: production_list_clean.csv
+Rows  : 2392
+
+
+===================================
+LINEUP Capacity Summary Complete
+===================================
+Input : capacities_clean.csv
+Output: capacities_order_summary.csv
+Rows  : 979
+
+
+===================================
+LINEUP Merge Complete
+===================================
+Production input : production_list_clean.csv
+Capacity input   : capacities_order_summary.csv
+Output           : master_schedule.csv
+Rows             : 979
+Missing metadata : 0
+
+
+===================================
+LINEUP Scheduling Complete
+===================================
+Scheduled orders : 46
+Overflow orders  : 0
+SAP minutes      : unchanged by default
+Staffing         : explicit overrides only
+Queue stability  : current + one automatic order
+Insights         : assignment reasons and confidence
+
+
+===================================
+LINEUP Dashboard Build Complete
+===================================
+Input       : scheduled_orders.csv
+Output      : C:\LINEUP\output\dashboard.html
+Insights    : assignment reasons and confidence
+Remaining   : SAP versus adjusted
+Utilisation : working-calendar aware
+
+
+===================================
+LINEUP Schedule Report Complete
+===================================
+Bench utilisation: bench_utilisation.csv
+Schedule summary : schedule_summary.csv
+
+
+===================================
+LINEUP Split Recommendations Complete
+===================================
+Recommendations : 0
+Window          : due today or next working day only
+SAP minutes     : used unchanged by default
+Staffing        : explicit overrides only
+Planner work    : live, held, split, forced and board orders excluded
+Output          : split_recommendations.csv
+
+[29/07/2026 12:33:09.91] Step 5 - Marking LINEUP run as successful... 
+LINEUP status marked as successful.
+[29/07/2026 12:33:10.23] Step 6 - Rebuilding dashboard with final status... 
+
+===================================
+LINEUP Dashboard Build Complete
+===================================
+Input       : scheduled_orders.csv
+Output      : C:\LINEUP\output\dashboard.html
+Insights    : assignment reasons and confidence
+Remaining   : SAP versus adjusted
+Utilisation : working-calendar aware
+
+=================================== 
+LINEUP background update finished 
+29/07/2026 12:33:10.54 
+=================================== 
+ 
+=================================== 
+LINEUP background update started 
+29/07/2026 12:45:03.14 
+=================================== 
+[29/07/2026 12:45:03.14] Activating virtual environment... 
+[29/07/2026 12:45:03.64] Step 0 - Marking LINEUP run as started... 
+LINEUP status marked as running.
+[29/07/2026 12:45:03.97] Step 1 - Backing up LINEUP config... 
+
+===================================
+LINEUP Config Backup Complete
+===================================
+Backup folder : C:\LINEUP\backups\2026-07-29_124504
+Files copied  : 4
+Old backups removed: 1
+
+[29/07/2026 12:45:04.42] Step 2 - Running SAP capacity export... 
+COOIS capacities export complete:
+C:\LINEUP\data\raw\COOIS_Capacities_Latest.txt
+[29/07/2026 12:45:31.28] Step 3 - Running SAP production list export... 
+COOIS production list export complete:
+C:\LINEUP\data\raw\COOIS_ProductionList_Latest.txt
+[29/07/2026 12:47:45.96] Step 4 - Running LINEUP processing pipeline... 
+LINEUP
+Starting capacity parser...
+
+
+===================================
+LINEUP Capacity Parser Complete
+===================================
+Input : COOIS_Capacities_Latest.txt
+Output: capacities_clean.csv
+Rows  : 6239
+
+
+===================================
+LINEUP Production Parser Complete
+===================================
+Input : COOIS_ProductionList_Latest.txt
+Output: production_list_clean.csv
+Rows  : 2389
+
+
+===================================
+LINEUP Capacity Summary Complete
+===================================
+Input : capacities_clean.csv
+Output: capacities_order_summary.csv
+Rows  : 977
+
+
+===================================
+LINEUP Merge Complete
+===================================
+Production input : production_list_clean.csv
+Capacity input   : capacities_order_summary.csv
+Output           : master_schedule.csv
+Rows             : 977
+Missing metadata : 0
+
+
+===================================
+LINEUP Scheduling Complete
+===================================
+Scheduled orders : 43
+Overflow orders  : 0
+SAP minutes      : unchanged by default
+Staffing         : explicit overrides only
+Queue stability  : current + one automatic order
+Insights         : assignment reasons and confidence
+
+
+===================================
+LINEUP Dashboard Build Complete
+===================================
+Input       : scheduled_orders.csv
+Output      : C:\LINEUP\output\dashboard.html
+Insights    : assignment reasons and confidence
+Remaining   : SAP versus adjusted
+Utilisation : working-calendar aware
+
+
+===================================
+LINEUP Schedule Report Complete
+===================================
+Bench utilisation: bench_utilisation.csv
+Schedule summary : schedule_summary.csv
+
+
+===================================
+LINEUP Split Recommendations Complete
+===================================
+Recommendations : 0
+Window          : due today or next working day only
+SAP minutes     : used unchanged by default
+Staffing        : explicit overrides only
+Planner work    : live, held, split, forced and board orders excluded
+Output          : split_recommendations.csv
+
+[29/07/2026 12:47:46.47] Step 5 - Marking LINEUP run as successful... 
+LINEUP status marked as successful.
+[29/07/2026 12:47:46.77] Step 6 - Rebuilding dashboard with final status... 
+
+===================================
+LINEUP Dashboard Build Complete
+===================================
+Input       : scheduled_orders.csv
+Output      : C:\LINEUP\output\dashboard.html
+Insights    : assignment reasons and confidence
+Remaining   : SAP versus adjusted
+Utilisation : working-calendar aware
+
+=================================== 
+LINEUP background update finished 
+29/07/2026 12:47:47.09 
+=================================== 
+ 
+=================================== 
+LINEUP background update started 
+29/07/2026 13:00:10.76 
+=================================== 
+[29/07/2026 13:00:10.77] Activating virtual environment... 
+[29/07/2026 13:00:11.47] Step 0 - Marking LINEUP run as started... 
+LINEUP status marked as running.
+[29/07/2026 13:00:12.15] Step 1 - Backing up LINEUP config... 
+
+===================================
+LINEUP Config Backup Complete
+===================================
+Backup folder : C:\LINEUP\backups\2026-07-29_130016
+Files copied  : 4
+Old backups removed: 1
+
+[29/07/2026 13:00:16.46] Step 2 - Running SAP capacity export... 
+COOIS capacities export complete:
+C:\LINEUP\data\raw\COOIS_Capacities_Latest.txt
+[29/07/2026 13:00:51.10] Step 3 - Running SAP production list export... 
+COOIS production list export complete:
+C:\LINEUP\data\raw\COOIS_ProductionList_Latest.txt
+[29/07/2026 13:04:24.18] Step 4 - Running LINEUP processing pipeline... 
+LINEUP
+Starting capacity parser...
+
+
+===================================
+LINEUP Capacity Parser Complete
+===================================
+Input : COOIS_Capacities_Latest.txt
+Output: capacities_clean.csv
+Rows  : 6235
+
+
+===================================
+LINEUP Production Parser Complete
+===================================
+Input : COOIS_ProductionList_Latest.txt
+Output: production_list_clean.csv
+Rows  : 2388
+
+
+===================================
+LINEUP Capacity Summary Complete
+===================================
+Input : capacities_clean.csv
+Output: capacities_order_summary.csv
+Rows  : 977
+
+
+===================================
+LINEUP Merge Complete
+===================================
+Production input : production_list_clean.csv
+Capacity input   : capacities_order_summary.csv
+Output           : master_schedule.csv
+Rows             : 977
+Missing metadata : 0
+
+
+===================================
+LINEUP Scheduling Complete
+===================================
+Scheduled orders : 43
+Overflow orders  : 0
+SAP minutes      : unchanged by default
+Staffing         : explicit overrides only
+Queue stability  : current + one automatic order
+Insights         : assignment reasons and confidence
+
+
+===================================
+LINEUP Dashboard Build Complete
+===================================
+Input       : scheduled_orders.csv
+Output      : C:\LINEUP\output\dashboard.html
+Insights    : assignment reasons and confidence
+Remaining   : SAP versus adjusted
+Utilisation : working-calendar aware
+
+
+===================================
+LINEUP Schedule Report Complete
+===================================
+Bench utilisation: bench_utilisation.csv
+Schedule summary : schedule_summary.csv
+
+
+===================================
+LINEUP Split Recommendations Complete
+===================================
+Recommendations : 0
+Window          : due today or next working day only
+SAP minutes     : used unchanged by default
+Staffing        : explicit overrides only
+Planner work    : live, held, split, forced and board orders excluded
+Output          : split_recommendations.csv
+
+[29/07/2026 13:04:24.74] Step 5 - Marking LINEUP run as successful... 
+LINEUP status marked as successful.
+[29/07/2026 13:04:25.03] Step 6 - Rebuilding dashboard with final status... 
+
+===================================
+LINEUP Dashboard Build Complete
+===================================
+Input       : scheduled_orders.csv
+Output      : C:\LINEUP\output\dashboard.html
+Insights    : assignment reasons and confidence
+Remaining   : SAP versus adjusted
+Utilisation : working-calendar aware
+
+=================================== 
+LINEUP background update finished 
+29/07/2026 13:04:25.37 
+=================================== 

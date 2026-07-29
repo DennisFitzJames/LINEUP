@@ -1,0 +1,15 @@
+metric,value
+open_benches,7
+scheduled_orders,43
+overflow_orders,0
+scheduled_minutes,13076
+overflow_minutes,0
+total_available_minutes,3088
+total_used_minutes,13076
+total_remaining_minutes,-9988
+overall_utilisation_percent,423.4
+priority_orders_scheduled,43
+priority_orders_overflow,0
+australia_orders_scheduled,1
+australia_orders_overflow,0
+consecutive_same_material_runs,3

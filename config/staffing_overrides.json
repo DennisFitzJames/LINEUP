@@ -1,0 +1,30 @@
+{
+    "version": 1,
+    "benches": {
+        "CM03": {
+            "people": 1,
+            "updated_at": "2026-07-28 10:05:35",
+            "updated_by": "control",
+            "note": ""
+        },
+        "CM01": {
+            "people": 2,
+            "updated_at": "2026-07-21 07:39:03",
+            "updated_by": "control",
+            "note": ""
+        },
+        "CM02": {
+            "people": 1,
+            "updated_at": "2026-07-21 07:39:09",
+            "updated_by": "control",
+            "note": ""
+        },
+        "CM04": {
+            "people": 2,
+            "updated_at": "2026-07-28 10:05:41",
+            "updated_by": "control",
+            "note": ""
+        }
+    },
+    "updated_at": "2026-07-28 10:05:41"
+}
