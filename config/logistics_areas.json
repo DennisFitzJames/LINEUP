@@ -1,0 +1,218 @@
+{
+  "refresh_seconds": 60,
+  "forecast": {
+    "workday_start": "07:50",
+    "workday_hours": 9.0,
+    "active_until": "16:35"
+  },
+  "areas": [
+    {
+      "id": "mv",
+      "name": "MV",
+      "display_order": 10,
+      "orders_per_person": 4,
+      "work_centres": [
+        "CSKI-1",
+        "MVKI-1"
+      ],
+      "picker_queue_prefixes": [
+        "MV KIT"
+      ],
+      "accent": "#6d5dfc"
+    },
+    {
+      "id": "lv",
+      "name": "LV",
+      "display_order": 20,
+      "orders_per_person": 9,
+      "work_centres": [
+        "LVPA-1"
+      ],
+      "picker_queue_prefixes": [
+        "LV KIT"
+      ],
+      "accent": "#5b63d3"
+    },
+    {
+      "id": "connectors",
+      "name": "CONNECTORS",
+      "display_order": 30,
+      "orders_per_person": 9,
+      "work_centres": [
+        "LVCA-1"
+      ],
+      "picker_queue_prefixes": [
+        "LV CONNECT"
+      ],
+      "accent": "#556fc4"
+    },
+    {
+      "id": "autobagger",
+      "name": "AUTOBAGGER",
+      "display_order": 40,
+      "orders_per_person": 8,
+      "work_centres": [
+        "LVPA-4"
+      ],
+      "picker_queue_prefixes": [
+        "AUTOBAGGER",
+        "LV BAGGER"
+      ],
+      "accent": "#487cb9"
+    },
+    {
+      "id": "usw",
+      "name": "USW",
+      "display_order": 50,
+      "orders_per_person": 8,
+      "work_centres": [
+        "LVUW-1"
+      ],
+      "picker_queue_prefixes": [
+        "USW"
+      ],
+      "accent": "#358baf"
+    },
+    {
+      "id": "bag-line",
+      "name": "BAG LINE",
+      "display_order": 60,
+      "orders_per_person": 6,
+      "work_centres": [
+        "LVPA-2"
+      ],
+      "picker_queue_prefixes": [
+        "BAG LINE"
+      ],
+      "accent": "#2f929f"
+    },
+    {
+      "id": "box-line",
+      "name": "BOX LINE",
+      "display_order": 70,
+      "orders_per_person": 6,
+      "work_centres": [
+        "LVPA-5"
+      ],
+      "picker_queue_prefixes": [
+        "BOX LINE"
+      ],
+      "accent": "#299788"
+    },
+    {
+      "id": "aus-resin",
+      "name": "AUS & RESIN",
+      "display_order": 75,
+      "orders_per_person": 6,
+      "work_centres": [
+        "LVPA-6"
+      ],
+      "picker_queue_prefixes": [
+        "BULK"
+      ],
+      "accent": "#2f9484"
+    },
+    {
+      "id": "shrouds",
+      "name": "SHROUDS",
+      "display_order": 80,
+      "orders_per_person": 8,
+      "work_centres": [
+        "LVSH-1"
+      ],
+      "picker_queue_prefixes": [
+        "SHROUDS"
+      ],
+      "accent": "#45966d"
+    },
+    {
+      "id": "sub-assy",
+      "name": "SUB ASSY",
+      "display_order": 90,
+      "orders_per_person": 7,
+      "work_centres": [
+        "LVSK-1"
+      ],
+      "picker_queue_prefixes": [
+        "SUB ASSY"
+      ],
+      "accent": "#6a9460"
+    },
+    {
+      "id": "otto",
+      "name": "OTTO",
+      "display_order": 100,
+      "orders_per_person": 7,
+      "work_centres": [
+        "MVKI-2"
+      ],
+      "picker_queue_prefixes": [
+        "OTTO"
+      ],
+      "accent": "#87914d"
+    },
+    {
+      "id": "cold-applied",
+      "name": "COLD APPLIED",
+      "display_order": 110,
+      "orders_per_person": 10,
+      "work_centres": [
+        "CSEX-1",
+        "CSEX-2",
+        "CSFI-1",
+        "CSFL-1",
+        "CSOQ-1",
+        "CSQA-1",
+        "OBEX-1",
+        "OBOQ-1",
+        "OBPA-1"
+      ],
+      "picker_queue_prefixes": [
+        "CSJ EXP",
+        "CSJ FIN",
+        "OBTC"
+      ],
+      "accent": "#a68a47",
+      "exclude_if_order_has_work_centres": [
+        "CSRW-1"
+      ]
+    },
+    {
+      "id": "vac-kits",
+      "name": "VAC KITS",
+      "display_order": 120,
+      "orders_per_person": 10,
+      "work_centres": [
+        "VFKI-1",
+        "VFPA-1"
+      ],
+      "picker_queue_prefixes": [
+        "VAC KITS"
+      ],
+      "accent": "#c17a46",
+      "require_any_work_centres": [
+        "VFKI-1",
+        "VFPA-1"
+      ]
+    },
+    {
+      "id": "hvsa",
+      "name": "HVSA",
+      "display_order": 130,
+      "orders_per_person": 7,
+      "work_centres": [
+        "HVCR-1",
+        "HVKI-1",
+        "HVPA-1"
+      ],
+      "picker_queue_prefixes": [
+        "HVSA"
+      ],
+      "accent": "#cb6657"
+    }
+  ],
+  "planning_window": {
+    "through_next_week_friday": true,
+    "include_overdue": true
+  }
+}

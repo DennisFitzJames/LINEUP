@@ -1,0 +1,191 @@
+{% extends "logistics/base.html" %}
+{% block title %}Order Movement Tracker{% endblock %}
+{% block body_class %}movement-page{% endblock %}
+
+{% block content %}
+<section class="page-heading">
+    <div>
+        <span class="eyebrow">Rolling history</span>
+        <h1>Order movement tracker</h1>
+        <p>Scheduled-date changes and newly TECO orders across the selected window.</p>
+    </div>
+    <div class="movement-controls">
+        <label>
+            Window
+            <select id="movement-days">
+                <option value="today">Today</option>
+                <option value="7" selected>7 days</option>
+                <option value="14">14 days</option>
+                <option value="30">30 days</option>
+            </select>
+        </label>
+        <button class="button secondary" id="refresh-movements" type="button">Refresh</button>
+    </div>
+</section>
+
+<section class="kpi-grid movement-kpis">
+    <article class="kpi-card">
+        <span>Gross movement</span>
+        <strong id="movement-gross-days">0</strong>
+        <small>Total absolute days moved</small>
+    </article>
+    <article class="kpi-card">
+        <span>Orders moved</span>
+        <strong id="movement-date-count">0</strong>
+        <small id="movement-date-detail">Unique orders with date changes</small>
+    </article>
+    <article class="kpi-card positive">
+        <span>Moved earlier</span>
+        <strong id="movement-earlier">0</strong>
+        <small>Date-change events</small>
+    </article>
+    <article class="kpi-card warning">
+        <span>Moved later</span>
+        <strong id="movement-later">0</strong>
+        <small>Date-change events</small>
+    </article>
+    <article class="kpi-card danger">
+        <span>New TECO</span>
+        <strong id="movement-teco">0</strong>
+        <small>New cancellation events</small>
+    </article>
+</section>
+
+<section class="week-boundary-panel">
+    <div class="week-boundary-heading">
+        <div>
+            <span class="eyebrow">Current-week impact</span>
+            <h2>Orders crossing the week boundary</h2>
+            <p id="movement-week-range">Measured against the current Monday-to-Sunday week.</p>
+        </div>
+        <button class="button secondary compact hidden" id="clear-week-filter" type="button">Clear week filter</button>
+    </div>
+    <div class="week-boundary-grid">
+        <button class="week-boundary-card pulled-in" id="movement-pulled-in-card" type="button">
+            <span class="week-boundary-icon">↙</span>
+            <span class="week-boundary-copy">
+                <small>Pulled into this week</small>
+                <strong id="movement-pulled-in">0</strong>
+                <em id="movement-pulled-in-detail">0 date-change events</em>
+            </span>
+        </button>
+        <button class="week-boundary-card pushed-out" id="movement-pushed-out-card" type="button">
+            <span class="week-boundary-icon">↗</span>
+            <span class="week-boundary-copy">
+                <small>Moved out of this week</small>
+                <strong id="movement-pushed-out">0</strong>
+                <em id="movement-pushed-out-detail">0 date-change events</em>
+            </span>
+        </button>
+    </div>
+    <small class="chart-interaction-hint">Select either card to show the affected orders in the table below.</small>
+</section>
+
+<section class="movement-dashboard">
+    <article class="chart-card area-ranking-card">
+        <div class="chart-heading">
+            <div>
+                <span class="eyebrow">Most affected</span>
+                <h2>Gross changes by area</h2>
+            </div>
+        </div>
+        <div id="area-ranking" class="area-ranking"></div>
+        <small class="chart-interaction-hint">Select an area to filter the changed-orders table.</small>
+    </article>
+
+    <article class="chart-card">
+        <div class="chart-heading chart-heading-with-legend">
+            <div>
+                <span class="eyebrow">Trend</span>
+                <h2>Date moves and TECOs</h2>
+            </div>
+            <div class="trend-legend" aria-label="Trend legend">
+                <span><i class="date-move"></i>Date moved</span>
+                <span><i class="teco"></i>TECO</span>
+            </div>
+        </div>
+        <div class="interactive-chart-wrap">
+            <canvas id="movement-trend-chart" height="250" data-chart-height="250" tabindex="0" aria-label="Date moves and TECO trend chart"></canvas>
+            <div class="chart-tooltip hidden" id="movement-trend-tooltip" role="status"></div>
+        </div>
+        <small class="chart-interaction-hint">Hover over a point for the area breakdown on that date.</small>
+    </article>
+
+    <article class="chart-card">
+        <div class="chart-heading">
+            <div>
+                <span class="eyebrow">Direction</span>
+                <h2>Earlier, later and TECO</h2>
+            </div>
+        </div>
+        <div class="interactive-chart-wrap">
+            <canvas id="movement-direction-chart" height="250" data-chart-height="250" tabindex="0" aria-label="Earlier, later and TECO movement chart"></canvas>
+            <div class="chart-tooltip hidden" id="movement-direction-tooltip" role="status"></div>
+        </div>
+        <small class="chart-interaction-hint">Hover for an area breakdown. Select a bar to filter the table.</small>
+    </article>
+</section>
+
+<section class="change-table-card" id="changed-orders-section">
+    <div class="panel-heading change-table-heading">
+        <div>
+            <h2>Changed orders</h2>
+            <p>Only scheduled-date changes and newly TECO orders are shown.</p>
+        </div>
+        <div class="change-table-actions">
+            <span id="movement-filter-count">Showing 0 changes</span>
+            <button class="button secondary compact" id="clear-movement-filters" type="button">Clear filters</button>
+        </div>
+    </div>
+    <div class="table-scroll movement-table-scroll">
+        <table class="change-table">
+            <thead>
+                <tr>
+                    <th>Detected</th>
+                    <th>Order</th>
+                    <th>Area</th>
+                    <th>Change</th>
+                    <th>Previous</th>
+                    <th>New</th>
+                    <th>Days</th>
+                </tr>
+                <tr class="change-filter-row">
+                    <th><input id="movement-filter-date" type="search" placeholder="Date"></th>
+                    <th><input id="movement-filter-order" type="search" placeholder="Order"></th>
+                    <th>
+                        <select id="movement-filter-area">
+                            <option value="">All areas</option>
+                        </select>
+                    </th>
+                    <th>
+                        <select id="movement-filter-type">
+                            <option value="">All changes</option>
+                            <option value="date_moved">Date moved</option>
+                            <option value="teco">TECO'd</option>
+                        </select>
+                    </th>
+                    <th><input id="movement-filter-old" type="search" placeholder="Previous"></th>
+                    <th><input id="movement-filter-new" type="search" placeholder="New"></th>
+                    <th>
+                        <select id="movement-filter-direction">
+                            <option value="">All</option>
+                            <option value="earlier">Earlier</option>
+                            <option value="later">Later</option>
+                            <option value="none">No day delta</option>
+                        </select>
+                    </th>
+                </tr>
+            </thead>
+            <tbody id="movement-change-body"></tbody>
+        </table>
+        <div class="empty-state hidden" id="movement-empty">
+            <strong>No matching changes</strong>
+            <span>Clear the table filters or wait for a later refresh to detect more changes.</span>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='logistics/movements.js') }}"></script>
+{% endblock %}

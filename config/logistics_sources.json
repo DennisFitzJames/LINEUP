@@ -1,0 +1,20 @@
+{
+  "auxiliary_stale_minutes": 45,
+  "lx02_candidates": [
+    "data/raw/LX02_Latest.txt",
+    "data/raw/LX02_Export.txt",
+    "data/raw/LX02_Latest.csv",
+    "data/raw/LX02_Latest.xlsx",
+    "data/raw/LX02_Export.xlsx",
+    "data/logistics/input/lx02_sample.csv"
+  ],
+  "lrf2_candidates": [
+    "data/raw/LRF2_Latest.txt",
+    "data/raw/LRF2_Export.txt",
+    "data/raw/LRF2_Latest.csv",
+    "data/raw/LRF2_Latest.xlsx",
+    "data/raw/LRF2_Export.xlsx",
+    "data/logistics/input/lrf2_sample.csv"
+  ],
+  "picker_names_file": "config/logistics_picker_names.csv"
+}

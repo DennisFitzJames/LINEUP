@@ -1,0 +1,11 @@
+{% extends "production_plans/base.html" %}
+{% block title %}Plain plan export | Production Plans{% endblock %}
+{% block content %}
+<section class="page-heading"><div><span class="eyebrow">Downloadable Excel plans</span><h1>Plain plan export</h1><p>Select an area to download an XLSX workbook to your PC.</p></div></section>
+<section class="export-grid">
+{% for area_name, groups in areas.items() %}
+<article class="export-card"><div><span class="eyebrow">{{ groups|length }} sheets</span><h2>{{ area_name }}</h2><p>{{ groups.keys()|join(', ') }}</p></div><a class="button" href="{{ url_for('production_plans.download_export', area_name=area_name) }}">Download XLSX</a></article>
+{% endfor %}
+</section>
+<section class="info-panel"><h3>Export rules</h3><ul><li>Completed operations with no remaining process, setup or teardown are excluded.</li><li>Duplicate incomplete rows for the same order and source work centre are combined.</li><li>Hours Required uses remaining processing plus remaining teardown; Setup Time uses remaining setup.</li><li>MV combines CSKI-1 and MVKI-1; LVPA-2-5 combines LVPA-2 and LVPA-5.</li><li>VFKI-1 and VFPA-1 are separate; LVPA-6 is included in UNIT-2.</li></ul></section>
+{% endblock %}

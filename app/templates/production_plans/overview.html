@@ -1,0 +1,38 @@
+{% extends "production_plans/base.html" %}
+{% block title %}Production Plans{% endblock %}
+{% block content %}
+<section class="page-heading">
+  <div><span class="eyebrow">Production and WIP control</span><h1>Work-centre plans</h1><p>Operation-level plans built from the shared COOIS data pipeline.</p></div>
+  <a class="button" href="{{ url_for('production_plans.export_page') }}">Export plain plans</a>
+</section>
+<section class="kpi-grid">
+  <article class="kpi-card"><span>Work centres</span><strong>{{ model.totals.work_centres }}</strong><small>KIPS-1 excluded</small></article>
+  <article class="kpi-card"><span>Active operations</span><strong>{{ model.totals.active_operations }}</strong><small>Remaining work</small></article>
+  <article class="kpi-card"><span>Completed operations</span><strong>{{ model.totals.completed_operations }}</strong><small>Kept for WIP visibility</small></article>
+  <article class="kpi-card"><span>Unreleased operations</span><strong>{{ model.totals.unreleased_operations }}</strong><small>CRTD / no REL status</small></article>
+  <article class="kpi-card"><span>Remaining hours</span><strong>{{ '%.1f'|format(model.totals.remaining_hours) }}</strong><small>Process + setup + teardown</small></article>
+</section>
+<section class="toolbar">
+  <input id="wc-search" type="search" placeholder="Search a work centre">
+  <select id="wc-filter">
+    <option value="all">All areas</option>
+    {% for area_name in model.config.export_areas.keys() %}
+    <option value="{{ area_name|lower }}">{{ area_name }}</option>
+    {% endfor %}
+    <option value="unmapped">Other / unmapped</option>
+  </select>
+  <span id="wc-result-count" class="toolbar-count" aria-live="polite"></span>
+</section>
+<section class="wc-grid" id="wc-grid">
+{% for card in model.cards %}
+<a class="wc-card" data-name="{{ card.work_centre|lower }}" data-areas="{{ card.areas|map('lower')|join('|') }}" href="{{ url_for('production_plans.plan', work_centre=card.work_centre) }}">
+  <div class="wc-card-head"><span class="wc-badge">{{ card.work_centre[:2] }}</span><div><h2>{{ card.work_centre }}</h2><small>{{ card.completed_count }} completed{% if card.areas %} · {{ card.areas|join(', ') }}{% endif %}</small></div></div>
+  <div class="wc-number"><strong>{{ card.active_count }}</strong><span>active operations</span></div>
+  <div class="wc-stats"><span><b>{{ card.unreleased_count }}</b> unreleased</span><span><b>{{ '%.1f'|format(card.remaining_hours) }}</b> hrs</span></div>
+  <div class="wc-action">Open plan <span>→</span></div>
+</a>
+{% endfor %}
+</section>
+<p id="wc-empty-state" class="wc-empty-state" style="display:none">No work centres match the selected search and area.</p>
+{% endblock %}
+{% block scripts %}<script src="{{ url_for('static', filename='production_plans/overview.js') }}?v=3.2"></script>{% endblock %}

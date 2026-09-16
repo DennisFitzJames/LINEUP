@@ -1,0 +1,45 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+
+# Virtual environments
+venv/
+.env/
+.venv/
+
+# Flask / local runtime
+instance/
+*.log
+
+# SAP / live data
+data/raw/
+data/archive/
+data/logistics/
+data/processed/
+output/
+logs/
+
+# SQLite databases
+*.sqlite
+*.sqlite3
+*.db
+
+# Excel exports / user downloads
+*.xlsx
+*.xlsm
+*.xls
+
+# OS/editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Temporary files
+*.tmp
+*.bak
+~$*

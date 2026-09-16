@@ -1,0 +1,33 @@
+{
+  "excluded_work_centres": ["KIPS-1"],
+  "refresh_seconds": 60,
+  "export_areas": {
+    "UNIT-1": {
+      "CSEX-1": ["CSEX-1"], "CSEX-2": ["CSEX-2"], "CSFL-1": ["CSFL-1"], "CSFL-2": ["CSFL-2"],
+      "CSFI-1": ["CSFI-1"], "CSLW-1": ["CSLW-1"], "CSOQ-1": ["CSOQ-1"], "CSQA-1": ["CSQA-1"],
+      "CSRW-1": ["CSRW-1"], "CUTC-1": ["CUTC-1"], "CUEC-1": ["CUEC-1"], "CUCC-1": ["CUCC-1"],
+      "OBEX-1": ["OBEX-1"], "OBOQ-1": ["OBOQ-1"], "OBPA-1": ["OBPA-1"]
+    },
+    "UNIT-2": {
+      "MV": ["CSKI-1", "MVKI-1"], "MVKI-2": ["MVKI-2"], "LVPA-2-5": ["LVPA-2", "LVPA-5"], "LVPA-6": ["LVPA-6"]
+    },
+    "UNIT-3": {
+      "LVPA-1": ["LVPA-1"], "LVCA-1": ["LVCA-1"], "LVSK-1": ["LVSK-1"], "LVUW-1": ["LVUW-1"],
+      "LVSH-1": ["LVSH-1"], "LVPA-3": ["LVPA-3"], "LVPA-4": ["LVPA-4"]
+    },
+    "HVSA": {
+      "HVKI-1": ["HVKI-1"], "HVPA-1": ["HVPA-1"], "HVCR-1": ["HVCR-1"], "HVMO-1": ["HVMO-1"], "HVTE-1": ["HVTE-1"]
+    },
+    "VACFORM": {
+      "VFKI-1": ["VFKI-1"], "VFPA-1": ["VFPA-1"], "VFBA-1": ["VFBA-1"], "VFPF-1": ["VFPF-1"],
+      "VFPF-2": ["VFPF-2"], "VFPF-3": ["VFPF-3"], "VFPR-1": ["VFPR-1"], "VFTA-1": ["VFTA-1"]
+    },
+    "WAP": {
+      "VFCN-1": ["VFCN-1"], "VFDC-1": ["VFDC-1"], "VFPA-2": ["VFPA-2"], "VFPR-4": ["VFPR-4"], "VFPF-4": ["VFPF-4"]
+    },
+    "MOULDSHOP": {
+      "MSHP-1": ["MSHP-1"], "MSHP-2": ["MSHP-2"], "MSHP-3": ["MSHP-3"], "MSHP-4": ["MSHP-4"],
+      "MSHP-5": ["MSHP-5"], "MSHP-7": ["MSHP-7"], "IMMO-1": ["IMMO-1"], "IMMO-2": ["IMMO-2"]
+    }
+  }
+}

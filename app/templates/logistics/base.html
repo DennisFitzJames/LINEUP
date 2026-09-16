@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}BW Logistics{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='logistics/logistics.css') }}">
+    {% block head %}{% endblock %}
+</head>
+<body class="logistics-app {% block body_class %}{% endblock %}">
+    <header class="app-header">
+        <a class="brand" href="{{ url_for('logistics.overview') }}">
+            <span class="brand-mark">BW</span>
+            <span>
+                <strong>Logistics Control</strong>
+                <small>Live area plans</small>
+            </span>
+        </a>
+
+        <nav class="app-nav" aria-label="Main navigation">
+            <a href="{{ url_for('logistics.overview') }}"
+               class="{% if request.endpoint == 'logistics.overview' %}active{% endif %}">
+                Areas
+            </a>
+            <a href="{{ url_for('logistics.movements') }}"
+               class="{% if request.endpoint == 'logistics.movements' %}active{% endif %}">
+                Movement tracker
+            </a>
+            <a href="{{ url_for('production_plans.overview') }}">Production Plans</a>
+            <a href="{{ url_for('dashboard') }}">LINEUP</a>
+            <a href="{{ url_for('control') }}">Control</a>
+        </nav>
+
+        <div class="header-status">
+            <span class="live-dot" aria-hidden="true"></span>
+            <span id="global-updated">
+                Updated {{ payload.generated_at_display if payload else '' }}
+            </span>
+        </div>
+    </header>
+
+    {% if payload and payload.source_state.has_warning %}
+    <div class="data-warning">
+        <strong>Auxiliary data warning:</strong>
+        {{ payload.source_state.warning_text }}.
+        COOIS plan data remains available from the shared LINEUP processed files.
+    </div>
+    {% endif %}
+
+    <main class="app-main">
+        {% block content %}{% endblock %}
+    </main>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+    <script src="{{ url_for('static', filename='logistics/common.js') }}"></script>
+    {% block scripts %}{% endblock %}
+</body>
+</html>

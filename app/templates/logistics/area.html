@@ -1,0 +1,142 @@
+{% extends "logistics/base.html" %}
+{% block title %}{{ area.name }} Logistics Plan{% endblock %}
+{% block body_class %}area-plan-page{% endblock %}
+
+{% block content %}
+<section class="area-hero" style="--area-accent: {{ area.accent }}">
+    <div>
+        <a class="back-link" href="{{ url_for('logistics.overview') }}">← All areas</a>
+        <span class="eyebrow">Live picking plan</span>
+        <h1>{{ area.name }}</h1>
+        <p>
+            Required target hours remain visible while picked orders move into the staged panel.
+        </p>
+    </div>
+    <div class="area-hero-meta">
+        <span>Next refresh</span>
+        <strong id="refresh-countdown">{{ payload.refresh_seconds }}</strong>
+        <small>seconds</small>
+    </div>
+</section>
+
+<section class="kpi-grid plan-kpis">
+    <article class="kpi-card accent">
+        <span>Picker count</span>
+        <strong id="metric-pickers">{{ area.picker_count }}</strong>
+        <small id="metric-picker-names">
+            {% if area.pickers %}
+                {{ area.pickers | map(attribute='name') | join(', ') }}
+            {% else %}
+                No active queue matches
+            {% endif %}
+        </small>
+    </article>
+    <article class="kpi-card">
+        <span>Active orders</span>
+        <strong id="metric-active">{{ area.active_count }}</strong>
+        <small>REL and CRTD</small>
+    </article>
+    <article class="kpi-card">
+        <span>Forecast remaining</span>
+        <strong id="metric-forecast">{{ area.forecast_count }}</strong>
+        <small>Based on current picker coverage</small>
+    </article>
+    <article class="kpi-card">
+        <span>Target hours</span>
+        <strong id="metric-hours">{{ "%.1f"|format(area.target_hours) }}</strong>
+        <small>Required process target hours</small>
+    </article>
+    <article class="kpi-card">
+        <span>Overdue</span>
+        <strong id="metric-overdue">{{ area.overdue_count }}</strong>
+        <small>Scheduled before today</small>
+    </article>
+</section>
+
+<section class="plan-layout">
+    <div class="plan-panel">
+        <div class="panel-heading">
+            <div>
+                <h2>Active plan</h2>
+                <p>
+                    <span class="legend-line forecast"></span> Picking forecast
+                    <span class="legend-line target"></span> End-of-tomorrow target
+                </p>
+            </div>
+            <div class="panel-actions">
+                <label class="search-field">
+                    <span class="sr-only">Search orders</span>
+                    <input id="order-search" type="search" placeholder="Search order, material or customer">
+                </label>
+                <button class="button secondary" id="refresh-area" type="button">Refresh</button>
+            </div>
+        </div>
+
+        <div class="table-scroll plan-table-wrap" id="plan-table-wrap">
+            <div class="plan-marker forecast-marker" id="forecast-marker">
+                <span>Picking forecast</span>
+            </div>
+            <div class="plan-marker target-marker" id="target-marker">
+                <span>Target · {{ area.target_date_display }}</span>
+            </div>
+
+            <table class="plan-table" id="active-plan-table">
+                <thead>
+                    <tr>
+                        <th>Scheduled start</th>
+                        <th>Scheduled finish</th>
+                        <th>Order no.</th>
+                        <th>Material no.</th>
+                        <th>Material description</th>
+                        <th class="number">Qty</th>
+                        <th class="number">Confirmed</th>
+                        <th>Customer</th>
+                        <th>Priority</th>
+                        <th>System status</th>
+                        <th>User status</th>
+                        <th class="number">HRS required</th>
+                    </tr>
+                </thead>
+                <tbody id="active-plan-body"></tbody>
+            </table>
+
+            <div class="empty-state hidden" id="active-empty">
+                <strong>Plan complete</strong>
+                <span>No active REL or CRTD orders are currently assigned to this area.</span>
+            </div>
+        </div>
+    </div>
+
+    <aside class="plan-sidebar">
+        <section class="side-card">
+            <div class="side-card-heading">
+                <div>
+                    <span class="eyebrow">Current coverage</span>
+                    <h2>Pickers</h2>
+                </div>
+                <span class="count-pill" id="picker-count-pill">{{ area.picker_count }}</span>
+            </div>
+            <div class="picker-list" id="picker-list"></div>
+        </section>
+
+        <section class="side-card staged-card">
+            <div class="side-card-heading">
+                <div>
+                    <span class="eyebrow">Kept for visibility</span>
+                    <h2>Picked / staged</h2>
+                </div>
+                <span class="count-pill" id="staged-count-pill">{{ area.picked_count }}</span>
+            </div>
+            <div class="staged-list" id="staged-list"></div>
+        </section>
+    </aside>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script>
+window.LOGISTICS_AREA_ID = {{ area.id | tojson }};
+window.LOGISTICS_REFRESH_SECONDS = {{ payload.refresh_seconds | int }};
+</script>
+<script src="{{ url_for('static', filename='logistics/area.js') }}"></script>
+{% endblock %}

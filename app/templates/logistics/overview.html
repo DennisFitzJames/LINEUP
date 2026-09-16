@@ -1,0 +1,96 @@
+{% extends "logistics/base.html" %}
+{% block title %}BW Logistics Areas{% endblock %}
+{% block body_class %}overview-page{% endblock %}
+
+{% block content %}
+<section class="page-heading">
+    <div>
+        <span class="eyebrow">Warehouse planning</span>
+        <h1>Area overview</h1>
+        <p>Live active workload, picking coverage and staged-order visibility.</p>
+    </div>
+    <button class="button secondary" id="refresh-overview" type="button">
+        Refresh view
+    </button>
+</section>
+
+<section class="kpi-grid overview-kpis" aria-label="Overall logistics metrics">
+    <article class="kpi-card">
+        <span>Active orders</span>
+        <strong id="total-active">{{ totals.active_count or 0 }}</strong>
+        <small>Across all visible plans</small>
+    </article>
+    <article class="kpi-card">
+        <span>Pickers logged in</span>
+        <strong id="total-pickers">{{ totals.picker_count or 0 }}</strong>
+        <small>Matched from LRF2 queues</small>
+    </article>
+    <article class="kpi-card">
+        <span>Picked / staged</span>
+        <strong id="total-picked">{{ totals.picked_count or 0 }}</strong>
+        <small>Held outside the active plan</small>
+    </article>
+    <article class="kpi-card">
+        <span>Overdue orders</span>
+        <strong id="total-overdue">{{ totals.overdue_count or 0 }}</strong>
+        <small>Scheduled before today</small>
+    </article>
+    <article class="kpi-card">
+        <span>Target hours</span>
+        <strong id="total-hours">{{ "%.1f"|format(totals.target_hours or 0) }}</strong>
+        <small>Required target processing hours</small>
+    </article>
+</section>
+
+<section class="source-health-grid" aria-label="Auxiliary SAP source status">
+    {% for source_id, source_name in [("lx02", "LX02 picked stock"), ("lrf2", "LRF2 picker queues")] %}
+    {% set source = payload.source_state[source_id] %}
+    <article class="source-health-card {{ source.status }}" data-source-id="{{ source_id }}">
+        <div>
+            <span class="eyebrow">{{ source_name }}</span>
+            <strong data-field="status_label">{{ source.status_label }}</strong>
+        </div>
+        <div class="source-health-meta">
+            <span data-field="name">{{ source.name }}</span>
+            <small data-field="modified_at_display">{{ source.modified_at_display }}</small>
+        </div>
+    </article>
+    {% endfor %}
+</section>
+
+<section class="section-heading">
+    <div>
+        <h2>Plans</h2>
+        <p>Select an area to open its live plan.</p>
+    </div>
+</section>
+
+<section class="area-card-grid" id="area-card-grid">
+    {% for area in areas %}
+    <a class="area-card" href="{{ url_for('logistics.area_plan', area_id=area.id) }}"
+       data-area-id="{{ area.id }}" style="--area-accent: {{ area.accent }}">
+        <div class="area-card-top">
+            <span class="area-icon">{{ area.name[:2] }}</span>
+            <div>
+                <h3>{{ area.name }}</h3>
+                <span>{{ area.picker_count }} picker{% if area.picker_count != 1 %}s{% endif %}</span>
+            </div>
+        </div>
+        <div class="area-card-number">
+            <strong data-field="active_count">{{ area.active_count }}</strong>
+            <span>active orders</span>
+        </div>
+        <div class="area-card-stats">
+            <span><b data-field="picked_count">{{ area.picked_count }}</b> staged</span>
+            <span><b data-field="overdue_count">{{ area.overdue_count }}</b> overdue</span>
+            <span><b data-field="target_hours">{{ "%.1f"|format(area.target_hours) }}</b> hrs</span>
+        </div>
+        <div class="area-card-action">Open plan <span>→</span></div>
+    </a>
+    {% endfor %}
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='logistics/overview.js') }}"></script>
+{% endblock %}

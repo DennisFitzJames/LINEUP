@@ -1,0 +1,30 @@
+{% extends "production_plans/base.html" %}
+{% block title %}{{ plan.work_centre }} | Production Plans{% endblock %}
+{% block content %}
+<section class="plan-hero">
+  <div><a class="back-link" href="{{ url_for('production_plans.overview') }}">← All work centres</a><span class="eyebrow">Capacity category 2</span><h1>{{ plan.work_centre }}</h1><p>Operations in scheduled-start order, with next-operation navigation.</p></div>
+  <div class="mini-kpis"><span><b>{{ plan.active_count }}</b> active</span><span><b>{{ plan.completed_count }}</b> complete</span><span><b>{{ plan.unreleased_count }}</b> unreleased</span><span><b>{{ '%.1f'|format(plan.remaining_hours) }}</b> hrs</span></div>
+</section>
+<section class="plan-panel">
+  <div class="plan-toolbar">
+    <div class="legend"><span class="legend-item active">Active</span><span class="legend-item completed">Completed</span><span class="legend-item unreleased">Unreleased</span><span class="legend-item teco">TECO</span></div>
+    <div class="filters"><input id="plan-search" type="search" placeholder="Search order, material, customer or description"><select id="status-filter"><option value="all">All statuses</option><option value="active">Active</option><option value="completed">Completed</option><option value="unreleased">Unreleased</option><option value="teco">TECO</option></select></div>
+  </div>
+  <div class="table-scroll" id="plan-scroll">
+    <table class="plan-table" id="plan-table">
+      <thead><tr><th>Operation</th><th>Scheduled start</th><th>Scheduled finish</th><th>Actual start</th><th>Actual finish</th><th>Order no.</th><th>Operation description</th><th>Material no.</th><th>Material description</th><th>Target qty</th><th>Confirmed qty</th><th>Customer</th><th>Priority</th><th>System status</th><th>User status</th><th>Total hours</th><th>Setup hours</th><th>Remaining hours</th><th>Next work centre</th></tr></thead>
+      <tbody>
+      {% set ns = namespace(last_date='') %}
+      {% for row in plan.rows %}
+        {% if row.scheduled_date_key != ns.last_date %}<tr class="date-row" data-date-row><td colspan="19">— {{ row.scheduled_date_display }} —</td></tr>{% set ns.last_date = row.scheduled_date_key %}{% endif %}
+        <tr id="{{ row.row_anchor }}" class="operation-row {{ row.row_class }}" data-status="{{ row.row_class }}" data-search="{{ (row.order_number ~ ' ' ~ row.material ~ ' ' ~ row.material_description ~ ' ' ~ row.customer ~ ' ' ~ row.operation_description)|lower }}">
+          <td>{{ row.operation }}</td><td>{{ row.scheduled_start_display }}</td><td>{{ row.scheduled_finish_display }}</td><td>{{ row.actual_start_display }}</td><td>{{ row.actual_finish_display }}</td><td class="order-cell">{{ row.order_number }}</td><td>{{ row.operation_description }}</td><td>{{ row.material }}</td><td>{{ row.material_description }}</td><td>{{ '%.3f'|format(row.target_quantity) }}</td><td>{{ '%.3f'|format(row.confirmed_quantity) }}</td><td>{{ row.customer }}</td><td>{{ row.priority }}</td><td><span class="status-pill">{{ row.system_status }}</span></td><td>{{ row.user_status }}</td><td>{{ '%.3f'|format(row.total_hours) }}</td><td>{{ '%.3f'|format(row.setup_hours) }}</td><td>{{ '%.3f'|format(row.remaining_hours) }}</td>
+          <td>{% if row.next_available %}<a class="next-link" href="{{ url_for('production_plans.plan', work_centre=row.next_work_centre) }}#{{ row.next_anchor }}">{{ row.next_work_centre }} →</a>{% else %}{{ row.next_work_centre }}{% endif %}</td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</section>
+{% endblock %}
+{% block scripts %}<script src="{{ url_for('static', filename='production_plans/plan.js') }}"></script>{% endblock %}
