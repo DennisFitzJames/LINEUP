@@ -52,6 +52,14 @@ if errorlevel 1 (
     exit /b 1
 )
 
+REM In Data Hub mode LINEUP reads published CSVs and does not open SAP.
+"%PYTHON_CMD%" app\datahub_adapter.py --is-enabled >nul 2>&1
+if not errorlevel 1 (
+    echo Data Hub mode enabled: skipping LINEUP SAP VBS exporters.
+    echo [%date% %time%] Data Hub mode enabled: skipping old SAP exports. >> "%LOG_FILE%"
+    goto process_lineup
+)
+
 echo.
 echo Step 2 - Running SAP capacity export...
 echo [%date% %time%] Step 2 - Running SAP capacity export... >> "%LOG_FILE%"
@@ -108,6 +116,7 @@ if errorlevel 1 (
     echo [%date% %time%] WARNING: LRF2 export failed. Continuing with the previous or sample file. >> "%LOG_FILE%"
 )
 
+:process_lineup
 echo.
 echo Step 6 - Running LINEUP processing pipeline...
 echo [%date% %time%] Step 6 - Running LINEUP processing pipeline... >> "%LOG_FILE%"
