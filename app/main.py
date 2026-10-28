@@ -2,8 +2,12 @@ print("LINEUP")
 print("Starting capacity parser...")
 print()
 
-import parse_capacities
-import parse_production_list
+import datahub_adapter
+if datahub_adapter.is_enabled():
+    datahub_adapter.refresh_production_and_capacities()
+else:
+    import parse_capacities
+    import parse_production_list
 import summarise_capacities
 import merge_data
 
