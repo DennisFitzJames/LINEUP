@@ -38,6 +38,10 @@ def load_production() -> list[dict[str, str]]:
 
 
 def locate_auxiliary_sources() -> dict[str, Path | None]:
+    # In Data Hub mode, never silently fall back to cached SAP files or samples.
+    from datahub_adapter import is_enabled, source_path
+    if is_enabled():
+        return {"lx02": source_path("lx02"), "lrf2": source_path("lrf2")}
     config = load_sources_config()
     return {
         "lx02": first_existing(config.get("lx02_candidates", [])),
